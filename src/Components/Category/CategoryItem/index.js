@@ -12,7 +12,7 @@ function CategoryItem({title, contentList}) {
         <FontAwesomeIcon className="sale__category-item-title-icon" icon={solid('angle-up')} />
       </div>
       {contentList.map((element, index) => (
-        <a href="/" className="sale__category-item-content">{element}</a>
+        <a key={index} href="/" className="sale__category-item-content">{element}</a>
       ))}
     </div>
   )

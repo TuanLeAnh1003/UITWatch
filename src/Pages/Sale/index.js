@@ -1,7 +1,10 @@
 import React from 'react'
 import './Sale.css'
 import CategoryItem from '../../Components/Category/CategoryItem/index'
+import Product from '../../Components/Product/index'
+
 import ProductImageMain from '../../Assets/omega-watches.svg'
+import ProductImg from '../../Assets/Rectangle 11.png'
 
 function Sale() {
   const cateList = [
@@ -50,7 +53,54 @@ function Sale() {
       contentList: ["Chronograph", "World time", "Dạ quang", "Kính vòm", "Open heart", "La bàn", "Bluetooth", "Đo độ cao"]
     }
   ]
-  console.log(cateList);
+
+  const productList = [{
+    img: ProductImg,
+    name: "Rolex Oyster Perpetual",
+    type: ["silver", "bronze"],
+    price: "370.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
+  }]
+
   return (
     <div className="sale">
       <div className="sale__category">
@@ -77,7 +127,7 @@ function Sale() {
 
 
         {cateList.map((element, index) => (
-            <div className="sale__category-element">
+            <div key={index} className="sale__category-element">
               <div className="sale__category-line"></div>
 
               <CategoryItem
@@ -94,7 +144,16 @@ function Sale() {
             <img src={ProductImageMain} alt="" className="sale__product-img--main" />
           </div>
           <div className="sale__product-list">
-
+            {
+              productList.map((element, index) => (
+                <Product
+                  img= {element.img}
+                  name= {element.name}
+                  type= {element.type}
+                  price= {element.price}
+                ></Product>
+              ))
+            }
           </div>
       </div>
     </div>

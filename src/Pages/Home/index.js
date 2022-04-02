@@ -10,6 +10,12 @@ import listImg2 from '../../Assets/Rectangle 9.png';
 import listImg3 from '../../Assets/Rectangle 10.png';
 import Product from '../../Components/Product';
 import pro1 from '../../Assets/Rectangle 11.png';
+import ContactItem from './../../Components/ContactItem/index';
+import newsItemImg1 from '../../Assets/news-item-1.svg';
+import newsItemImg2 from '../../Assets/news-item-2.svg';
+import newsItemImg3 from '../../Assets/news-item-3.svg';
+import newsItemImg4 from '../../Assets/news-item-4.svg';
+import NewsItem from '../../Components/NewsItem';
 
 const productList = [{
   img: pro1,
@@ -42,6 +48,52 @@ const productList = [{
   type: ["silver", "bronze"],
   price: "50.000.000 VNĐ",
 }]
+
+const contactList = [
+  {
+    title: "ĐỊA CHỈ",
+    icon: "location-dot",
+    content: ["64/15 Nguyên Hồng", "Phường 1, Quận Gò Vấp", "Thành phố Hồ Chí Minh"]
+  },
+  {
+    title: "GIỜ MỞ CỬA",
+    icon: "clock",
+    content: ["Thứ 2 - Thứ 6: 8h00 - 20h00", "Thứ 7: 8h00 - 21h00", "Chủ nhật: 8h00 - 21h30"]
+  },
+  {
+    title: "EMAIL",
+    icon: "envelope",
+    content: ["uitwatch@gmail.com", "19522009@gm.uit.edu.vn", "nduyan1601@gmail.com"]
+  },
+  {
+    title: "ĐIỆN THOẠI",
+    icon: "phone",
+    content: ["Anh An - 0938269974", "Anh Phong - 093569712", "Anh Hưng - 0908926975"]
+  }
+]
+
+const newsList = [
+  {
+    img: newsItemImg1,
+    title: "Phillipe Auguste",
+    desc: "Phillipe Auguste mang phong cách cổ điển, sang trọng với những thiết kế đồng hồ dành riêng cho thị trường. Mức giá vô cùng hợp lý...."
+  },
+  {
+    img: newsItemImg2,
+    title: "EPOS - Thụy Sĩ",
+    desc: "Epos nằm trong trong top 10 hãng đồng hồ độc lập uy tín nhất trong ngành đồng hồ Thụy Sĩ. Những chiếc đồng hồ được sản xuất..."
+  },
+  {
+    img: newsItemImg3,
+    title: "Aries Gold",
+    desc: "Các sản phẩm của hãng luôn hướng đến phong cách, thời trang và xu hướng mới nhất của thế giới với giá cả hợp lý..."
+  },
+  {
+    img: newsItemImg4,
+    title: "Stuhrling Original",
+    desc: "Chiếc đồng hồ cơ với các chi tiết phức tạp luôn là niềm đam mê của những ai yêu đồng hồ. Một bộ máy cơ khí thường có 5 bộ phận..."
+  }
+]
 
 function Home() {
   return (
@@ -113,6 +165,42 @@ function Home() {
         </div>
       </div>
 
+      <div className="home__bottom">
+        <div className="home__bottom-contact">
+            <div className="home__bottom-contact-title">THÔNG TIN LIÊN LẠC</div>
+            <div className="home__bottom-contact-desc">Nếu bạn có bất kì phản hồi gì về tiệm bánh HachatMacaron, hãy liên hệ ở các thông tin bên dưới:</div>
+            <div className="home__bottom-contact-list">
+            {
+              contactList.map((element, index) => (
+                <ContactItem
+                  key={index}
+                  title={element.title}
+                  icon={element.icon}
+                  content={element.content}
+                ></ContactItem>
+              ))
+            }
+            </div>
+        </div>
+
+        <div className="home__bottom-line"></div>
+
+        <div className="home__bottom-news">
+          <div className="home__bottom-news-title">TIN TỨC VÀ BÀI VIẾT</div>
+          <div className="home__bottom-news-list">
+            {
+              newsList.map((element, index) => (
+                <NewsItem
+                  key={index}
+                  img={element.img}
+                  title={element.title}
+                  desc={element.desc}
+                ></NewsItem>
+              ))
+            }
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
