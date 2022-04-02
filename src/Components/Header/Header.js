@@ -14,7 +14,7 @@ function Header() {
         </div>
 
         <div className="header-first__more">
-          <div className="header-first__more-item header-first__more-search">
+          <div className="header-first__more-item header-first__more-order">
             <FontAwesomeIcon icon={solid('box')} />
             <span>Tra cứu đơn hàng</span>
           </div>
@@ -27,6 +27,11 @@ function Header() {
           <div className="header-first__more-item header-first__more-search">
             <FontAwesomeIcon icon={solid('user')} />
             <span>Đăng nhập</span>
+          </div>
+
+          <div className="header-first__more-item header-first__more-user">
+            <FontAwesomeIcon icon={solid('circle-user')} />
+            <span>Quản lí</span>
           </div>
         </div>
       </div>
@@ -41,10 +46,10 @@ function Header() {
         </div>
 
         <ul className="header-second__nav">
-          <li>THƯƠNG HIỆU<FontAwesomeIcon icon={solid('angle-down')}/></li>
-          <li>NAM</li>
-          <li>NỮ</li>
-          <li>SALE OFF<FontAwesomeIcon icon={solid('angle-down')}/></li>
+          <li>GIỚI THIỆU</li>
+          <li>ĐỒNG HỒ</li>
+          <li>SALE OFF</li>
+          <li>TIN TỨC</li>
           <li>LIÊN HỆ</li>
         </ul>
 

@@ -15,7 +15,7 @@
 }
 
 .header-first > .header-first__more {
-  width: 30%;
+  width: 45%;
 }
 
 /* .header-first, */
@@ -63,6 +63,10 @@
   padding: 0 20px;
   border-right: 1px solid rgba(113, 101, 101, 0.48);
   font-size: 28px;
+}
+
+.header-second > .header-second__nav > li:last-child {
+  border: none;
 }
 
 .header-second > .header-second__nav > li > svg {
