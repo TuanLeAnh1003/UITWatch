@@ -3,7 +3,8 @@ import './List.css';
 
 function List({img, title, list}) {
   return (
-    <div className="list" style={{backgroundImage: `url(${img})`}}>
+    <div className="list">
+      <img src={img} alt="img" />
       <div className="list__overlay">
         <h2>{title}</h2>
         <p>{list.item1}</p>

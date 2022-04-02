@@ -1,0 +1,12 @@
+.product {
+  width: 292px;
+}
+
+.product > img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.product > p {
+  text-align: center;
+}

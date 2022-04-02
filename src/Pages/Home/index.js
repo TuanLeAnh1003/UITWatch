@@ -6,6 +6,42 @@ import adImg1 from '../../Assets/Rectangle 6.png';
 import adImg2 from '../../Assets/Rectangle 7.png';
 import List from '../../Components/List';
 import listImg1 from '../../Assets/Rectangle 8.png';
+import listImg2 from '../../Assets/Rectangle 9.png';
+import listImg3 from '../../Assets/Rectangle 10.png';
+import Product from '../../Components/Product';
+import pro1 from '../../Assets/Rectangle 11.png';
+
+const productList = [{
+  img: pro1,
+  name: "Rolex Oyster Perpetual",
+  type: ["silver", "bronze"],
+  price: "370.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}]
 
 function Home() {
   return (
@@ -25,6 +61,7 @@ function Home() {
         />
       </div>
 
+      {/* DANH MỤC MUA HÀNG */}
       <h1>DANH MỤC MUA HÀNG</h1>
       <div className="home__lists">
         <List 
@@ -36,6 +73,44 @@ function Home() {
             item3: "Ưu đãi",
           }}
         />
+
+        <List 
+          img={listImg2}
+          title="Đồng hồ nữ"
+          list={{
+            item1: "Màu mới",
+            item2: "Bán chạy",
+            item3: "Ưu đãi",
+          }}
+        />
+
+        <List 
+          img={listImg3}
+          title="Dòng sản phẩm"
+          list={{
+            item1: "Casio",
+            item2: "Rolex",
+            item3: "Daniel Wellington",
+          }}
+        />
+      </div>
+
+      {/* BÁN CHẠY */}
+      <h1>BÁN CHẠY</h1>
+      <div className="home__products-wrapper">
+        <div className="home__products">
+          {productList.map((item) => (
+            <Product 
+              img={item.img}
+              name={item.name}
+              type={item.type}
+              price={item.price}
+            />
+          )
+            
+          )}
+          
+        </div>
       </div>
 
     </div>
