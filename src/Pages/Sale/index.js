@@ -99,6 +99,11 @@ function Sale() {
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
     price: "50.000.000 VNĐ",
+  }, {
+    img: ProductImg,
+    name: "Rolex Oyster ",
+    type: ["silver", "bronze"],
+    price: "50.000.000 VNĐ",
   }]
 
   return (
@@ -146,12 +151,14 @@ function Sale() {
           <div className="sale__product-list">
             {
               productList.map((element, index) => (
-                <Product
-                  img= {element.img}
-                  name= {element.name}
-                  type= {element.type}
-                  price= {element.price}
-                ></Product>
+                <div key={index} className="sale__product-list-item">
+                  <Product
+                    img= {element.img}
+                    name= {element.name}
+                    type= {element.type}
+                    price= {element.price}
+                  ></Product>
+                </div>
               ))
             }
           </div>
