@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c4e79d72.css",
+    "main.js": "/static/js/main.f2dfa981.js",
+    "static/js/787.31a11762.chunk.js": "/static/js/787.31a11762.chunk.js",
+    "static/media/news-item-1.svg": "/static/media/news-item-1.d9572d32066131e3afd8551fe7cd8c5f.svg",
+    "static/media/news-item-4.svg": "/static/media/news-item-4.e9e88bfb828d1efe0ab53f7be3cc6ade.svg",
+    "static/media/Rectangle 5.png": "/static/media/Rectangle 5.ad8168657b373e96ff8a.png",
+    "static/media/omega-watches.svg": "/static/media/omega-watches.11ec5df7d7bf94e08020acb463f771b8.svg",
+    "static/media/news-item-2.svg": "/static/media/news-item-2.d26d6294ad537d9b6ce67032cc15cf26.svg",
+    "static/media/news-item-3.svg": "/static/media/news-item-3.a6f29f9ba34261524721cdbdf3970895.svg",
+    "static/media/Rectangle 6.png": "/static/media/Rectangle 6.c8ff8854937c30e31a86.png",
+    "static/media/Rectangle 10.png": "/static/media/Rectangle 10.cab201842003133a0fee.png",
+    "static/media/Rectangle 9.png": "/static/media/Rectangle 9.3f9fd91ad47ef2bd0cd2.png",
+    "static/media/Rectangle 7.png": "/static/media/Rectangle 7.9caeb30472984d5f01f3.png",
+    "static/media/Rectangle 8.png": "/static/media/Rectangle 8.667ecf489e7800bf10a6.png",
+    "static/media/Rectangle 11.png": "/static/media/Rectangle 11.9e48da283b41d06ce322.png",
+    "index.html": "/index.html",
+    "main.c4e79d72.css.map": "/static/css/main.c4e79d72.css.map",
+    "main.f2dfa981.js.map": "/static/js/main.f2dfa981.js.map",
+    "787.31a11762.chunk.js.map": "/static/js/787.31a11762.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4e79d72.css",
+    "static/js/main.f2dfa981.js"
+  ]
+}
