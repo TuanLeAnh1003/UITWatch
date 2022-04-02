@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Home.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import watchImg from '../../Assets/Rectangle 5.png';
 import Advertisement from '../../Components/Advertisement';
 import adImg1 from '../../Assets/Rectangle 6.png';
@@ -22,6 +24,26 @@ const productList = [{
   name: "Rolex Oyster Perpetual",
   type: ["silver", "bronze"],
   price: "370.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
+}, {
+  img: pro1,
+  name: "Rolex Oyster ",
+  type: ["silver", "bronze"],
+  price: "50.000.000 VNĐ",
 }, {
   img: pro1,
   name: "Rolex Oyster ",
@@ -96,6 +118,32 @@ const newsList = [
 ]
 
 function Home() {
+  const [trans, setTrans] = useState(0);
+  const [num, setNum] = useState(0);
+
+  const move = useRef();
+  const product = useRef()
+
+  console.log(move, product, window);
+
+  useEffect(() =>{
+    // console.log(Math.floor(move.current.childNodes.length/6));
+    // console.log(movie);
+    // console.log(num, "effect");
+    setTrans(-(window.innerWidth-170)*num);
+
+  }, [num]);
+
+  const handleRightClick = () => {
+    if(num < Math.floor(move.current.childNodes.length/4)) setNum((num) => num + 1);
+    // console.log(num, "click");
+  }
+
+  const handleLeftClick = () => {
+    if(num > 0) setNum((num) => num - 1);
+    // console.log(num);
+  }
+
   return (
     <div className="home">
       <img src={watchImg} alt="watch-img" />
@@ -150,19 +198,33 @@ function Home() {
       {/* BÁN CHẠY */}
       <h1>BÁN CHẠY</h1>
       <div className="home__products-wrapper">
+        <FontAwesomeIcon icon={solid('angle-left')} onClick={handleLeftClick}/>
+        
         <div className="home__products">
-          {productList.map((item) => (
-            <Product 
-              img={item.img}
-              name={item.name}
-              type={item.type}
-              price={item.price}
-            />
-          )
-            
-          )}
-          
+          <ul 
+            className="home__product-wrap"
+            style={{left: trans + "px"}}
+            ref={move}
+          >
+            {productList.map((item) => (
+              <li>
+                <div className="home__product-frame">
+                  <div className="home__product">
+                    <Product 
+                      ref={product}
+                      img={item.img}
+                      name={item.name}
+                      type={item.type}
+                      price={item.price}
+                    />
+                  </div>    
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <FontAwesomeIcon icon={solid('angle-right')} onClick={handleRightClick}/>
       </div>
 
       <div className="home__bottom">
