@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import './Product.css';
 
-function Product({img, name, type, price}) {
+function Product({img, name, type, price}, ref) {
   return (
-    <div className="product">
+    <div className="product" ref={ref}>
       <img src={img} alt="img" />
-      <p>{name}</p>
+      <h3>{name}</h3>
       <p>{type}</p>
       <p>{price}</p>
     </div>
   )
 }
 
-export default Product
+export default forwardRef(Product)
