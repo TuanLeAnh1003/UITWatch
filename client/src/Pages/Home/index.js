@@ -18,6 +18,7 @@ import newsItemImg2 from '../../Assets/news-item-2.svg';
 import newsItemImg3 from '../../Assets/news-item-3.svg';
 import newsItemImg4 from '../../Assets/news-item-4.svg';
 import NewsItem from '../../Components/NewsItem';
+import poster from '../../Assets/image 2.png';
 
 const productList = [{
   img: pro1,
@@ -124,8 +125,6 @@ function Home() {
   const move = useRef();
   const product = useRef()
 
-  console.log(move, product, window);
-
   useEffect(() =>{
     // console.log(Math.floor(move.current.childNodes.length/6));
     // console.log(movie);
@@ -206,8 +205,8 @@ function Home() {
             style={{left: trans + "px"}}
             ref={move}
           >
-            {productList.map((item) => (
-              <li>
+            {productList.map((item, index) => (
+              <li key={index}>
                 <div className="home__product-frame">
                   <div className="home__product">
                     <Product 
@@ -226,6 +225,8 @@ function Home() {
 
         <FontAwesomeIcon icon={solid('angle-right')} onClick={handleRightClick}/>
       </div>
+
+      <img src={poster} alt="image-poster" style={{margin: "20px 0"}}/>
 
       <div className="home__bottom">
         <div className="home__bottom-contact">
