@@ -2,8 +2,8 @@ import React from 'react'
 import YourOrder from '../../Components/Order/YourOrder'
 import './Momo.css'
 
-import MomoLogo from '../../Assets/momo-logo.svg'
-import MomoQr from '../../Assets/momo-qr.svg'
+import MomoLogo from '../../Assets/Images/momo-logo.svg'
+import MomoQr from '../../Assets/Images/momo-qr.svg'
 import OrderDetail from '../../Components/Order/OrderDetail'
 
 function Momo() {

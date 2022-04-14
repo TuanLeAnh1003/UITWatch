@@ -4,9 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import watch from '../../Assets/Images/image 1.png';
 import SignIn from '../SignIn/SignIn';
+import SignUp from '../SignUp/SignUp';
+import AdminSignIn from '../AdminSignIn/AdminSignIn';
 
 function Header() {
   const [isSignInShowed, setIsSignInShowed] = useState(false);
+  const [isSignUpShowed, setIsSignUpShowed] = useState(false);
+  const [isAdminSignInShowed, setIsAdminSignInShowed] = useState(false);
 
   const handleShowSignIn = () => {
     setIsSignInShowed(true);
@@ -14,6 +18,32 @@ function Header() {
 
   const childShowSignIn1 = (a) => {
     setIsSignInShowed(a);
+  }
+
+  const childShowSignUp2 = (a) => {
+    setIsSignUpShowed(a);
+  }
+
+  const childShowSignUp1 = (a) => {
+    if(a) {
+      setIsSignUpShowed(a);
+      setIsSignInShowed(false);
+    }
+  }
+
+  const childShowSignIn2 = (a) => {
+    if(a) {
+      setIsSignInShowed(a);
+      setIsSignUpShowed(false);
+    }
+  }
+
+  const handleShowAdminSignIn = () => {
+    setIsAdminSignInShowed(true);
+  }
+
+  const childShowAdmSignIn = (a) => {
+    setIsAdminSignInShowed(a);
   }
 
   return (
@@ -40,7 +70,7 @@ function Header() {
             <span>Đăng nhập</span>
           </div>
 
-          <div className="header-first__more-item header-first__more-user">
+          <div className="header-first__more-item header-first__more-user" onClick={handleShowAdminSignIn}>
             <FontAwesomeIcon icon={solid('circle-user')} />
             <span>Quản lí</span>
           </div>
@@ -75,8 +105,9 @@ function Header() {
         <FontAwesomeIcon icon={solid('angle-right')} />
       </div>
 
-      {isSignInShowed && <SignIn handleShowSignIn1={childShowSignIn1} />} 
-
+      {isSignInShowed && <SignIn handleShowSignIn1={childShowSignIn1} handleShowSignUp1={childShowSignUp1}/>} 
+      {isSignUpShowed && <SignUp handleShowSignIn2={childShowSignIn2} handleShowSignUp2={childShowSignUp2}/>}
+      {isAdminSignInShowed && <AdminSignIn handleShowAdmSignIn={childShowAdmSignIn} />}
     </div>
 
 

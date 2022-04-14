@@ -18,6 +18,10 @@
   width: 45%;
 }
 
+.header-first > .header-first__more > .header-first__more-item:hover {
+  cursor: pointer;
+}
+
 /* .header-first, */
 .header-first > .header-first__search,
 .header-first > .header-first__more,
