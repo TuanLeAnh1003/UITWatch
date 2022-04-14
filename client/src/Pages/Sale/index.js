@@ -1,10 +1,9 @@
-import React from 'react'
-import './Sale.css'
-import CategoryItem from '../../Components/Category/CategoryItem/index'
-import Product from '../../Components/Product/index'
-
-import ProductImageMain from '../../Assets/omega-watches.svg'
-import ProductImg from '../../Assets/Rectangle 11.png'
+import React from 'react';
+import './Sale.css';
+import CategoryItem from '../../Components/Category/CategoryItem/index';
+import Product from '../../Components/Product/index';
+import ProductImageMain from '../../Assets/Images/omega-watches.svg';
+import ProductImg from '../../Assets/Images/Rectangle 11.png';
 
 function Sale() {
   const cateList = [

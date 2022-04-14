@@ -2,8 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import './WatchNews.css'
 
-import NewsPopularImage from '../../Assets/news-popular-image.svg'
-import NewsImageItem from '../../Assets/news-item.svg'
+import NewsPopularImage from '../../Assets/Images/news-popular-image.svg'
+import NewsImageItem from '../../Assets/Images/news-item.svg'
 import NewsItem from '../News/NewsItem'
 
 function WatchNews() {

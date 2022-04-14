@@ -2,23 +2,23 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
-import watchImg from '../../Assets/Rectangle 5.png';
+import watchImg from '../../Assets/Images/Rectangle 5.png';
 import Advertisement from '../../Components/Advertisement';
-import adImg1 from '../../Assets/Rectangle 6.png';
-import adImg2 from '../../Assets/Rectangle 7.png';
+import adImg1 from '../../Assets/Images/Rectangle 6.png';
+import adImg2 from '../../Assets/Images/Rectangle 7.png';
 import List from '../../Components/List';
-import listImg1 from '../../Assets/Rectangle 8.png';
-import listImg2 from '../../Assets/Rectangle 9.png';
-import listImg3 from '../../Assets/Rectangle 10.png';
+import listImg1 from '../../Assets/Images/Rectangle 8.png';
+import listImg2 from '../../Assets/Images/Rectangle 9.png';
+import listImg3 from '../../Assets/Images/Rectangle 10.png';
 import Product from '../../Components/Product';
-import pro1 from '../../Assets/Rectangle 11.png';
+import pro1 from '../../Assets/Images/Rectangle 11.png';
 import ContactItem from './../../Components/ContactItem/index';
-import newsItemImg1 from '../../Assets/news-item-1.svg';
-import newsItemImg2 from '../../Assets/news-item-2.svg';
-import newsItemImg3 from '../../Assets/news-item-3.svg';
-import newsItemImg4 from '../../Assets/news-item-4.svg';
+import newsItemImg1 from '../../Assets/Images/news-item-1.svg';
+import newsItemImg2 from '../../Assets/Images/news-item-2.svg';
+import newsItemImg3 from '../../Assets/Images/news-item-3.svg';
+import newsItemImg4 from '../../Assets/Images/news-item-4.svg';
 import NewsItem from '../../Components/NewsItem';
-import poster from '../../Assets/image 2.png';
+import poster from '../../Assets/Images/image 2.png';
 
 const productList = [{
   img: pro1,

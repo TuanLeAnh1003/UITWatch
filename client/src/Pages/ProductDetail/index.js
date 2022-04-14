@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ProductDetail.css';
-import img from '../../Assets/Rectangle 48.png';
-import smallImg from '../../Assets/Rectangle 49.png';
-import pro1 from '../../Assets/Rectangle 11.png';
+import img from '../../Assets/Images/Rectangle 48.png';
+import smallImg from '../../Assets/Images/Rectangle 49.png';
+import pro1 from '../../Assets/Images/Rectangle 11.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Product from '../../Components/Product';
@@ -148,9 +148,7 @@ function ProductDetail({brand, type}) {
   useEffect(() =>{
     // console.log(Math.floor(move.current.childNodes.length/6));
     // console.log(movie);
-    console.log(product2);
     setTrans2(-(1300 + 38)*num2);
-
   }, [num2]);
 
   const handleRightClick2 = () => {
@@ -161,6 +159,22 @@ function ProductDetail({brand, type}) {
   const handleLeftClick2 = () => {
     if(num2 > 0) setNum2((num2) => num2 - 1);
     // console.log(num);
+  }
+
+  // -----------------------------------
+  const [count, setCount] = useState(1);
+  const handleIncrement = () => {
+    setCount(count + 1);
+  }
+
+  const handleDecrement = () => {
+    if(count !== 0) setCount(count - 1);
+  }
+
+  // -----------------------------------
+  const [isLiked, setIsLiked] = useState(false);
+  const handleLikeButton = () => {
+    setIsLiked(!isLiked);
   }
 
   return (
@@ -217,9 +231,9 @@ function ProductDetail({brand, type}) {
             <div className="pro-detail__quantity">
               <h4>SỐ LƯỢNG</h4>
               <div className="pro-detail__count">
-                <span>-</span>
-                <span>1</span>
-                <span>+</span>
+                <span onClick={handleDecrement}>-</span>
+                <input type="text" value={count} onChange={e => setCount(e.current.value)}/>
+                <span onClick={handleIncrement}>+</span>
               </div>
             </div>
           </div>
@@ -229,7 +243,9 @@ function ProductDetail({brand, type}) {
           <div className="pro-detail__buttons">
             <div className="add-to-cart">
               <button>THÊM VÀO GIỎ HÀNG</button>
-              <button><FontAwesomeIcon icon={regular('heart')} /></button>
+              <button onClick={handleLikeButton}>
+                {isLiked ? <FontAwesomeIcon icon={solid('heart')} /> : <FontAwesomeIcon icon={regular('heart')} />}
+              </button>
             </div>
 
             <button>THANH TOÁN</button>
@@ -257,9 +273,9 @@ function ProductDetail({brand, type}) {
               width="100%" 
               height="100%" 
               src="https://www.youtube.com/embed/deammKgRi7g" 
-              title="YouTube video player" frameborder="0" 
+              title="YouTube video player" frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
 
@@ -450,7 +466,7 @@ function ProductDetail({brand, type}) {
       <div className="pro-detail__comments">
         <h3>BÌNH LUẬN</h3>
         {Array(3).fill().map((_, i) => (
-          <div className="pro-detail__comment">
+          <div className="pro-detail__comment" key={i}>
             <h4>Duy An</h4>
             {Array(5).fill().map((_, i) => (
               <span key={i}>
