@@ -8,52 +8,62 @@ function Search() {
     img: RolexImg,
     name: "Rolex Oyster Perpetual",
     type: ["silver", "bronze"],
-    price: "370.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }, {
     img: RolexImg,
     name: "Rolex Oyster ",
     type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
+    price: "165.000.000 VNĐ",
+    discount: "132.000.000 VNĐ"
   }]
 
   return (
@@ -80,6 +90,7 @@ function Search() {
                 name={product.name}
                 type={product.type}
                 price={product.price}
+                discount={product.discount}
               />
             </div>
           ))
