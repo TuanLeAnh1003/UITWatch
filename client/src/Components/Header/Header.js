@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
-import watch from '../../Assets/image 1.png';
+import watch from '../../Assets/Images/image 1.png';
+import SignIn from '../SignIn/SignIn';
 
 function Header() {
+  const [isSignInShowed, setIsSignInShowed] = useState(false);
+
+  const handleShowSignIn = () => {
+    setIsSignInShowed(true);
+  }
+
+  const childShowSignIn1 = (a) => {
+    setIsSignInShowed(a);
+  }
+
   return (
     <div className="header">
       <div className="header-first">
@@ -24,7 +35,7 @@ function Header() {
             <span>Yêu thích</span>
           </div>
 
-          <div className="header-first__more-item header-first__more-search">
+          <div className="header-first__more-item header-first__more-search" onClick={handleShowSignIn}>
             <FontAwesomeIcon icon={solid('user')} />
             <span>Đăng nhập</span>
           </div>
@@ -63,7 +74,12 @@ function Header() {
         <h2>FREE SHIP VỚI HÓA ĐƠN TỪ 800K</h2>
         <FontAwesomeIcon icon={solid('angle-right')} />
       </div>
+
+      {isSignInShowed && <SignIn handleShowSignIn1={childShowSignIn1} />} 
+
     </div>
+
+
   )
 }
 
