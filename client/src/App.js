@@ -9,6 +9,9 @@ import ResultSearchOrder from './Pages/ResultSearchOrder'
 import News from './Pages/News/News'
 import WatchNews from './Pages/WatchNews';
 import Contact from './Pages/Contact';
+import Cash from './Pages/Payment/Cash';
+import Momo from './Pages/Payment/Momo';
+import Search from './Pages/Search';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/watch-news/:id" element={<WatchNews />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cash" element={<Cash />} />
+        <Route path="/momo" element={<Momo />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
 
       <Footer />

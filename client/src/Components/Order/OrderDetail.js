@@ -1,9 +1,9 @@
 import React from "react";
 import "./OrderDetail.css";
 
-function OrderDetail({productArray, shipment, payment, totalPrice, firstName, lastName, address, phoneNumber}) {
+function OrderDetail({productArray, shipment, payment, totalPrice, firstName, lastName, address, phoneNumber, width}) {
   return (
-    <div className='result-search-order--detail'>
+    <div className='result-search-order--detail' style={{width: width}}>
       <div className='result-search-order--detail-title'>CHI TIẾT ĐƠN HÀNG</div>
       <div className='result-search-order--detail-item'>
         <div className='result-search-order--detail-item-header'>SẢN PHẨM</div>
