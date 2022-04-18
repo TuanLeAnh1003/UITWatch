@@ -43,7 +43,7 @@ export default class ProductsController {
             const status = req.body.status;
             const discount = req.body.discount;
 
-            const ProductResponse = await ProductsDAO.addProduct(
+            const ProductResponse = await ProductsDAO.createProduct(
                 name,
                 image,
                 type,
@@ -107,13 +107,25 @@ export default class ProductsController {
         }
     }
 
-    static async apiDeleteProduct(req, res, next) {
+    static async apiRemoveProduct(req, res, next) {
         try {
             const productId = req.body.product_id;
-            const ProductResponse = await ProductsDAO.deleteProduct(
+            const ProductResponse = await ProductsDAO.removeProduct(
                 productId
             );
             res.json({ status: "success " });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
+
+    static async apiGetProductById(req, res, next) {
+        try {
+            const productId = req.params.id;
+            const ProductResponse = await ProductsDAO.getProductById(
+                productId
+            );
+            res.json(ProductResponse);
         } catch (e) {
             res.status(500).json({ error: e.message });
         }

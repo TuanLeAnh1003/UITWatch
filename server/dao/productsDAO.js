@@ -43,7 +43,7 @@ export default class ProductsDAO {
         }
     }
 
-    static async addProduct(name, image, type, price, company, productDate, description, quantity, status, discount) {
+    static async createProduct(name, image, type, price, company, productDate, description, quantity, status, discount) {
         try {
             const productDoc = {
                 name,
@@ -90,7 +90,7 @@ export default class ProductsDAO {
         }
     }
 
-    static async deleteProduct(productId) {
+    static async removeProduct(productId) {
         try {
             const deleteResponse = await products.deleteOne({
                 "_id": ObjectId(productId)
@@ -100,6 +100,20 @@ export default class ProductsDAO {
         catch (e) {
             console.error(`unable to delete product: ${e}`);
             return { error: e };
+        }
+    }
+
+    static async getProductById(productId) {
+        const id = { "_id": ObjectId(productId) }
+
+        let product;
+        try {
+            product = await products.findOne(id);
+            return product;
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return null;
         }
     }
 }

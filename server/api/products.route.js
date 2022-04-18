@@ -8,6 +8,9 @@ router
     .get(ProductsController.apiGetProducts)
     .post(ProductsController.apiPostProduct)
     .put(ProductsController.apiUpdateProduct)
-    .delete(ProductsController.apiDeleteProduct);
+    .delete(ProductsController.apiRemoveProduct);
+
+router
+    .route('/:id').get(ProductsController.apiGetProductById);
 
 export default router;
