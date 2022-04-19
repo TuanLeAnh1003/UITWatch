@@ -2,6 +2,7 @@ import app from "./server.js";
 import mongodb from "mongodb";
 import dotenv from "dotenv";
 import ProductsDAO from "./dao/productsDAO.js";
+import UsersDAO from "./dao/usersDAO.js";
 
 async function main() {
     dotenv.config();
@@ -14,6 +15,7 @@ async function main() {
     try {
         await client.connect();
         await ProductsDAO.injectDB(client);
+        await UsersDAO.injectDB(client);
 
         app.listen(port, () => {
             console.log('Server is running on port: ' + port);
