@@ -14,6 +14,9 @@ import Cash from './Pages/Payment/Cash';
 import Momo from './Pages/Payment/Momo';
 import Search from './Pages/Search';
 import SaleOff from './Pages/SaleOff';
+import Payment from './Pages/Payment/Payment';
+import Cart from './Pages/Cart';
+import LikedProduct from './Pages/LikedProduct/LikedProduct';
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
         <Route path="/cash" element={<Cash />} />
         <Route path="/momo" element={<Momo />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/liked-products" element={<LikedProduct />} />
       </Routes>
       <Footer />
     </div>

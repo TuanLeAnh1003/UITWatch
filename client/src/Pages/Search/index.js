@@ -1,6 +1,6 @@
 import React from 'react'
 import Product from '../../Components/Product'
-import RolexImg from '../../Assets/rolex-img.svg'
+import RolexImg from '../../Assets/Images/rolex-img.svg'
 import './Search.css'
 
 function Search() {
