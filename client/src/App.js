@@ -9,6 +9,7 @@ import ResultSearchOrder from './Pages/ResultSearchOrder'
 import News from './Pages/News/News'
 import WatchNews from './Pages/WatchNews';
 import Contact from './Pages/Contact';
+import Policy from './Pages/Policy';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/watch-news/:id" element={<WatchNews />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/policy" element={<Policy />} />
       </Routes>
 
       <Footer />

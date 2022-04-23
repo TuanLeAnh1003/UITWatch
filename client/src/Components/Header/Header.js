@@ -51,6 +51,7 @@ function Header() {
           <li>SALE OFF</li>
           <li>TIN TỨC</li>
           <li>LIÊN HỆ</li>
+          <li>CHÍNH SÁCH</li>
         </ul>
 
         <div className="header-second__cart">
