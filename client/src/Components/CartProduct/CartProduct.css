@@ -36,17 +36,17 @@
   margin-top: 10px;
 }
 
-.cart-product__col-1 > .cart-product__info > .cart-product__quantity > p:first-child {
+.cart-product__col-1 > .cart-product__info > .cart-product__quantity > .cart-product__input > p {
   font-size: 20px;
 }
 
-.cart-product__col-1 > .cart-product__info > .cart-product__quantity > p:last-child {
-  width: 117px;
+.cart-product__info > .cart-product__quantity > .cart-product__input > .cart-product__list {
+  list-style: none;
   height: 38px;
-  line-height: 38px;
-  border: 1px solid #000;
-  font-size: 20px;
-  padding-left: 10px;
+  width: 138px;
+  overflow-y: scroll;
+  background-color: #fff;
+  outline: none;
 }
 
 .cart-product > .cart-product__col-2 {

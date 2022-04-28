@@ -1,0 +1,48 @@
+.ad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #D7CECB;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.ad-header > .ad-header__item {
+  display: flex;
+  align-items: center;
+  width: 25%;
+}
+
+.ad-header > .ad-header__item > svg {
+  font-size: 40px;
+  margin-right: 20px;
+  color: #786059;
+} 
+
+.ad-header > .ad-header__item > h3 {
+  font-size: 28px;
+  color: #786059;
+}
+
+.ad-header > .ad-header__item > p {
+  font-size: 27px;
+}
+
+.ad-header > .ad-header__logo {
+  width: 25%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-left: 4%;
+}
+
+.ad-header > .ad-header__logo > img {
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.ad-header > .ad-header__logo > div {
+  text-align: right;
+  color: #855446;
+}

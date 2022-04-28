@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartProduct.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import prod from '../../Assets/Images/Rectangle 32.png';
 
 function CartProduct({isLiked}) {
+
   return (
     <div className="cart-product__wapper">
       <div className="cart-product">
@@ -19,7 +20,14 @@ function CartProduct({isLiked}) {
 
             <div className="cart-product__quantity">
               <p><b>Số lượng</b></p>
-              <p>1</p>
+              <div className="cart-product__input">
+                <select className="cart-product__list">
+                  {Array(20).fill().map((_, i) => (
+                    <option key={i}>{i+1}</option>
+                  ))}
+                </select>
+              </div>
+
             </div>
           </div>
         </div>

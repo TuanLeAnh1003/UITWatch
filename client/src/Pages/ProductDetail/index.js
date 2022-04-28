@@ -162,13 +162,13 @@ function ProductDetail({brand, type}) {
   }
 
   // -----------------------------------
-  const [count, setCount] = useState(1);
+  const [productCount, setProductCount] = useState(1);
   const handleIncrement = () => {
-    setCount(count + 1);
+    setProductCount(productCount + 1);
   }
 
   const handleDecrement = () => {
-    if(count !== 0) setCount(count - 1);
+    if(productCount > 0) setProductCount(productCount - 1);
   }
 
   // -----------------------------------
@@ -232,7 +232,7 @@ function ProductDetail({brand, type}) {
               <h4>SỐ LƯỢNG</h4>
               <div className="pro-detail__count">
                 <span onClick={handleDecrement}>-</span>
-                <input type="text" value={count} onChange={e => setCount(e.current.value)}/>
+                <input type="number" value={productCount} onChange={e => setProductCount(e.current.value)} />
                 <span onClick={handleIncrement}>+</span>
               </div>
             </div>
