@@ -59,6 +59,7 @@ function ResultSearchOrder() {
         lastName={order.lastName}
         address={order.address}
         phoneNumber={order.phoneNumber}
+        width={690}
       />
 
       <button className="result-search-order--export">Xuất hóa đơn</button>

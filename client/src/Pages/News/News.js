@@ -2,8 +2,8 @@ import React from 'react'
 import './News.css'
 import NewsItem from './NewsItem'
 
-import NewsPopularImage from '../../Assets/news-popular-image.svg'
-import NewsImageItem from '../../Assets/news-item.svg'
+import NewsPopularImage from '../../Assets/Images/news-popular-image.svg'
+import NewsImageItem from '../../Assets/Images/news-item.svg'
 
 function News() {
   const news = [
