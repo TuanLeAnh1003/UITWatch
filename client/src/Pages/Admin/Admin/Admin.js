@@ -18,16 +18,18 @@ function Admin() {
       <div className='admin__cols'>
         <AdminSideBar />
         <div className='admin__col'>
-          <Routes>
-            <Route path='statistic' element={<Statistic />} />
-            <Route path='settings' element={<SettingOptions />} />
-            <Route path='admin-profile' element={<AdminProfile />} />
-            <Route path='order-management' element={<OrderManagement />} />
-            <Route
-              path='response-management'
-              element={<ResponseManagement />}
-            />
-          </Routes>
+          <div className="admin__col-wrapper">
+            <Routes>
+              <Route path='statistic' element={<Statistic />} />
+              <Route path='settings' element={<SettingOptions />} />
+              <Route path='admin-profile' element={<AdminProfile />} />
+              <Route path='order-management' element={<OrderManagement />} />
+              <Route
+                path='response-management'
+                element={<ResponseManagement />}
+              />
+            </Routes>
+          </div>
 
           <AdminFooter />
         </div>

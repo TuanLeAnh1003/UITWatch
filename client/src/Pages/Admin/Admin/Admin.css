@@ -14,5 +14,9 @@
   left: 200px;
   width: calc(100vw - 217px);
   padding-top: 5%;
+  height: 88%;
+}
+
+.admin__col-wrapper {
   height: 100%;
 }
