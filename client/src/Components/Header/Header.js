@@ -6,6 +6,7 @@ import watch from '../../Assets/Images/image 1.png';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import AdminSignIn from '../AdminSignIn/AdminSignIn';
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isSignInShowed, setIsSignInShowed] = useState(false);
@@ -57,12 +58,12 @@ function Header() {
         <div className="header-first__more">
           <div className="header-first__more-item header-first__more-order">
             <FontAwesomeIcon icon={solid('box')} />
-            <span>Tra cứu đơn hàng</span>
+            <Link to="">Tra cứu đơn hàng</Link>
           </div>
 
           <div className="header-first__more-item header-first__more-like">
             <FontAwesomeIcon icon={solid('heart')} />
-            <span>Yêu thích</span>
+            <Link to="/liked-products">Yêu thích</Link>
           </div>
 
           <div className="header-first__more-item header-first__more-search" onClick={handleShowSignIn}>
@@ -78,26 +79,26 @@ function Header() {
       </div>
 
       <div className="header-second">
-        <div className="header-second__logo">
+        <Link to="/" className="header-second__logo">
           <img src={watch} alt="watch" />
           <div>
             <h1>UITWatch</h1>
             <span>SINCE 2021</span>
           </div>
-        </div>
+        </Link>
 
         <ul className="header-second__nav">
-          <li>GIỚI THIỆU</li>
-          <li>ĐỒNG HỒ</li>
-          <li>SALE OFF</li>
-          <li>TIN TỨC</li>
-          <li>LIÊN HỆ</li>
-          <li>CHÍNH SÁCH</li>
+          <Link to="">GIỚI THIỆU</Link>
+          <Link to="/sale">ĐỒNG HỒ</Link>
+          <Link to="/saleoff">SALE OFF</Link>
+          <Link to="/news">TIN TỨC</Link>
+          <Link to="/contact">LIÊN HỆ</Link>
+          <Link to="/policy">CHÍNH SÁCH</Link>
         </ul>
 
-        <div className="header-second__cart">
+        <Link to="/cart" className="header-second__cart">
           <FontAwesomeIcon icon={solid('cart-shopping')}/>
-        </div>
+        </Link>
       </div>
 
       <div className="header-third">
@@ -110,8 +111,6 @@ function Header() {
       {isSignUpShowed && <SignUp handleShowSignIn2={childShowSignIn2} handleShowSignUp2={childShowSignUp2}/>}
       {isAdminSignInShowed && <AdminSignIn handleShowAdmSignIn={childShowAdmSignIn} />}
     </div>
-
-
   )
 }
 

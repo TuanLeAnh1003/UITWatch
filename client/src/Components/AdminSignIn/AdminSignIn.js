@@ -24,7 +24,7 @@ function AdminSignIn({handleShowAdmSignIn}) {
         <div className="signIn_form">
           <FontAwesomeIcon icon={solid('circle-xmark')} onClick={handleExitAdmSignIn}/><br />
           <img src={Logo} alt="Logo" />
-          <h1>KHÁCH HÀNG ĐĂNG NHẬP</h1>
+          <h1>QUẢN LÝ CỬA HÀNG</h1>
           <input type="email" placeholder="Email hoặc số điện thoại" />
           <div className="signIn_password">
             <input type={show ? "text" : "password"} placeholder="Mật khẩu" />

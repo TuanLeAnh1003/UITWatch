@@ -1,0 +1,16 @@
+.admin > .admin__cols {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.admin__cols > .admin__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 85px;
+  left: 200px;
+  width: calc(100vw - 217px);
+  padding-top: 5%;
+}
