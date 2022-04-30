@@ -37,7 +37,7 @@ export default class UsersController {
             const address = req.body.address;
             const role = req.body.role;
 
-            const ProductResponse = await UsersDAO.createUser(
+            const UserResponse = await UsersDAO.createUser(
                 userName,
                 password,
                 firstName,

@@ -12,7 +12,7 @@ export default class ProductsDAO {
             users = await conn.db(process.env.UITWATCHES_NS).collection('users');
         }
         catch (e) {
-            console.error(`unable to connect in ProductsDAO: ${e}`);
+            console.error(`unable to connect in UsersDAO: ${e}`);
         }
     }
 
@@ -96,7 +96,7 @@ export default class ProductsDAO {
             return deleteResponse;
         }
         catch (e) {
-            console.error(`unable to delete product: ${e}`);
+            console.error(`unable to delete order: ${e}`);
             return { error: e };
         }
     }
