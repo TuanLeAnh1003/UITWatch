@@ -147,4 +147,47 @@
     background: #9BB8C6;
     border-radius: 10px;
 }
+.middle{
+    text-align: left;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 65px;
+  }
+  h1.middle:before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    bottom: 110px;
+    height: 15px;
+    width: 25%;
+    border-bottom: 7px solid #D7CECB;
+  }
+  .founder{
+    color:#000000;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    
+  }
+  .founder-line{
+    color:#000000;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 40px;
+  }
+  .text-block-founder {
+    position: absolute;
+    left: 300px;
+    top: 200px;
+    width: 80%;
+    /*background-color: black;*/
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   

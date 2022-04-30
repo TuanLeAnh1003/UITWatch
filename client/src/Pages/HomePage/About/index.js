@@ -4,6 +4,7 @@ import watch from './../../../Assets/Images/about.png';
 import watch1 from './../../../Assets/Images/watch_about1.png';
 import about1 from './../../../Assets/Images/about1.png';
 import about2 from './../../../Assets/Images/about2.png';
+import about3 from './../../../Assets/Images/about4.png';
 function About() {
     return (
         <div className='about'>
@@ -27,11 +28,25 @@ function About() {
                 <button class='detail' type="button">CHI TIẾT</button>
             </div>
             </div>
-            <div class="row">
+            <div class="row container">
                 <img src={about1} style={{width:'100%'}} />
+                <div class="text-block">
+                <h1 class='middle'>VỀ UITWATCH</h1>
+                <div>
+                <p class='line'>UITWatch là trang web bán đồng hồ uy tín tại Việt Nam với các mặt hàng giảm giá, hàng outlet cực hấp dẫn. Dù chỉ mới xuất hiện trên thị trường nhưng chất lượng đồng hồ và trải nghiệm mua sắm tại đây luôn được người dùng tin tưởng và đánh giá đây là một trong các trang web bán đồng hồ uy tín có giá cả cạnh tranh nhất hiện nay.</p>
+                </div>
             </div>
-            <div class="row">
-
+            </div>
+            <div class="row container">
+            <img src={about3}  style={{width:'100%'}} />
+            <div class="text-block-founder">
+            <h1 class='founder'>ĐỘI NGŨ LÃNH ĐẠO UITWATCH</h1>
+            <div class='founder-line'>
+            <p >Gặp gỡ nhau từ những ngày đầu tiên, UITWatch là một trong những chuỗi dữ án đã được hoàn thành
+                bỡi những con người dưới đây. Với họ lĩnh vực thương mại điện tử là lĩnh vực mà họ luôn đánh giá cao và đâu từ tiền bạc lẫn thời gian, chất xám của mình để đưa UITWatch phát triển và vươn tầm quốc tế.</p>
+            </div>
+            
+            </div>
             </div>
             <div class="row container">
                 <img src={about2} style={{width:'100%'}} />
