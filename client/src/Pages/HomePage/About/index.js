@@ -40,6 +40,9 @@ function About() {
                 <div>
                 <p class='foot-line'>Nếu có bất kỳ phản hồi gì về cửa hàng UITWatch. Hãy liên hệ với chúng tôi để được giải đáp sớm nhất.</p>
                 </div>
+                <div class='button-container-div'>
+                <button class='go-to-detail' type="button">ĐẾN TRANG CHI TIẾT</button>
+                </div>
             </div>
             </div>
         </div>
