@@ -17,6 +17,7 @@ import Payment from '../Payment/Payment';
 import Cart from '../Cart';
 import LikedProduct from '../LikedProduct/LikedProduct';
 import Policy from '../Policy/index';
+import About from '../About/index';
 import Sale from '../Sale';
 
 function HomePage() {
@@ -40,6 +41,7 @@ function HomePage() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/liked-products" element={<LikedProduct />} />
       <Route path="/policy" element={<Policy />} />
+      <Route path="/about" element={<About />} />
     </Routes>
     <Footer />
     </div>
