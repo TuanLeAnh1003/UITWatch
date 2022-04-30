@@ -23,7 +23,7 @@ function About() {
             </div>
             <div class="column right" >
                 <h2>ĐỒNG HỒ CỦA UITWATCH</h2>
-                <p>Phillipe Auguste mang phong cách cổ điển, sang trọng với những thiết kế đồng hồ dành riêng cho thị trường. Mức giá vô cùng hợp lý, chỉ từ 4 triệu đồng, khách hàng đã có thể lên tay những chiếc đồng hồ lịch lãm và đẳng cấp như những quý ông Châu Âu.</p>
+                <p class='row-2'>Phillipe Auguste mang phong cách cổ điển, sang trọng với những thiết kế đồng hồ dành riêng cho thị trường. Mức giá vô cùng hợp lý, chỉ từ 4 triệu đồng, khách hàng đã có thể lên tay những chiếc đồng hồ lịch lãm và đẳng cấp như những quý ông Châu Âu.</p>
                 <button class='detail' type="button">CHI TIẾT</button>
             </div>
             </div>
@@ -33,8 +33,14 @@ function About() {
             <div class="row">
 
             </div>
-            <div class="row">
+            <div class="row container">
                 <img src={about2} style={{width:'100%'}} />
+            <div class="text-block">
+                <h1 class='foot-head'>LIÊN HỆ VỚI CHÚNG TÔI</h1>
+                <div>
+                <p class='foot-line'>Nếu có bất kỳ phản hồi gì về cửa hàng UITWatch. Hãy liên hệ với chúng tôi để được giải đáp sớm nhất.</p>
+                </div>
+            </div>
             </div>
         </div>
     );

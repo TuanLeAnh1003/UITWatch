@@ -92,11 +92,44 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 25px;
+
     /* or 156% */
 
     text-align: center;
 
     color: #FFFFFF;
 
+  }
+  .foot-line{
+    
+    padding-top: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center; 
+  }
+  .foot-head{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  h1.foot-head:before {
+    content: "";
+    position: absolute;
+    left: 260px;
+    bottom: 60px;
+    height: 15px;
+    width: 25%;
+    border-bottom: 7px solid #D7CECB;
+  }
+  .row-2{
+      padding-bottom: 20px;
+      padding-top: 20px;
   }
   
