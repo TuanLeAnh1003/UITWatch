@@ -57,6 +57,9 @@ export default class ProductsDAO {
                 status,
                 discount
             }
+            for (let p in productDoc)
+                if (productDoc[p] == null)
+                    delete productDoc[p];
             return await products.insertOne(productDoc);
         }
         catch (e) {
@@ -67,20 +70,24 @@ export default class ProductsDAO {
 
     static async updateProduct(productId, name, image, type, price, company, productDate, description, quantity, status, discount) {
         try {
+            const productDoc = {
+                name,
+                image,
+                type,
+                price,
+                company,
+                productDate,
+                description,
+                quantity,
+                status,
+                discount
+            }
+            for (let p in productDoc)
+                if (productDoc[p] == null)
+                    delete productDoc[p];
             const updateResponse = await products.updateOne(
                 { "_id": ObjectId(productId) },
-                { $set: {
-                    name: name,
-                    image: image,
-                    type: type,
-                    price: price,
-                    company: company,
-                    productDate: productDate,
-                    description: description,
-                    quantity: quantity,
-                    status: status,
-                    discount: discount
-                } }
+                { $set: productDoc }
             );
             return updateResponse;
         }

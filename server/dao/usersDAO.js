@@ -56,6 +56,9 @@ export default class ProductsDAO {
                 address,
                 role
             }
+            for (let p in userDoc)
+                if (userDoc[p] == null)
+                    delete userDoc[p];
             return await users.insertOne(userDoc);
         }
         catch (e) {
@@ -66,19 +69,23 @@ export default class ProductsDAO {
 
     static async updateUser(userId, userName, password, firstName, lastName, birthday, phoneNumber, email, address, role) {
         try {
+            const userDoc = {
+                userName,
+                password,
+                firstName,
+                lastName,
+                birthday,
+                phoneNumber,
+                email,
+                address,
+                role
+            }
+            for (let p in userDoc)
+                if (userDoc[p] == null)
+                    delete userDoc[p];
             const updateResponse = await users.updateOne(
                 { "_id": ObjectId(userId) },
-                { $set: {
-                    userName,
-                    password,
-                    firstName,
-                    lastName,
-                    birthday,
-                    phoneNumber,
-                    email,
-                    address,
-                    role
-                } }
+                { $set: userDoc }
             );
             return updateResponse;
         }

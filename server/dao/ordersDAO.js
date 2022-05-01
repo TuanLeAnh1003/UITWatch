@@ -54,6 +54,9 @@ export default class OrdersDAO {
                 note,
                 items
             }
+            for (let p in orderDoc)
+                if (orderDoc[p] == null)
+                    delete orderDoc[p];
             return await orders.insertOne(orderDoc);
         }
         catch (e) {
@@ -64,19 +67,23 @@ export default class OrdersDAO {
 
     static async updateOrder(orderId, userId, paymentId, shipmentId, orderDate, totalPrice, state, address, note, items) {
         try {
+            const orderDoc = {
+                userId,
+                paymentId,
+                shipmentId,
+                orderDate,
+                totalPrice,
+                state,
+                address,
+                note,
+                items
+            }
+            for (let p in orderDoc)
+                if (orderDoc[p] == null)
+                    delete orderDoc[p];
             const updateResponse = await orders.updateOne(
                 { "_id": ObjectId(orderId) },
-                { $set: {
-                    userId,
-                    paymentId,
-                    shipmentId,
-                    orderDate,
-                    totalPrice,
-                    state,
-                    address,
-                    note,
-                    items
-                } }
+                { $set: orderDoc }
             );
             return updateResponse;
         }

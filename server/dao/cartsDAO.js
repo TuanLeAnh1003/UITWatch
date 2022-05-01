@@ -46,15 +46,15 @@ export default class CartsDAO {
 
     static async createCart(userId, productId, quantity) {
         try {
-            const orderDoc = {
+            const cartDoc = {
                 userId,
                 productId,
                 quantity
             }
-            for (let p in orderDoc)
-                if (orderDoc[p] == null)
-                    delete orderDoc[p];
-            return await carts.insertOne(orderDoc);
+            for (let p in cartDoc)
+                if (cartDoc[p] == null)
+                    delete cartDoc[p];
+            return await carts.insertOne(cartDoc);
         }
         catch (e) {
             console.error(`unable to create cart: ${e}`);
@@ -64,17 +64,17 @@ export default class CartsDAO {
 
     static async updateCart(userId, productId, quantity) {
         try {
-            const orderDoc = {
+            const cartDoc = {
                 userId,
                 productId,
                 quantity
             }
-            for (let p in orderDoc)
-                if (orderDoc[p] == null)
-                    delete orderDoc[p];
+            for (let p in cartDoc)
+                if (cartDoc[p] == null)
+                    delete cartDoc[p];
             const updateResponse = await carts.updateOne(
                 //{ "userId": ObjectId(userId), "productId": ObjectId(productId) },
-                { "userId": userId, "productId": productId }, {$set: orderDoc}
+                { "userId": userId, "productId": productId }, {$set: cartDoc}
             );
             return updateResponse;
         }
