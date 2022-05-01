@@ -3,7 +3,7 @@ const ObjectId = mongodb.ObjectId;
 
 let orders;
 
-export default class ProductsDAO {
+export default class OrdersDAO {
     static async injectDB(conn) {
         if (orders) {
             return;
@@ -23,8 +23,8 @@ export default class ProductsDAO {
     } = {}) {
         let query;
         if (filters) {
-            if ("user" in filters) {
-                query = { $text: { $search: filters['user'] } };
+            if ("userId" in filters) {
+                query = { "userId": {$eq: filters['userId'] } };
             }
         }
 
