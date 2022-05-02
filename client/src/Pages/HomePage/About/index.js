@@ -5,6 +5,7 @@ import watch1 from './../../../Assets/Images/watch_about1.png';
 import about1 from './../../../Assets/Images/about1.png';
 import about2 from './../../../Assets/Images/about2.png';
 import about3 from './../../../Assets/Images/about4.png';
+import intro from './../../../Assets/Video/intro.mp4';
 function About() {
     return (
         <div className='about'>
@@ -18,7 +19,7 @@ function About() {
                 </div>
             </div>
             </div>
-            <div class="row-two">
+            <div class="row-three">
             <div class="column left" >
                 <img src={watch1} style={{width:'100%'}} />
             </div>
@@ -28,16 +29,25 @@ function About() {
                 <button class='detail' type="button">CHI TIẾT</button>
             </div>
             </div>
-            <div class="row container">
+            <div class="row-two container ">
                 <img src={about1} style={{width:'100%'}} />
-                <div class="text-block">
-                <h1 class='middle'>VỀ UITWATCH</h1>
+                <div class="text-block introduce-middle just">
+                <h1 class='middle marg'>VỀ UITWATCH</h1>
                 <div>
                 <p class='line'>UITWatch là trang web bán đồng hồ uy tín tại Việt Nam với các mặt hàng giảm giá, hàng outlet cực hấp dẫn. Dù chỉ mới xuất hiện trên thị trường nhưng chất lượng đồng hồ và trải nghiệm mua sắm tại đây luôn được người dùng tin tưởng và đánh giá đây là một trong các trang web bán đồng hồ uy tín có giá cả cạnh tranh nhất hiện nay.</p>
                 </div>
+                <div class='introduce'>
+                <div >
+                <h1 class='middle-two'>WEBSITE UITWATCH</h1>
+                </div>
+                <video class='video' width="750" height="500" controls>
+                <source src={intro} type="video/mp4"/>
+                Your browser does not support the video tag.
+                </video>
+                </div>
             </div>
             </div>
-            <div class="row container">
+            <div class="row-two container">
             <img src={about3}  style={{width:'100%'}} />
             <div class="text-block-founder">
             <h1 class='founder'>ĐỘI NGŨ LÃNH ĐẠO UITWATCH</h1>
@@ -48,7 +58,7 @@ function About() {
             
             </div>
             </div>
-            <div class="row container">
+            <div class="row-two container padd">
                 <img src={about2} style={{width:'100%'}} />
             <div class="text-block">
                 <h1 class='foot-head'>LIÊN HỆ VỚI CHÚNG TÔI</h1>
