@@ -5,15 +5,18 @@ export default class CartsController {
         const cartsPerPage = req.query.cartsPerPage ? parseInt(req.query.cartsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
-        if (req.query.user) {
-            filters.user = req.query.user;
+        if (req.query.userId) {
+            filters.userId = req.query.userId;
+        }
+        if (req.query.productId) {
+            filters.productId = req.query.productId;
         }
         const { cartsList, totalNumCarts } = await CartsDAO.getCarts({
             filters, page,
             cartsPerPage
         });
         let response = {
-            orders: cartsList,
+            ratings: cartsList,
             page: page,
             filters: filters,
             entries_per_page: cartsPerPage,
