@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './UserManagement.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { Link } from 'react-router-dom'
 
 function UserManagement() {
+  const [hideDeletePopup, setHideDeletePopup] = useState(false)
+
   const listUser = [
     {
       lastName: 'Nguyễn',
@@ -97,14 +99,33 @@ function UserManagement() {
               <td>{user.role}</td>
               <td>
                 <FontAwesomeIcon icon={solid('eye')} />{"  "}
-                <FontAwesomeIcon icon={solid('pen')} />{"  "}
-                <FontAwesomeIcon icon={solid('trash')} />
+                <Link to="/admin/user-update" style={{textDecoration: 'none', color: '#855446'}}>
+                  <FontAwesomeIcon icon={solid('pen')} />{"  "}
+                </Link>
+                <FontAwesomeIcon icon={solid('trash')} style={{cursor: 'pointer'}} onClick={e => setHideDeletePopup(true)}/>
               </td>
             </tr>
           ))}
           
         </tbody>
       </table>
+      {
+        hideDeletePopup && (
+          <div className="user-mng-delete-wrapper" onClick={e => setHideDeletePopup(false)}>
+            <div className="user-mng-delete" onClick={e => e.stopPropagation()}>
+              <h3>Xóa thành viên</h3>
+              <FontAwesomeIcon className="user-mng-delete-icon" icon={solid('circle-xmark')} onClick={e => setHideDeletePopup(false)}/>
+              <p>Bạn có chắc mình muốn xóa thành viên này?</p>
+              <button>
+                Hủy bỏ
+              </button>
+              <button>
+                Xóa luôn
+              </button>
+            </div>
+          </div>
+        )
+      }
     </div>
   )
 }
