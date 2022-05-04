@@ -10,6 +10,8 @@ import ResponseManagement from '../ResponseManagement/ResponseManagement';
 import AdminHeader from './../../../Components/Header/AdminHeader';
 import AdminSideBar from './../../../Components/AdminSideBar/AdminSideBar';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
+import UserManagement from '../UserManagement';
+import UserCreate from '../UserManagement/UserCreate';
 
 function Admin() {
   return (
@@ -18,12 +20,14 @@ function Admin() {
       <div className='admin__cols'>
         <AdminSideBar />
         <div className='admin__col'>
-          <div className="admin__col-wrapper">
+          <div>
             <Routes>
               <Route path='statistic' element={<Statistic />} />
               <Route path='settings' element={<SettingOptions />} />
               <Route path='admin-profile' element={<AdminProfile />} />
               <Route path='order-management' element={<OrderManagement />} />
+              <Route path='user-management' element={<UserManagement />} />
+              <Route path='user-create' element={<UserCreate />} />
               <Route
                 path='response-management'
                 element={<ResponseManagement />}

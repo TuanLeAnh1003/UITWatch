@@ -18,6 +18,7 @@ import Cart from '../Cart';
 import LikedProduct from '../LikedProduct/LikedProduct';
 import Policy from '../Policy/index';
 import Sale from '../Sale';
+import Account from '../Account';
 
 function HomePage() {
   return (
@@ -40,6 +41,7 @@ function HomePage() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/liked-products" element={<LikedProduct />} />
       <Route path="/policy" element={<Policy />} />
+      <Route path="/account/:id" element={<Account />} />
     </Routes>
     <Footer />
     </div>
