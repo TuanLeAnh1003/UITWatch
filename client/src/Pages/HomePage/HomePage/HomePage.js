@@ -43,12 +43,9 @@ function HomePage() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/liked-products" element={<LikedProduct />} />
       <Route path="/policy" element={<Policy />} />
-<<<<<<< HEAD
       <Route path="/account/:id" element={<Account />} />
-=======
       <Route path="/about" element={<About />} />
       <Route path="/consult" element={<Consult />} />
->>>>>>> Trang
     </Routes>
     <Footer />
     </div>
