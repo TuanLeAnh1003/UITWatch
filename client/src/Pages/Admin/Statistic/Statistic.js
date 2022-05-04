@@ -1,7 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Statistic.css';
+import { Line } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
 
 function Statistic() {
+
+  const data = {
+    labels: ["Th4 1", "Th4 2", "Th4 3", "Th4 4", "Th4 5", "Th4 6", "Th4 7", "Th4 8", "Th4 9", "Th4 10", "Th4 11", "Th4 12"],
+    datasets: [
+      {
+        label: "First dataset",
+        data: [33, 53, 85, 41, 44, 65, 47, 53, 87, 23 ,26, 39],
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
+        borderColor: "rgba(75,192,192,1)"
+      },
+      {
+        label: "Second dataset",
+        data: [33, 25, 35, 51, 54, 76, 53, 85, 41, 44, 65, 47],
+        fill: true,
+        borderColor: "#742774"
+      }
+    ]
+  };
 
   return (
     <div className="stt">
@@ -24,7 +45,8 @@ function Statistic() {
 
       <div className="stt__table">
         <table>
-          <tr>
+        <tbody>
+        <tr>
             <td>
               <p><b>Tổng bán</b></p>
               <p>3.800.000.000đ</p>
@@ -60,8 +82,12 @@ function Statistic() {
               <p>45</p>
             </td>
           </tr>
+        </tbody>
+          
         </table>
       </div>
+
+      <Line data={data} />
     </div>
   )
 }

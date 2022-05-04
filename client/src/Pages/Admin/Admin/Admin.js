@@ -12,11 +12,16 @@ import AdminSideBar from './../../../Components/AdminSideBar/AdminSideBar';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
 import UserManagement from '../UserManagement';
 import UserCreate from '../UserManagement/UserCreate';
+<<<<<<< HEAD
 import UserUpdate from '../UserManagement/UserUpdate';
 import OrderView from '../OrderView';
 import NewsManagement from '../NewsManagement';
 import NewsCreate from '../NewsManagement/NewsCreate';
 import NewsUpdate from '../NewsManagement/NewsUpdate';
+=======
+import CustomerManagement from '../CustomerManagement/CustomerManagement';
+import ProductManagement from '../ProductManagement/ProductManagement';
+>>>>>>> HungPho
 
 function Admin() {
   return (
@@ -32,6 +37,8 @@ function Admin() {
               <Route path='admin-profile' element={<AdminProfile />} />
               <Route path='order-management' element={<OrderManagement />} />
               <Route path='user-management' element={<UserManagement />} />
+              <Route path='customer-management' element={<CustomerManagement />} />
+              <Route path='product-management' element={<ProductManagement />} />
               <Route path='user-create' element={<UserCreate />} />
               <Route path='user-update' element={<UserUpdate />} />
               <Route

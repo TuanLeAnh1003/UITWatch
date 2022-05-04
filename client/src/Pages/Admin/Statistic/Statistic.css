@@ -69,21 +69,21 @@
 
 .stt__table > table {
   width: 100%;
-
+  margin-bottom: 40px;
 }
 
 .stt__table > table, 
-.stt__table > table > tr,
-.stt__table > table > tr > td {
+.stt__table > table > tbody > tr,
+.stt__table > table > tbody > tr > td {
   border: 1px solid #000;
   border-collapse: collapse;
 }
 
-.stt__table > table > tr {
+.stt__table > table > tbody > tr {
   height: 150px;
 }
 
-.stt__table > table > tr > td {
+.stt__table > table > tbody > tr > td {
   text-align: center;
 }
 
