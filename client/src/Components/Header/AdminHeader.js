@@ -30,7 +30,7 @@ function AdminHeader() {
       <div className="ad-header__item">
         <FontAwesomeIcon icon={solid('house')} />
         <p>Chào, Nguyễn Duy An</p>
-        <img src alt="avatar"/>
+        <img src="" alt="avatar"/>
       </div>
     </div>
   )

@@ -21,12 +21,28 @@
   justify-content: space-around;
 }
 
-.ad-sidebar__items > li {
+.ad-sidebar__items > a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px 10px;
   color: #fff;
+  text-decoration: none;
+}
+
+.ad-sidebar__items > a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.22);
+}
+
+.ad-sidebar__items > a > svg {
+  font-size: 28px;
+  width: 40%;
+}
+
+.ad-sidebar__items > a > p {
+  font-size: 20px;
+  width: 60%;
 }
 
 .ad-sidebar__items > li:hover {

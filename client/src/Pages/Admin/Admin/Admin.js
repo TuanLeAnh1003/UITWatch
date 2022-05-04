@@ -12,6 +12,8 @@ import AdminSideBar from './../../../Components/AdminSideBar/AdminSideBar';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
 import UserManagement from '../UserManagement';
 import UserCreate from '../UserManagement/UserCreate';
+import CustomerManagement from '../CustomerManagement/CustomerManagement';
+import ProductManagement from '../ProductManagement/ProductManagement';
 
 function Admin() {
   return (
@@ -27,6 +29,8 @@ function Admin() {
               <Route path='admin-profile' element={<AdminProfile />} />
               <Route path='order-management' element={<OrderManagement />} />
               <Route path='user-management' element={<UserManagement />} />
+              <Route path='customer-management' element={<CustomerManagement />} />
+              <Route path='product-management' element={<ProductManagement />} />
               <Route path='user-create' element={<UserCreate />} />
               <Route
                 path='response-management'
