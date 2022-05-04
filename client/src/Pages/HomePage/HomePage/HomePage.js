@@ -16,7 +16,9 @@ import SaleOff from '../SaleOff';
 import Payment from '../Payment/Payment';
 import Cart from '../Cart';
 import LikedProduct from '../LikedProduct/LikedProduct';
-import Policy from '../Policy/index';
+import Policy from '../Policy';
+import About from '../About';
+import Consult from '../Consult';
 import Sale from '../Sale';
 import Account from '../Account';
 
@@ -41,7 +43,12 @@ function HomePage() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/liked-products" element={<LikedProduct />} />
       <Route path="/policy" element={<Policy />} />
+<<<<<<< HEAD
       <Route path="/account/:id" element={<Account />} />
+=======
+      <Route path="/about" element={<About />} />
+      <Route path="/consult" element={<Consult />} />
+>>>>>>> Trang
     </Routes>
     <Footer />
     </div>

@@ -23,3 +23,11 @@
     text-align: center;
     color: #C16C53;
   }
+  .policy-body-content{
+    margin: 0px 100px 0px 100px;
+  }
+  .policy{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 150px;
+  }

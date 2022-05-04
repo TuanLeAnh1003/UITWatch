@@ -1,0 +1,234 @@
+.container {
+    position: relative;
+  }
+  
+  /* Bottom right text */
+  .text-block {
+    position: absolute;
+    
+    left: 150px;
+    top: 200px;
+    width: 40%;
+    /*background-color: black;*/
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 65px;
+    line-height: 79px;
+  }
+  .under-line{
+    position: absolute;
+    width: 150px;
+    height: 7px;
+    left: 307px;
+    top: 504px;
+    
+    background: #D7CECB;
+  }
+  .line {
+    padding-top: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify; 
+  }
+  .bottom{
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 65px;
+  }
+  h1.bottom:before {
+    content: "";
+    position: absolute;
+    left: 280px;
+    bottom: 185px;
+    height: 15px;
+    width: 25%;
+    border-bottom: 7px solid #D7CECB;
+  }
+  .row {
+    display: flex;
+  }
+  .row-two{
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  .row-three{
+    display: flex;
+    padding: 150px 100px 150px 100px;
+  }
+  .left {
+    width: 70%;
+  }
+  
+  .right {
+    width: 30%;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: rgba(235, 230, 228, 0.5);
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .detail{
+    position: absolute;
+    width: 129.46px;
+    height: 41.11px;
+    
+    background: #B4624A;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+
+    /* or 156% */
+
+    text-align: center;
+
+    color: #FFFFFF;
+
+  }
+  .foot-line{
+    
+    padding-top: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    width: 45vw;
+  }
+  .foot-head{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  h1.foot-head:before {
+    content: "";
+    position: absolute;
+    left: 280px;
+    bottom: 60px;
+    height: 15px;
+    width: 25%;
+    border-bottom: 7px solid #D7CECB;
+  }
+  .row-2{
+      padding-bottom: 20px;
+      padding-top: 20px;
+  }
+  .button-container-div {
+    display: flex;
+    justify-content: center;
+    align-items: bottom;
+    padding-top: 20px;
+}
+  .go-to-detail{
+    position: absolute;
+    width: 208px;
+    height: 45px;
+    color:#FFFFFF;
+    background: #9BB8C6;
+    border-radius: 10px;
+}
+.middle{
+    text-align: left;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 65px;
+  }
+  h1.middle:before {
+    content: "";
+    position: absolute;
+    left: 40px;
+    top: 60px;
+    height: 15px;
+    width: 25%;
+    border-bottom: 7px solid #D7CECB;
+  }
+  .middle-two{
+    text-align: left;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 65px;
+  }
+  h1.middle-two:before {
+    content: "";
+    position: absolute;
+    left: 40px;
+    top: 470px;
+    height: 15px;
+    width: 25%;
+    border-bottom: 7px solid #D7CECB;
+  }
+  .founder{
+    color:#000000;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    
+  }
+  .founder-line{
+    color:#000000;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 40px;
+  }
+  .text-block-founder {
+    position: absolute;
+    left: 300px;
+    top: 200px;
+    width: 80%;
+    /*background-color: black;*/
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .introduce-middle{
+    width: 40vw;
+    margin-left: 15vw;
+    margin-right: 25vw;
+    margin-top: 40vh;
+    margin-bottom: 30vh;
+  }
+  .introduce{
+    padding-top: 200px;
+  }
+  .just{
+    justify-content: center;
+    align-items: center;
+  }
+.video{
+  padding-top: 60px;
+}
+.padd{
+  padding-bottom: 150px;
+}
+  
