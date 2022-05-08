@@ -8,6 +8,7 @@ import CartsDAO from "./dao/cartsDAO.js";
 import RatingsDAO from "./dao/ratingsDAO.js";
 import NewsDAO from "./dao/newsDAO.js";
 import PaymentsDAO from "./dao/paymentsDAO.js";
+import ShipmentsDAO from "./dao/shipmentsDAO.js";
 
 async function main() {
     dotenv.config();
@@ -26,6 +27,7 @@ async function main() {
         await RatingsDAO.injectDB(client);
         await NewsDAO.injectDB(client);
         await PaymentsDAO.injectDB(client);
+        await ShipmentsDAO.injectDB(client);
 
         app.listen(port, () => {
             console.log('Server is running on port: ' + port);
