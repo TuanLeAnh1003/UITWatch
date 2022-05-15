@@ -195,7 +195,7 @@ function Home() {
       </div>
 
       {/* BÁN CHẠY */}
-      <h1>BÁN CHẠY</h1>
+      <h1 className="home__title-2">BÁN CHẠY</h1>
       <div className="home__products-wrapper">
         <FontAwesomeIcon icon={solid('angle-left')} onClick={handleLeftClick}/>
         

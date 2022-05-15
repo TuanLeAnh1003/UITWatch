@@ -1,12 +1,13 @@
 .list {
-  width: 400px;
-  height: 270px;
+  width: 30%;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .list > img {
   display: block;
   object-fit: contain;
+  width: 100%;
 }
 
 .list > .list__overlay {
@@ -31,4 +32,10 @@
 .list > .list__overlay > p {
   margin: 5px 0;
   font-size: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .list {
+    width: 100%;
+  }
 }

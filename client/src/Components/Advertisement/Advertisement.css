@@ -1,6 +1,6 @@
 .advertisement {
   padding: 50px 0;
-  width: 600px;
+  width: 45%;
 }
 
 .advertisement > img {
@@ -16,4 +16,10 @@
 .advertisement > p {
   font-size: 20px;
   text-align: justify;
+}
+
+@media screen and (max-width: 1024px) {
+  .advertisement {
+    width: 100%;
+  }
 }
