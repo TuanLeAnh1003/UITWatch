@@ -45,6 +45,7 @@
 .home__bottom-contact-desc {
   margin-bottom: 20px;
   font-size: 20px;
+  
 }
 
 .home__bottom-contact-list {
@@ -154,6 +155,21 @@
 }
 
 @media screen and (max-width: 760px) {
+  .home__bottom {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .home__bottom-contact {
+    width: 100%;
+  }
+
+  .home__bottom > .home__bottom-line {
+    display: none;
+  }
+
+  .home__bottom > .home__bottom-news {
+    margin-top: 40px;
+  }
   
 }
