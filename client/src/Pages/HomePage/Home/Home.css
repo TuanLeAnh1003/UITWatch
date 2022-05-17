@@ -126,3 +126,34 @@
   width: 292px;
 }
 
+@media screen and (max-width: 1450px) {
+  .home__bottom-news-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home__bottom-contact-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home__products-wrapper,
+  .home__title-2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .home__ads {
+    flex-direction: column;
+  }
+
+  .home__lists {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 760px) {
+
+  
+}
