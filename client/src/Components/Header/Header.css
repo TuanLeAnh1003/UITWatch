@@ -40,6 +40,11 @@
   justify-content: space-around;
 }
 
+.header-first > .header-first__search {
+  width: 40%;
+}
+
+
 .header-first > .header-first__more > .header-first__more-item > a {
   text-decoration: none;
   color: #fff;
@@ -47,7 +52,7 @@
 
 .header-first > .header-first__search > input {
   height: 30px;
-  width: 400px;
+  width: 100%;
   border: none;
   border-radius: 20px;
   padding: 0 10px;
