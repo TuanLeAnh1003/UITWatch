@@ -1,7 +1,7 @@
 .product {
   width: 100%;  
   text-align: center;  
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .product > img {
@@ -10,11 +10,12 @@
 }
 
 .product > p {
+  font-size: 1.25em;
   margin: 10px 0;
 }
 
 .product > p:nth-child(3) {
-  font-size: 19px;
+  font-size: 1.1875em;
 }
 
 .product > .product__price {

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Sale.css';
 import CategoryItem from '../../../Components/Category/CategoryItem/index';
 import Product from '../../../Components/Product/index';
 import ProductImageMain from './../../../Assets/Images/omega-watches.svg';
 import ProductImg from './../../../Assets/Images/Rectangle 11.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function Sale() {
   const cateList = [
@@ -105,8 +107,52 @@ function Sale() {
     price: "50.000.000 VNĐ",
   }]
 
+  const [hideCate, setHideCate] = useState(false)
+ 
   return (
-    <div className="sale">
+    <div className="sale" onClick={() => setHideCate(false)}>
+      <div className="sale__category-bars" onClick={e => e.stopPropagation()}>
+        <FontAwesomeIcon icon={solid("bars")} className="sale__bars-icon" onClick={() => setHideCate(!hideCate)} />
+        {
+          hideCate && 
+          <div className="sale__category-bars--2">
+            <div className="sale__category-gender">
+              <a href="/" className="sale__category-gender-item sale__category-gender-item--active">
+                TẤT CẢ
+              </a>
+              <div className="sale__category-gender-line"></div>
+              <a href="/" className="sale__category-gender-item">
+                NAM
+              </a>
+              <div className="sale__category-gender-line"></div>
+              <a href="/" className="sale__category-gender-item">
+                NỮ
+              </a>
+            </div>
+
+            <div className="sale__category-line"></div>
+
+            <div className="sale__category-type">
+              <a href="/" className="sale__category-type-clock">Đồng hồ</a><br />
+              <a href="/" className="sale__category-type-accessory">Phụ kiện</a>
+            </div>
+
+
+            {cateList.map((element, index) => index <= 3 && (
+                <div key={index} className="sale__category-element">
+                  <div className="sale__category-line"></div>
+
+                  <CategoryItem
+                    title={element.title}
+                    contentList={element.contentList}
+                  ></CategoryItem>
+                </div>
+            )
+            )}
+          </div>  
+        }
+      </div>
+
       <div className="sale__category">
         <div className="sale__category-gender">
           <a href="/" className="sale__category-gender-item sale__category-gender-item--active">
