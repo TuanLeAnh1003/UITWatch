@@ -19,7 +19,7 @@ export default class ProductsDAO {
     static async getUsers({
         filters = null,
         page = 0,
-        usersPerPage = 20,
+        likesPerPage = 20,
     } = {}) {
         let query;
         if (filters) {
@@ -32,21 +32,20 @@ export default class ProductsDAO {
 
         let cursor;
         try {
-            cursor = await users.find(query).limit(usersPerPage).skip(usersPerPage * page);
-            const usersList = await cursor.toArray();
-            const totalNumUsers = await users.countDocuments(query);
-            return { usersList, totalNumUsers };
+            cursor = await users.find(query).limit(likesPerPage).skip(likesPerPage * page);
+            const likesList = await cursor.toArray();
+            const totalNumLikes = await users.countDocuments(query);
+            return { likesList, totalNumLikes };
         }
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);
-            return { usersList: [], totalNumUsers: 0 };
+            return { likesList: [], totalNumLikes: 0 };
         }
     }
 
-    static async createUser(userName, password, firstName, lastName, birthday, phoneNumber, email, address, role) {
+    static async createUser(password, firstName, lastName, birthday, phoneNumber, email, address, role) {
         try {
             const userDoc = {
-                userName,
                 password,
                 firstName,
                 lastName,
@@ -67,18 +66,16 @@ export default class ProductsDAO {
         }
     }
 
-    static async updateUser(userId, userName, password, firstName, lastName, birthday, phoneNumber, email, address, role) {
+    static async updateUser(userId, password, firstName, lastName, birthday, phoneNumber, email, address) {
         try {
             const userDoc = {
-                userName,
                 password,
                 firstName,
                 lastName,
                 birthday,
                 phoneNumber,
                 email,
-                address,
-                role
+                address
             }
             for (let p in userDoc)
                 if (userDoc[p] == null)
@@ -122,9 +119,9 @@ export default class ProductsDAO {
         }
     }
 
-    static async checkSignIn(userName, password) {
+    static async checkSignIn(email, password) {
         let query;
-        query = { 'userName': { $eq: userName } };
+        query = { 'email': email };
 
         let user;
         try {
@@ -136,6 +133,23 @@ export default class ProductsDAO {
         catch (e) {
             console.error(`Unable to run command, ${e}`);
             return;
+        }
+    }
+
+    static async getLikes(userId, page, likesPerPage) {
+        let query;
+        query = {userId};
+
+        let cursor;
+        try {
+            cursor = await users.find(query).limit(likesPerPage).skip(likesPerPage * page);
+            const likesList = await cursor.toArray();
+            const totalNumLikes = await users.countDocuments(query);
+            return { likesList, totalNumLikes };
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return { likesList: [], totalNumLikes: 0 };
         }
     }
 }

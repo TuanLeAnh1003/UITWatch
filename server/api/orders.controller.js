@@ -29,7 +29,7 @@ export default class OrdersController {
             const shipmentId = req.body.shipmentId;
             const orderDate = Date.parse(req.body.orderDate);
             const totalPrice = req.body.totalPrice;
-            const state = req.body.state;
+            const state = "pending";
             const address = req.body.address;
             const note = req.body.note;
             const items = req.body.items;

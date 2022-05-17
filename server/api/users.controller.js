@@ -2,7 +2,7 @@ import UsersDAO from '../dao/usersDAO.js';
 
 export default class UsersController {
     static async apiGetUsers(req, res, next) {
-        const usersPerPage = req.query.usersPerPage ? parseInt(req.query.usersPerPage) : 20;
+        const likesPerPage = req.query.likesPerPage ? parseInt(req.query.likesPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
         if (req.query.role) {
@@ -11,23 +11,22 @@ export default class UsersController {
         else if (req.query.name) {
             filters.name = req.query.name;
         }
-        const { usersList, totalNumUsers } = await UsersDAO.getUsers({
+        const { LikesList, totalNumLikes } = await UsersDAO.getUsers({
             filters, page,
-            usersPerPage
+            likesPerPage
         });
         let response = {
-            users: usersList,
+            users: LikesList,
             page: page,
             filters: filters,
-            entries_per_page: usersPerPage,
-            total_results: totalNumUsers,
+            entries_per_page: likesPerPage,
+            total_results: totalNumLikes,
         };
         res.json(response);
     }
 
     static async apiCreateUser(req, res, next) {
         try {
-            const userName = req.body.userName;
             const password = req.body.password;
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
@@ -38,7 +37,6 @@ export default class UsersController {
             const role = req.body.role;
 
             const UserResponse = await UsersDAO.createUser(
-                userName,
                 password,
                 firstName,
                 lastName,
@@ -57,7 +55,6 @@ export default class UsersController {
     static async apiUpdateUser(req, res, next) {
         try {
             const userId = req.body.userId;
-            const userName = req.body.userName;
             const password = req.body.password;
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
@@ -65,19 +62,16 @@ export default class UsersController {
             const phoneNumber = req.body.phoneNumber;
             const email = req.body.email;
             const address = req.body.address;
-            const role = req.body.role;
 
             const UserResponse = await UsersDAO.updateUser(
                 userId,
-                userName,
                 password,
                 firstName,
                 lastName,
                 birthday,
                 phoneNumber,
                 email,
-                address,
-                role
+                address
             );
 
             var { error } = UserResponse;
@@ -119,15 +113,35 @@ export default class UsersController {
 
     static async apiSignIn(req, res, next) {
         try {
-            const userName = req.body.userName;
+            const email = req.body.email;
             const password = req.body.password;
             const UserResponse = await UsersDAO.checkSignIn(
-                userName,
+                email,
                 password
             );
             res.json(UserResponse);
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
+    }
+
+    static async apiGetLikedProducts(req, res, next) {
+        const likesPerPage = req.query.likesPerPage ? parseInt(req.query.likesPerPage) : 20;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        
+        const userId = req.body.userId;
+
+        const { LikesList, totalNumLikes } = await UsersDAO.getLikes({
+            userId, page,
+            likesPerPage
+        });
+        let response = {
+            likes: LikesList,
+            page: page,
+            userId,
+            entries_per_page: likesPerPage,
+            total_results: totalNumLikes,
+        };
+        res.json(response);
     }
 }
