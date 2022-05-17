@@ -112,7 +112,7 @@ function Sale() {
   return (
     <div className="sale" onClick={() => setHideCate(false)}>
       <div className="sale__category-bars" onClick={e => e.stopPropagation()}>
-        <FontAwesomeIcon icon={solid("bars")} className="sale__bars-icon" onClick={() => setHideCate(!hideCate)} />
+        <FontAwesomeIcon icon={solid("filter")} className="sale__bars-icon" onClick={() => setHideCate(!hideCate)} />
         {
           hideCate && 
           <div className="sale__category-bars--2">

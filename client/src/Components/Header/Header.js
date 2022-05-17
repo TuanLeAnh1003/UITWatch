@@ -96,7 +96,7 @@ function Header() {
         <Link to='/' className='header-second__logo'>
           <img src={watch} alt='watch' />
           <div>
-            <h1>UITWatch</h1>
+            <h2>UITWatch</h2>
             <span>SINCE 2021</span>
           </div>
         </Link>
@@ -143,11 +143,11 @@ function Header() {
       }
 
 
-      <div className='header-third'>
+      {/* <div className='header-third'>
         <FontAwesomeIcon icon={solid("angle-left")} />
         <h2>FREE SHIP VỚI HÓA ĐƠN TỪ 800K</h2>
         <FontAwesomeIcon icon={solid("angle-right")} />
-      </div>
+      </div> */}
 
       {isSignInShowed && (
         <SignIn
