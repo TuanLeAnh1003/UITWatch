@@ -8,8 +8,8 @@ export default class ProductsController {
         if (req.query.status) {
             filters.status = req.query.status;
         }
-        else if (req.query.name) {
-            filters.name = req.query.name;
+        else if (req.query.keyword) {
+            filters.keyword = req.query.keyword;
         }
         const { productsList, totalNumProducts } = await ProductsDAO.getProducts({
             filters, page,

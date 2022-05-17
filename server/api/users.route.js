@@ -16,4 +16,7 @@ router
 router
     .route('/login').get(UsersController.apiSignIn);
 
+router
+    .route('/liked_products').get(UsersController.apiGetLikedProducts);
+
 export default router;

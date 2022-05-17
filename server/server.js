@@ -6,6 +6,8 @@ import orders from './api/orders.route.js';
 import carts from './api/carts.route.js';
 import ratings from './api/ratings.route.js';
 import news from './api/news.route.js';
+import payments from './api/payments.route.js';
+import shipments from './api/shipments.route.js';
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.use("/api/v1/orders", orders);
 app.use("/api/v1/carts", carts);
 app.use("/api/v1/ratings", ratings);
 app.use("/api/v1/news", news);
+app.use("/api/v1/payments", payments);
+app.use("/api/v1/shipments", shipments);
 app.use('*', (req, res) => {
     res.status(404).json({ error: "not found" })
 });

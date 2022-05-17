@@ -57,7 +57,6 @@ export default class RatingsDAO {
             for (let p in ratingDoc)
                 if (ratingDoc[p] == null)
                     delete ratingDoc[p];
-            if (ratingDoc.date == "0") console.error("null");
             return await ratings.insertOne(ratingDoc);
         }
         catch (e) {

@@ -23,8 +23,8 @@ export default class ProductsDAO {
     } = {}) {
         let query;
         if (filters) {
-            if ("name" in filters) {
-                query = { $text: { $search: filters['name'] } };
+            if ("keyword" in filters) {
+                query = { $text: { $search: filters['keyword'] } };
             } else if ("status" in filters) {
                 query = { "status": { $eq: filters['status'] } }
             }
