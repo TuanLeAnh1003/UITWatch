@@ -21,6 +21,19 @@ router
     .route('/liked_products').get(UsersController.apiGetLikedProducts);
 
 router
-    .route('/carts').post(CartsController.apiAddToCart);
+    .route('/carts')
+    .get(CartsController.apiGetCart);
+
+router
+    .route('/carts/addToCart')
+    .put(CartsController.apiAddToCart);
+
+router
+    .route('/carts/removeCart')
+    .put(CartsController.apiRemoveCart);
+
+/*router
+    .route('/carts/removeAllCart')
+    .put(CartsController.apiRemoveAllCart);*/
 
 export default router;

@@ -1,18 +1,13 @@
 import CartsDAO from '../dao/cartsDAO.js';
 
 export default class CartsController {
-    static async apiGetCarts(req, res, next) {
+    static async apiGetCart(req, res, next) {
         const cartsPerPage = req.query.cartsPerPage ? parseInt(req.query.cartsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
-        let filters = {};
-        if (req.query.userId) {
-            filters.userId = req.query.userId;
-        }
-        if (req.query.productId) {
-            filters.productId = req.query.productId;
-        }
+        let userId = req.query.userId;
+
         const { cartsList, totalNumCarts } = await CartsDAO.getCarts({
-            filters, page,
+            userId, page,
             cartsPerPage
         });
         let response = {
@@ -31,7 +26,7 @@ export default class CartsController {
             const productId = req.body.productId;
             const quantity = req.body.quantity;
 
-            const CartsResponse = await CartsDAO.createCart(
+            const CartsResponse = await CartsDAO.addToCart(
                 userId,
                 productId,
                 quantity

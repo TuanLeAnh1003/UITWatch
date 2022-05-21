@@ -3,7 +3,7 @@ const ObjectId = mongodb.ObjectId;
 
 let users;
 
-export default class ProductsDAO {
+export default class UsersDAO {
     static async injectDB(conn) {
         if (users) {
             return;
@@ -19,7 +19,7 @@ export default class ProductsDAO {
     static async getUsers({
         filters = null,
         page = 0,
-        likesPerPage = 20,
+        usersPerPage = 20,
     } = {}) {
         let query;
         if (filters) {
@@ -32,14 +32,14 @@ export default class ProductsDAO {
 
         let cursor;
         try {
-            cursor = await users.find(query).limit(likesPerPage).skip(likesPerPage * page);
-            const likesList = await cursor.toArray();
-            const totalNumLikes = await users.countDocuments(query);
-            return { likesList, totalNumLikes };
+            cursor = await users.find(query).limit(usersPerPage).skip(usersPerPage * page);
+            const usersList = await cursor.toArray();
+            const totalNumUsers = await users.countDocuments(query);
+            return { usersList, totalNumUsers };
         }
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);
-            return { likesList: [], totalNumLikes: 0 };
+            return { usersList: [], totalNumLikes: 0 };
         }
     }
 
