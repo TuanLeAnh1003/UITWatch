@@ -4,11 +4,11 @@ import axiosInstance from "./axiosInstance";
 //   return await axiosInstance.post("/login", data);
 // };
 const register = async (data) => {
-  return await axiosInstance.post("/users/", data);
+  return await axiosInstance.post("api/v1/users", data);
 }
 
 const login = async (data) => {
-  return await axiosInstance.post("/users/login", data)
+  return await axiosInstance.post("/api/v1/users/login", data)
 }
 
 // const getMe = async (data) => {

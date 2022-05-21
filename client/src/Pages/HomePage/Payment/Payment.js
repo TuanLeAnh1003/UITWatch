@@ -1,8 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Payment.css';
 import MoMo from './../../../Assets/Images/image 11.png';
+import OrderApi from '../../../Apis/OrderApi';
 
 function Payment() {
+
+  const [address, setAddress] = useState("");
+  const [note, setNote] = useState("");
+
+  const handlePlaceOrder = () => {
+    if(address === "") {
+      alert("Chưa điền địa chỉ!");
+    } else {
+      OrderApi.placeOrder({
+        userId: "",
+        totalPtice: "",
+        address: address,
+        note: note,
+        date: Date.now(),
+      })
+      .then(data => console.log("Đặt hàng thành công!"))
+      .catch(err => console.log("Lỗi hệ thống!"))
+    }
+  }
+
   return (
     <div className="payment">
       <div className="payment__text">
@@ -29,9 +50,9 @@ function Payment() {
           </div>
           <div className="payment__info-address payment__info-detail">
             <p>Địa chỉ</p>
-            <input placeholder="Nhập địa chỉ" type="text" />
+            <input placeholder="Nhập địa chỉ" type="text"  name="address" onChange={e => setAddress(e.target.value)}/>
           </div>
-          <div className="payment__info-city payment__info-detail">
+          {/*<div className="payment__info-city payment__info-detail">
             <p>Tỉnh/ Thành phố</p>
             <input placeholder="Tỉnh/ Thành phố" type="text" />
           </div>
@@ -45,11 +66,11 @@ function Payment() {
               <p>Phường/ Xã</p>
               <input placeholder="Phường/ Xã" type="text" />
             </div>  
-          </div>
+  </div>*/}
 
           <div className="payment__info-note payment__info-detail">
             <p>Ghi chú cho đơn hàng</p>
-            <textarea placeholder="Nhập ghi chú"></textarea>
+            <textarea placeholder="Nhập ghi chú" onChange={e => setNote(e.target.value)}></textarea>
           </div>
 
           <h3>PHƯƠNG THỨC GIAO HÀNG</h3>
@@ -140,7 +161,7 @@ function Payment() {
                 Tôi đã đọc và đồng ý với điều khoản và điều kiện của website.
               </label>
             </div>
-            <button>Đặt hàng</button>
+            <button onClick={handlePlaceOrder}>Đặt hàng</button>
           </div>
           
           <p>Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm 

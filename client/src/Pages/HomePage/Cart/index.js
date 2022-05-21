@@ -1,6 +1,7 @@
 import React from 'react';
 import './Cart.css';
 import CartProduct from './../../../Components/CartProduct/index';
+import { Link } from 'react-router-dom'
 
 function Cart() {
   return (
@@ -33,7 +34,7 @@ function Cart() {
 
         <div className="cart__order-line"></div>
 
-        <button>Tiếp tục thanh toán</button>
+        <button><Link to="/payment" style={{textDecoration: "none", color: "#fff"}}>Tiếp tục thanh toán</Link></button>
 
       </div>
     </div>
