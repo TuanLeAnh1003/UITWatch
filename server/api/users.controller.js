@@ -1,4 +1,6 @@
 import UsersDAO from '../dao/usersDAO.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export default class UsersController {
     static async apiGetUsers(req, res, next) {
@@ -105,15 +107,47 @@ export default class UsersController {
         }
     }
 
-    static async apiSignIn(req, res, next) {
+    static async apiLogIn(req, res, next) {
         try {
             const email = req.body.email;
             const password = req.body.password;
-            const UserResponse = await UsersDAO.checkSignIn(
+            console.log(password);
+            const UserResponse = await UsersDAO.checkLogIn(
                 email,
                 password
             );
-            res.json(UserResponse);
+            if(!UserResponse.user) {
+                res.status(404).json("Wrong email!")
+            }
+            if(!UserResponse.validPassword) {
+                res.status(404).json("Wrong password!");
+            }
+            if (UserResponse.user && UserResponse.validPassword) {
+                const accessToken = jwt.sign(UserResponse.user, process.env.ACCESS_TOKEN);
+                res.status(200).json({user: UserResponse.user, accessToken});
+            }
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
+
+    static async apiRegister (req, res, next) {
+        try {
+            const firstName = req.body.firstName;
+            const lastName = req.body.lastName;
+            const email = req.body.email;
+            const phoneNumber = req.body.phoneNumber;
+            const salt = await bcrypt.genSalt(10);
+            const password = await bcrypt.hash(req.body.password, salt);
+
+            const UserResponse = await UsersDAO.register(
+                firstName,
+                lastName,
+                email,
+                phoneNumber,
+                password
+            );
+            res.status(200).json(UserResponse);
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
