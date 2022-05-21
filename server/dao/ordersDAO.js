@@ -23,8 +23,32 @@ export default class OrdersDAO {
     } = {}) {
         let query;
         if (filters) {
-            if ("userId" in filters) {
-                query = { "userId": {$eq: filters['userId'] } };
+            if ("orderId" in filters) {
+                query = { "_id": ObjectId(filters['orderId']), "user.phoneNumber": filters['phoneNumber'] };
+                let order;
+                try {
+                    order = await orders.aggregate([{
+                    $lookup: {
+                    from: 'users',
+                    localField: 'userId',
+                    foreignField: 'id',
+                    as: 'user'
+                    }}
+                    ,{ $match : {"_id": ObjectId(filters['orderId'])}}]).toArray();
+                
+                    if (order)
+                    {
+                        order=order[0];
+                        order.user=order.user[0];
+                        if (order.user.phoneNumber==filters.phoneNumber)
+                        return order;
+                    }
+                    else return null;
+                }
+                catch (e) {
+                    console.error(`Unable to issue find command, ${e}`);
+                    return null;
+                }
             }
         }
 
@@ -44,7 +68,7 @@ export default class OrdersDAO {
     static async createOrder(userId, paymentId, shipmentId, orderDate, totalPrice, state, address, note, items) {
         try {
             const orderDoc = {
-                userId,
+                userId: ObjectId(userId),
                 paymentId,
                 shipmentId,
                 orderDate,

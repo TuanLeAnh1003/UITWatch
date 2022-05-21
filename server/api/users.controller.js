@@ -30,21 +30,15 @@ export default class UsersController {
             const password = req.body.password;
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
-            const birthday = Date.parse(req.body.birthday);
             const phoneNumber = req.body.phoneNumber;
             const email = req.body.email;
-            const address = req.body.address;
-            const role = req.body.role;
 
             const UserResponse = await UsersDAO.createUser(
                 password,
                 firstName,
                 lastName,
-                birthday,
                 phoneNumber,
-                email,
-                address,
-                role
+                email
             );
             res.json({ status: "success" });
         } catch (e) {
@@ -125,23 +119,19 @@ export default class UsersController {
         }
     }
 
-    static async apiGetLikedProducts(req, res, next) {
-        const likesPerPage = req.query.likesPerPage ? parseInt(req.query.likesPerPage) : 20;
-        const page = req.query.page ? parseInt(req.query.page) : 0;
-        
+    static async apiGetLikedProducts(req, res, next) { 
         const userId = req.body.userId;
 
         const { LikesList, totalNumLikes } = await UsersDAO.getLikes({
-            userId, page,
-            likesPerPage
+            userId
         });
         let response = {
             likes: LikesList,
             page: page,
             userId,
             entries_per_page: likesPerPage,
-            total_results: totalNumLikes,
+            total_results: totalNumLikes
         };
-        res.json(response);
+        res.json(LikesList);
     }
 }

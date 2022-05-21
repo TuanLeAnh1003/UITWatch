@@ -8,7 +8,7 @@ export default class NewsController {
                 news_list: newsList,
                 total_results: totalNumNews,
             };
-            res.json(response);
+            res.json(newsList);
         } catch (e) {
             res.status(500).json({ error: e.message });
         }

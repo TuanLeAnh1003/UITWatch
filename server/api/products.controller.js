@@ -8,8 +8,8 @@ export default class ProductsController {
         if (req.query.status) {
             filters.status = req.query.status;
         }
-        else if (req.query.keyword) {
-            filters.keyword = req.query.keyword;
+        else if (req.query.name) {
+            filters.name = req.query.name;
         }
         const { productsList, totalNumProducts } = await ProductsDAO.getProducts({
             filters, page,
@@ -22,7 +22,7 @@ export default class ProductsController {
             entries_per_page: productsPerPage,
             total_results: totalNumProducts,
         };
-        res.json(response);
+        res.json(productsList);
     }
 
     static async apiPostProduct(req, res, next) {
@@ -37,7 +37,7 @@ export default class ProductsController {
             };
             const price = req.body.price;
             const company = req.body.company;
-            const productDate = Date.parse(req.body.product_date);
+            const productDate = Date.parse(req.body.product_date) || null;
             const description = req.body.description;
             const quantity = req.body.quantity;
             const status = req.body.status;
@@ -113,7 +113,7 @@ export default class ProductsController {
             const ProductResponse = await ProductsDAO.removeProduct(
                 productId
             );
-            res.json({ status: "success " });
+            res.json({ status: "delete success" });
         } catch (e) {
             res.status(500).json({ error: e.message });
         }

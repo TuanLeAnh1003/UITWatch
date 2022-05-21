@@ -23,8 +23,8 @@ export default class ProductsDAO {
     } = {}) {
         let query;
         if (filters) {
-            if ("keyword" in filters) {
-                query = { $text: { $search: filters['keyword'] } };
+            if ("name" in filters) {
+                query = { $text: { $search: filters['name'] } };
             } else if ("status" in filters) {
                 query = { "status": { $eq: filters['status'] } }
             }
@@ -60,6 +60,9 @@ export default class ProductsDAO {
             for (let p in productDoc)
                 if (productDoc[p] == null)
                     delete productDoc[p];
+            for (let p in productDoc.type)
+                if (productDoc.type[p] == null)
+                    delete productDoc.type[p];
             return await products.insertOne(productDoc);
         }
         catch (e) {
@@ -85,6 +88,9 @@ export default class ProductsDAO {
             for (let p in productDoc)
                 if (productDoc[p] == null)
                     delete productDoc[p];
+            for (let p in productDoc.type)
+                if (productDoc.type[p] == null)
+                    delete productDoc.type[p];
             const updateResponse = await products.updateOne(
                 { "_id": ObjectId(productId) },
                 { $set: productDoc }
