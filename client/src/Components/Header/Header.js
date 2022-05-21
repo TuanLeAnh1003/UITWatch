@@ -11,6 +11,8 @@ import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import AdminSignIn from "../AdminSignIn/AdminSignIn";
 import { Link } from "react-router-dom";
+import { actions, useStore } from '../../Store';
+
 
 function Header() {
   const [isSignInShowed, setIsSignInShowed] = useState(false);
@@ -53,12 +55,20 @@ function Header() {
     setIsAdminSignInShowed(a);
   };
 
+
+  const [searchInput, setSearchInput] = useState("");
+  const [state, dispatch] = useStore();
+
+  const handleSearchInput = () => {
+    dispatch(actions.getSearchInput(searchInput));
+  }
+
   return (
     <div className='header'>
       <div className='header-first'>
         <div className='header-first__search'>
-          <FontAwesomeIcon icon={solid("magnifying-glass")} />
-          <input type='text' placeholder='Tìm sản phẩm...' />
+          <Link to="/search" style={{textDecoration: "none", color: "#fff"}}><FontAwesomeIcon icon={solid("magnifying-glass")} onClick={handleSearchInput} /></Link>
+          <input type='text' placeholder='Tìm sản phẩm...' onChange={e => setSearchInput(e.target.value)}/>
         </div>
 
         <div className='header-first__more'>
@@ -124,8 +134,8 @@ function Header() {
         hideNavMobile && 
         <div className='header-mobile__nav-wrapper'>
           <Link to='/' className='header-second__logo-2'>
-          <img src={watch} alt='watch' />
-        </Link>
+            <img src={watch} alt='watch' />
+          </Link>
           <ul className='header-mobile__nav' onClick={() => {setHideOverlay(false); setHideNavMobile(false)}}>
             <Link to=''>GIỚI THIỆU</Link>
             <Link to='/sale'>ĐỒNG HỒ</Link>

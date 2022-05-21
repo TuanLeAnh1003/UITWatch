@@ -86,9 +86,16 @@
 }
 
 @media screen and (max-width: 760px) {
+  .footer-first > .footer-first__wrapper > ul {
+    margin: 0 10px;
+  }
 
-  .footer-first > .footer-first__social-media > li > svg {
-    font-size: 25px;
+  .footer-first > .footer-first__wrapper > ul > li:first-child > h2 {
+    font-size: 16px;
+  }
+
+  .footer-first__wrapper > .footer-first__social-media > li > svg {
+    font-size: 45px;
   }
 
   .footer-second {
