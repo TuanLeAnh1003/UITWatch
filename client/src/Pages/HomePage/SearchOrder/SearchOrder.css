@@ -2,6 +2,7 @@
   width: 780px;
   margin: 0 auto;
   text-align: center;
+  margin-bottom: 50px
 }
 
 .search-order--title {
@@ -20,12 +21,19 @@
 
 .search-order--submit {
   margin: 20px 0;
-  width: 390px;
+  /* width: 390px; */
   height: 50px;
+  padding: 10px 50px;
+  margin: 0 auto;
   background-color: #B4624A;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
-  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.search-order--submit:hover {
+  background-color: #b3715d
 }

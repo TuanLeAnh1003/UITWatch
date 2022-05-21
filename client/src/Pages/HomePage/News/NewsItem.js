@@ -3,7 +3,7 @@ import './NewsItem.css'
 
 import { Link } from 'react-router-dom';
 
-function NewsItem({index, title, subHeader, img, date, width, height}) {
+function NewsItem({index, newsId, title, subHeader, img, date, width, height}) {
 
   return (
     <li key={index} className='news-item' style={{width: width, height: height}}>
@@ -13,10 +13,7 @@ function NewsItem({index, title, subHeader, img, date, width, height}) {
       <div className='news-item-title'>{title}</div>
       <div className='news-item-sub-header'>{subHeader}</div>
       <div className='news-item-bottom'>
-        <Link to={{
-          pathname: `/watch-news/${index}`,
-          // state: index
-        }} className='news-item-more'>
+        <Link to={`/watch-news/${newsId}`} className='news-item-more'>
           Đọc thêm
         </Link>
         <div className='news-item-date'>{date}</div>

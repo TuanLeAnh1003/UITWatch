@@ -6,6 +6,8 @@ import pro1 from './../../../Assets/Images/Rectangle 11.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Product from '../../../Components/Product';
+import ProductApi from '../../../Apis/ProductApi';
+import { useParams } from 'react-router-dom'
 
 function ProductDetail({brand, type}) {
 
@@ -176,6 +178,22 @@ function ProductDetail({brand, type}) {
   const handleLikeButton = () => {
     setIsLiked(!isLiked);
   }
+
+  const { productId } = useParams()
+
+  useEffect(() => {
+    ProductApi.getAll()
+      .then((res) => {
+        console.log(res);
+      })
+  }, [])
+
+  // useEffect(() => {
+  //   ProductApi.getProductById({productId: productId})
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  // }, [])
 
   return (
     

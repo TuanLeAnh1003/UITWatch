@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sale.css';
 import CategoryItem from '../../../Components/Category/CategoryItem/index';
 import Product from '../../../Components/Product/index';
 import ProductImageMain from './../../../Assets/Images/omega-watches.svg';
 import ProductImg from './../../../Assets/Images/Rectangle 11.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ProductApi from '../../../Apis/ProductApi';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function Sale() {
@@ -106,6 +107,13 @@ function Sale() {
     type: ["silver", "bronze"],
     price: "50.000.000 VNĐ",
   }]
+
+  useEffect(() => {
+    ProductApi.getAll()
+      .then((res) => {
+        console.log(res);
+      })
+  }, [])
 
   const [hideCate, setHideCate] = useState(false)
  

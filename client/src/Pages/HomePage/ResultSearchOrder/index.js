@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import OrderDetail from '../../../Components/Order/OrderDetail'
 import YourOrder from '../../../Components/Order/YourOrder'
 import './ResultSearchOrder.css'
-
+import { useParams } from 'react-router-dom'
+import OrderApi from '../../../Apis/OrderApi'
 
 function ResultSearchOrder() {
+  const { orderId } = useParams()
+
+  // useEffect(() => {
+  //   OrderApi.getOrderById({orderId: orderId})
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  // }, [])
+
   const order = {
     // Order
     orderId: "580",
