@@ -133,21 +133,4 @@ export default class UsersDAO {
             return;
         }
     }
-
-    static async getLikes(userId) {
-        let query;
-        query = {"_id":ObjectId(userId)};
-
-        let cursor;
-        try {
-            const user = await users.findOne(query);
-            const likesList = user.likes;
-            const totalNumLikes = likesList.length;
-            return { likesList, totalNumLikes };
-        }
-        catch (e) {
-            console.error(`Unable to issue find command, ${e}`);
-            return { likesList: [], totalNumLikes: 0 };
-        }
-    }
 }
