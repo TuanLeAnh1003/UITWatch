@@ -7,9 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Product from '../../../Components/Product';
 import ProductApi from '../../../Apis/ProductApi';
-import { useParams } from 'react-router-dom'
+import UserApi from '../../../Apis/UserApi';
+import { useParams, Link } from 'react-router-dom'
 
 function ProductDetail({brand, type}) {
+  const userId = localStorage.getItem("userId")
+  const [product, setProduct] = useState() 
 
   const fetures = ["Thương hiệu", "Đường kính mặt", "Chống nước", "Chất liệu mặt", "Năng lượng sử dụng", "Dự trữ năng lượng", "Chất liệu dây", "Chất liệu vỏ", "Khóa", "Xuất xứ", "Chế độ bảo hành"];
   const figures = ["Rolex", "36mm", "100m", "Chất liệu mặt", "Automatic (Cơ tự động)", "55 giờ", "Vàng hồng 18k và thép", "Vàng hồng 18k và thép", "Crownclasp", "Thụy Sĩ", "5 năm"];
@@ -177,6 +180,35 @@ function ProductDetail({brand, type}) {
   const [isLiked, setIsLiked] = useState(false);
   const handleLikeButton = () => {
     setIsLiked(!isLiked);
+    // if (isLiked) {
+    //   UserApi.likeProduct({
+    //     userId: userId,
+    //     productId: productId
+    //   })
+    //   .then((res) => {
+    //     console.log(res)
+    //   })
+    // } else {
+    //   UserApi.removeLikeProduct({
+    //     userId: userId,
+    //     productId: productId
+    //   })
+    //   .then((res) => {
+    //     console.log(res)
+    //   })
+    // }
+  }
+
+  const handleAddToCart = () => {
+    UserApi.addToCart({
+      userId: userId,
+      productId: productId,
+      quantity: productCount
+    })
+    .then((res) => {
+      console.log(res);
+      alert('Thêm sản phẩm vào giỏ hàng thành công!!!')
+    })
   }
 
   const { productId } = useParams()
@@ -192,6 +224,7 @@ function ProductDetail({brand, type}) {
   //   ProductApi.getProductById({productId: productId})
   //     .then((res) => {
   //       console.log(res);
+  //       setProduct(res);
   //     })
   // }, [])
 
@@ -260,13 +293,13 @@ function ProductDetail({brand, type}) {
 
           <div className="pro-detail__buttons">
             <div className="add-to-cart">
-              <button>THÊM VÀO GIỎ HÀNG</button>
+              <button onClick={handleAddToCart}>THÊM VÀO GIỎ HÀNG</button>
               <button onClick={handleLikeButton}>
                 {isLiked ? <FontAwesomeIcon icon={solid('heart')} /> : <FontAwesomeIcon icon={regular('heart')} />}
               </button>
             </div>
 
-            <button>THANH TOÁN</button>
+            <Link to="/payment">THANH TOÁN</Link>
           </div>
         </div>
       </div>

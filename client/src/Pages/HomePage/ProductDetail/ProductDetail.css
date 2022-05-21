@@ -155,6 +155,27 @@
   border: none;
 }
 
+.pro-detail__more > .pro-detail__buttons > a {
+  padding: 10px 20px;
+  font-size: 25px;
+  background-color: #B4624A;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 100%;
+  margin-left: 200px;
+  text-decoration: none;
+}
+
+.pro-detail__buttons {
+  margin-bottom: 50px;
+}
+
+.pro-detail__more > .pro-detail__buttons > a:hover {
+  background-color: #bb7c69;
+}
+
 .pro-detail__more > .pro-detail__buttons button:hover {
   cursor: pointer;
 }
