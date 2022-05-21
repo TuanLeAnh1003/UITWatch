@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export default class UsersController {
     static async apiGetUsers(req, res, next) {
-        const likesPerPage = req.query.likesPerPage ? parseInt(req.query.likesPerPage) : 20;
+        const usersPerPage = req.query.usersPerPage ? parseInt(req.query.usersPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
         if (req.query.role) {
@@ -13,18 +13,18 @@ export default class UsersController {
         else if (req.query.name) {
             filters.name = req.query.name;
         }
-        const { LikesList, totalNumLikes } = await UsersDAO.getUsers({
+        const { usersList, totalNumUsers } = await UsersDAO.getUsers({
             filters, page,
-            likesPerPage
+            usersPerPage
         });
         let response = {
-            users: LikesList,
+            users: usersList,
             page: page,
             filters: filters,
-            entries_per_page: likesPerPage,
-            total_results: totalNumLikes,
+            entries_per_page: usersPerPage,
+            total_results: totalNumUsers
         };
-        res.json(response);
+        res.json(usersList);
     }
 
     static async apiCreateUser(req, res, next) {
@@ -151,21 +151,5 @@ export default class UsersController {
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
-    }
-
-    static async apiGetLikedProducts(req, res, next) { 
-        const userId = req.body.userId;
-
-        const { LikesList, totalNumLikes } = await UsersDAO.getLikes({
-            userId
-        });
-        let response = {
-            likes: LikesList,
-            page: page,
-            userId,
-            entries_per_page: likesPerPage,
-            total_results: totalNumLikes
-        };
-        res.json(LikesList);
     }
 }
