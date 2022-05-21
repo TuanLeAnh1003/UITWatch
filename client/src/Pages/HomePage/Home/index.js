@@ -19,6 +19,8 @@ import newsItemImg3 from './../../../Assets/Images/news-item-3.svg';
 import newsItemImg4 from './../../../Assets/Images/news-item-4.svg';
 import NewsItem from '../../../Components/NewsItem';
 import poster from './../../../Assets/Images/image 2.png';
+import ProductApi from '../../../Apis/ProductApi';
+import NewsApi from '../../../Apis/ProductApi';
 
 const productList = [{
   img: pro1,
@@ -124,6 +126,20 @@ function Home() {
 
   const move = useRef();
   const product = useRef()
+
+  useEffect(() => {
+    ProductApi.getAll()
+      .then((res) => {
+        console.log(res);
+      })
+  }, [])
+
+  useEffect(() => {
+    NewsApi.getAll()
+      .then((res) => {
+        console.log(res)
+      })
+  }, [])
 
   useEffect(() =>{
     // console.log(Math.floor(move.current.childNodes.length/6));

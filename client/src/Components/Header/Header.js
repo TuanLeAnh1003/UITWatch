@@ -11,6 +11,8 @@ import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import AdminSignIn from "../AdminSignIn/AdminSignIn";
 import { Link } from "react-router-dom";
+import { actions, useStore } from '../../Store';
+
 
 function Header() {
   const [isSignInShowed, setIsSignInShowed] = useState(false);
@@ -53,12 +55,20 @@ function Header() {
     setIsAdminSignInShowed(a);
   };
 
+
+  const [searchInput, setSearchInput] = useState("");
+  const [state, dispatch] = useStore();
+
+  const handleSearchInput = () => {
+    dispatch(actions.getSearchInput(searchInput));
+  }
+
   return (
     <div className='header'>
       <div className='header-first'>
         <div className='header-first__search'>
-          <FontAwesomeIcon icon={solid("magnifying-glass")} />
-          <input type='text' placeholder='Tìm sản phẩm...' />
+          <Link to="/search" style={{textDecoration: "none", color: "#fff"}}><FontAwesomeIcon icon={solid("magnifying-glass")} onClick={handleSearchInput} /></Link>
+          <input type='text' placeholder='Tìm sản phẩm...' onChange={e => setSearchInput(e.target.value)}/>
         </div>
 
         <div className='header-first__more'>
@@ -96,7 +106,7 @@ function Header() {
         <Link to='/' className='header-second__logo'>
           <img src={watch} alt='watch' />
           <div>
-            <h1>UITWatch</h1>
+            <h2>UITWatch</h2>
             <span>SINCE 2021</span>
           </div>
         </Link>
@@ -124,8 +134,8 @@ function Header() {
         hideNavMobile && 
         <div className='header-mobile__nav-wrapper'>
           <Link to='/' className='header-second__logo-2'>
-          <img src={watch} alt='watch' />
-        </Link>
+            <img src={watch} alt='watch' />
+          </Link>
           <ul className='header-mobile__nav' onClick={() => {setHideOverlay(false); setHideNavMobile(false)}}>
             <Link to=''>GIỚI THIỆU</Link>
             <Link to='/sale'>ĐỒNG HỒ</Link>
@@ -143,11 +153,11 @@ function Header() {
       }
 
 
-      <div className='header-third'>
+      {/* <div className='header-third'>
         <FontAwesomeIcon icon={solid("angle-left")} />
         <h2>FREE SHIP VỚI HÓA ĐƠN TỪ 800K</h2>
         <FontAwesomeIcon icon={solid("angle-right")} />
-      </div>
+      </div> */}
 
       {isSignInShowed && (
         <SignIn

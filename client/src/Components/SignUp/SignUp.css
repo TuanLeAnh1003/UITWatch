@@ -66,6 +66,13 @@
   font-size: 25px;
 }
 
+.signUp_form > .signUp_form-name {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.signUp_form > .signUp_form-name > input,
 .signUp_form > input {
   width: 350px;
   height: 40px;
@@ -77,6 +84,11 @@
   outline: none;
 }
 
+.signUp_form > .signUp_form-name > input {
+  width: 45%;
+}
+
+.signUp_form > .signUp_form-name > input::placeholder,
 .signUp_form > input::placeholder {
   color: rgba(255, 255, 255, 0.56);
 }
