@@ -1,5 +1,6 @@
 import mongodb from "mongodb";
 const ObjectId = mongodb.ObjectId;
+import bcrypt from 'bcrypt';
 
 let users;
 
@@ -117,20 +118,42 @@ export default class ProductsDAO {
         }
     }
 
-    static async checkSignIn(email, password) {
+    static async checkLogIn(email, password) {
         let query;
         query = { 'email': email };
 
         let user;
         try {
             user = await users.findOne(query);
-            if(!user) return;
-            if(user.password==password)
-            return { user };
+            
+            const validPassword = await bcrypt.compare(
+                password,
+                user.password
+            );
+            
+            return {user, validPassword}
         }
         catch (e) {
-            console.error(`Unable to run command, ${e}`);
-            return;
+            res.status(500).json(e);
+        }
+    }
+
+    static async register(firstName, lastName, email, phoneNumber, password) {
+        let query;
+        query = {
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email,
+            'phoneNumber': phoneNumber,
+            'password': password,
+            'role': 'user'
+        }
+        let user;
+        try {
+            user = await users.insertOne(query);
+            return user;
+        } catch (e) {
+            return e;
         }
     }
 

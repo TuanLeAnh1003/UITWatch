@@ -4,16 +4,16 @@ import axiosInstance from "./axiosInstance";
 //   return await axiosInstance.post("/login", data);
 // };
 const register = async (data) => {
-  return await axiosInstance.post("api/v1/users", data);
+  return await axiosInstance.post("users", data);
 }
 
 const login = async (data) => {
-  return await axiosInstance.post("/api/v1/users/login", data)
+  return await axiosInstance.post("users/login", data)
 }
 
-// const getMe = async (data) => {
-//   return await axiosInstance.get(`/users/getMe/${data.userId}`)
-// }
+const getMe = async (data) => {
+  return await axiosInstance.get(`/users/getMe/${data.userId}`)
+}
 
 // const updateUser = async (data) => {
 //   console.log(data);
@@ -27,7 +27,7 @@ const login = async (data) => {
 export default {
   login,
   register,
-  // getMe,
+  getMe,
   // updateUser,
   // getAll
 }

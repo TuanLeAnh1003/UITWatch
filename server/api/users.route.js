@@ -1,6 +1,7 @@
 import express from 'express';
 import UsersController from './users.controller.js';
 import CartsController from './carts.controller.js';
+import middlewareController from './middleware.controller.js';
 
 const router = express.Router();
 
@@ -15,7 +16,10 @@ router
     .route('/id/:id').get(UsersController.apiGetUserById);
 
 router
-    .route('/login').get(UsersController.apiSignIn);
+    .route('/login').post(UsersController.apiLogIn);
+
+router
+    .route('/register').post(UsersController.apiRegister);
 
 router
     .route('/liked_products').get(UsersController.apiGetLikedProducts);

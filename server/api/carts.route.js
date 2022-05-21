@@ -6,7 +6,7 @@ const router = express.Router();
 router
     .route('/')
     .get(CartsController.apiGetCarts)
-    .post(CartsController.apiCreateCart)
+    // .post(CartsController.apiCreateCart)
     .put(CartsController.apiUpdateCart)
     .delete(CartsController.apiRemoveCart);
 

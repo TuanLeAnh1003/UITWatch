@@ -7,7 +7,8 @@ import Logo from '../../Assets/Images/logo.png';
 import Facebook from '../../Assets/Images/SignIn_fb.png';
 import Google from '../../Assets/Images/SignIn_gg+.png';
 import UserApi from '../../Apis/UserApi';
-
+// import SweetAlert from 'sweetalert2-react';
+import Swal from "sweetalert2";
 
 function SignIn({handleShowSignIn1, handleShowSignUp1}) {
   const [show, setShow] = useState(false);
@@ -35,7 +36,17 @@ function SignIn({handleShowSignIn1, handleShowSignUp1}) {
         email: email,
         password: password
       })
-      .then(data => console.log("Đăng nhập thành công!"))
+      .then(data => {
+        console.log(data);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Đăng nhập thành công',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        handleExitSignIn();
+      })
       .catch(err => console.log("Đăng nhập thát bại!"))
     }
   }
