@@ -9,7 +9,7 @@ export default class CartsDAO {
             return;
         }
         try {
-            carts = await conn.db(process.env.UITWATCHES_NS).collection('carts');
+            carts = await conn.db(process.env.UITWATCHES_NS).collection('users');
         }
         catch (e) {
             console.error(`unable to connect in CartsDAO: ${e}`);
@@ -47,13 +47,9 @@ export default class CartsDAO {
     static async createCart(userId, productId, quantity) {
         try {
             const cartDoc = {
-                userId,
                 productId,
                 quantity
             }
-            for (let p in cartDoc)
-                if (cartDoc[p] == null)
-                    delete cartDoc[p];
             return await carts.insertOne(cartDoc);
         }
         catch (e) {

@@ -43,17 +43,15 @@ export default class ProductsDAO {
         }
     }
 
-    static async createUser(password, firstName, lastName, birthday, phoneNumber, email, address, role) {
+    static async createUser(password, firstName, lastName, phoneNumber, email) {
         try {
             const userDoc = {
                 password,
                 firstName,
                 lastName,
-                birthday,
                 phoneNumber,
                 email,
-                address,
-                role
+                role:"user"
             }
             for (let p in userDoc)
                 if (userDoc[p] == null)
@@ -136,15 +134,15 @@ export default class ProductsDAO {
         }
     }
 
-    static async getLikes(userId, page, likesPerPage) {
+    static async getLikes(userId) {
         let query;
-        query = {userId};
+        query = {"_id":ObjectId(userId)};
 
         let cursor;
         try {
-            cursor = await users.find(query).limit(likesPerPage).skip(likesPerPage * page);
-            const likesList = await cursor.toArray();
-            const totalNumLikes = await users.countDocuments(query);
+            const user = await users.findOne(query);
+            const likesList = user.likes;
+            const totalNumLikes = likesList.length;
             return { likesList, totalNumLikes };
         }
         catch (e) {

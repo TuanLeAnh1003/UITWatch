@@ -25,7 +25,7 @@ export default class CartsController {
         res.json(response);
     }
 
-    static async apiCreateCart(req, res, next) {
+    static async apiAddToCart(req, res, next) {
         try {
             const userId = req.body.userId;
             const productId = req.body.productId;

@@ -16,7 +16,7 @@ async function main() {
     const client = new
         mongodb.MongoClient(process.env.UITWATCHES_DB_URI);
 
-    const port = process.env.PORT || 8000;
+    const port = process.env.PORT || 5000;
 
     try {
         await client.connect();

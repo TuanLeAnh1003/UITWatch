@@ -5,9 +5,15 @@ export default class OrdersController {
         const ordersPerPage = req.query.ordersPerPage ? parseInt(req.query.ordersPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
-        if (req.query.user) {
-            filters.user = req.query.user;
+        if (req.body.orderId) {
+            filters.orderId = req.body.orderId;
+            filters.phoneNumber = req.body.phoneNumber;
+            const order = await OrdersDAO.getOrders({
+                filters
+            });
+            res.json(order);
         }
+        else {
         const { ordersList, totalNumOrders } = await OrdersDAO.getOrders({
             filters, page,
             ordersPerPage
@@ -19,7 +25,8 @@ export default class OrdersController {
             entries_per_page: ordersPerPage,
             total_results: totalNumOrders,
         };
-        res.json(response);
+        res.json(ordersList);
+    }
     }
 
     static async apiCreateOrder(req, res, next) {
