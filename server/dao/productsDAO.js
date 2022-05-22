@@ -64,6 +64,7 @@ export default class ProductsDAO {
             for (let p in productDoc.type)
                 if (productDoc.type[p] == null)
                     delete productDoc.type[p];
+            if (Object.keys(productDoc.type).length === 0) delete productDoc.type;
             return await products.insertOne(productDoc);
         }
         catch (e) {
