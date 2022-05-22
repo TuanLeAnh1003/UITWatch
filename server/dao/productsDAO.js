@@ -25,11 +25,12 @@ export default class ProductsDAO {
         if (filters) {
             if ("name" in filters) {
                 query = { $text: { $search: filters['name'] } };
-            } else if ("status" in filters) {
-                query = { "status": { $eq: filters['status'] } }
+            }
+            if ("type" in filters) {
+                if(query) Object.assign(query, filters["type"]);
+                else query = filters["type"];
             }
         }
-
         let cursor;
         try {
             cursor = await products.find(query).limit(productsPerPage).skip(productsPerPage * page);

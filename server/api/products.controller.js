@@ -5,23 +5,49 @@ export default class ProductsController {
         const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
-        if (req.query.status) {
-            filters.status = req.query.status;
-        }
-        else if (req.query.name) {
+        if (req.query.name) {
             filters.name = req.query.name;
         }
+        filters.type={};
+        if (req.body.brand)
+            filters.type["type.brand"] = req.body.brand;
+
+        if (req.body.albert)
+            filters.type["type.albert"] = req.body.albert;
+
+        if (req.body.priceRange)
+            filters.type["type.priceRange"] = req.body.priceRange;
+
+        if (req.body.glass)
+            filters.type["type.glass"] = req.body.glass;
+
+        if (req.body.energyCore)
+            filters.type["type.energyCore"] = req.body.energyCore;
+
+        if (req.body.interfaceColor)
+            filters.type["type.interfaceColor"] = req.body.interfaceColor;
+
+        if (req.body.caseColor)
+            filters.type["type.caseColor"] = req.body.caseColor;
+
+        if (req.body.shape)
+            filters.type["type.shape"] = req.body.shape;
+
+        if (req.body.size)
+            filters.type["type.size"] = req.body.size;
+
+        if (req.body.waterRessistance)
+            filters.type["type.waterRessistance"] = req.body.waterRessistance;
+
+        if (req.body.feature)
+            filters.type["type.feature"] = req.body.feature;
+
+        if (Object.keys(filters.type).length === 0) delete filters.type;
+
         const { productsList, totalNumProducts } = await ProductsDAO.getProducts({
             filters, page,
             productsPerPage
         });
-        let response = {
-            products: productsList,
-            page: page,
-            filters: filters,
-            entries_per_page: productsPerPage,
-            total_results: totalNumProducts,
-        };
         res.json(productsList);
     }
 
