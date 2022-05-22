@@ -97,21 +97,28 @@ export default class ProductsController {
     static async apiUpdateProduct(req, res, next) {
         try {
             const productId = req.body.product_id;
-            const name = req.body.name;
-            const image = req.body.image;
+            const name = req.body.name || null;
+            const image = req.body.image || null;
             const type = {
-                brand: req.body.brand,
-                material: req.body.material,
-                color: req.body.color,
-                shape: req.body.shape
+                brand: req.body.type.brand || null,
+	            albert: req.body.type.albert || null,
+	            priceRange: req.body.type.priceRange || null,
+	            glass: req.body.type.glass || null,
+	            energyCore: req.body.type.energyCore || null,
+            	interfaceColor: req.body.type.interfaceColor || null,
+            	caseColor: req.body.type.caseColor || null,
+            	shape: req.body.type.shape || null,
+            	size: req.body.type.size || null,
+            	waterRessistance: req.body.type.waterRessistance || null,
+            	feature: req.body.type.feature || null
             };
-            const price = req.body.price;
-            const company = req.body.company;
-            const productDate = Date.parse(req.body.product_date);
-            const description = req.body.description;
-            const quantity = req.body.quantity;
-            const status = req.body.status;
-            const discount = req.body.discount;
+            const price = req.body.price || null;
+            const company = req.body.company || null;
+            const productDate = Date.parse(req.body.product_date) || null;
+            const description = req.body.description || null;
+            const quantity = req.body.quantity || null;
+            const status = req.body.status || null;
+            const discount = req.body.discount || null;
 
             const ProductResponse = await ProductsDAO.updateProduct(
                 productId,
