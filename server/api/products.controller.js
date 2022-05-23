@@ -36,8 +36,8 @@ export default class ProductsController {
         if (req.body.size)
             filters.type["type.size"] = req.body.size;
 
-        if (req.body.waterRessistance)
-            filters.type["type.waterRessistance"] = req.body.waterRessistance;
+        if (req.body.waterRessitance)
+            filters.type["type.waterRessitance"] = req.body.waterRessitance;
 
         if (req.body.feature)
             filters.type["type.feature"] = req.body.feature;
@@ -65,7 +65,7 @@ export default class ProductsController {
             	caseColor: req.body.type.caseColor || null,
             	shape: req.body.type.shape || null,
             	size: req.body.type.size || null,
-            	waterRessistance: req.body.type.waterRessistance || null,
+            	waterRessitance: req.body.type.waterRessitance || null,
             	feature: req.body.type.feature || null
             };
             const price = req.body.price || null;
@@ -81,7 +81,6 @@ export default class ProductsController {
                 type,
                 price,
                 company,
-                productDate,
                 description,
                 quantity,
                 status,
@@ -108,7 +107,7 @@ export default class ProductsController {
             	caseColor: req.body.type.caseColor || null,
             	shape: req.body.type.shape || null,
             	size: req.body.type.size || null,
-            	waterRessistance: req.body.type.waterRessistance || null,
+            	waterRessitance: req.body.type.waterRessitance || null,
             	feature: req.body.type.feature || null
             };
             const price = req.body.price || null;
