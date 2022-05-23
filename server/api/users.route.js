@@ -23,7 +23,13 @@ router
     .route('/register').post(UsersController.apiRegister);
 
 router
-    .route('/liked_products').get(LikesController.apiGetLikedProducts);
+    .route('/likedProducts')
+    .get(LikesController.apiGetLikedProducts)
+    .put(LikesController.apiAddToLike);
+
+router
+    .route('/unlikeProducts')
+    .put(LikesController.apiUnlike);
 
 router
     .route('/carts')
