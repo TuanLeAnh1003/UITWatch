@@ -29,6 +29,7 @@ function Admin() {
         <div className='admin__col'>
           <div>
             <Routes>
+              <Route path='/' element={<AdminProfile />} />
               <Route path='statistic' element={<Statistic />} />
               <Route path='settings' element={<SettingOptions />} />
               <Route path='admin-profile' element={<AdminProfile />} />

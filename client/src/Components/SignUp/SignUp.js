@@ -5,6 +5,7 @@ import SignInImg from '../../Assets/Images/Rectangle 383.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import UserApi from '../../Apis/UserApi';
+import Swal from "sweetalert2";
 
 function SignUp({handleShowSignUp2, handleShowSignIn2}) {
 
@@ -16,7 +17,7 @@ function SignUp({handleShowSignUp2, handleShowSignIn2}) {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = () => {
-    if(lastName === "" || firstName === "" || email === "" || phoneNumber === "" || phoneNumber === "" || password === "") {
+    if(lastName === "" || firstName === "" || email === "" || phoneNumber === "" || password === "") {
       alert("Còn trường dữ liệu chưa được nhập!")
     } else if(confirmPassword !== password) {
       alert("Mật khẩu xác nhận sai!");
@@ -27,9 +28,27 @@ function SignUp({handleShowSignUp2, handleShowSignIn2}) {
         email: email,
         phoneNumber: phoneNumber,
         password: password,
-        confirmPassword: confirmPassword
       })
-      .then(data => console.log('Đăng kí thành công!'))
+      .then(data => {
+        console.log(data);
+        if(data.data.status !== "Email đã được đăng kí!") {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Đăng kí thành công',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          handleExitSignUp();
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: data.data.status,
+          })
+        }
+        
+      })
       .catch(err => console.log("Lỗi hệ thống!"))
     }
     
@@ -58,10 +77,10 @@ function SignUp({handleShowSignUp2, handleShowSignIn2}) {
             <input type="text" placeholder="Tên (*)" name="firstName" onChange={e => setFirstName(e.target.value)}/>
           </div>
           {/*<input type="date" name="dob" />*/}
-          <input type="text" placeholder="Email (*)" name="dob" onChange={e => setEmail(e.target.value)}/>
-          <input type="email" placeholder="Số điện thoại (*)" name="userEmail" onChange={e => setPhoneNumber(e.target.value)}/>
-          <input type="password" placeholder="Mật khẩu (*)" name="userPassword" onChange={e => setPassword(e.target.value)} />
-          <input type="password" placeholder="Nhập lại mật khẩu (*)" name="userPasswordAgain" onChange={e => setConfirmPassword(e.target.value)}/>
+          <input type="email" placeholder="Email (*)" name="email" onChange={e => setEmail(e.target.value)}/>
+          <input type="text" placeholder="Số điện thoại (*)" name="phone" onChange={e => setPhoneNumber(e.target.value)}/>
+          <input type="password" placeholder="Mật khẩu (*)" name="password" onChange={e => setPassword(e.target.value)} />
+          <input type="password" placeholder="Nhập lại mật khẩu (*)" name="confirmPassword" onChange={e => setConfirmPassword(e.target.value)}/>
           <div className="signUp_check">
             <input type="checkbox" name="remember" />
             <label htmlFor="remember">Khách hành đồng ý với các <a href="#">điều khoản</a> thành viên của UITWatch</label>

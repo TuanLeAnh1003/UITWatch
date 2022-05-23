@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Account.css'
 import DuyAnAvatar from '../../../Assets/Images/DuyAnAvatar.jpg'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import UserApi from '../../../Apis/UserApi'
+import { useNavigate } from 'react-router-dom';
 
 function Account() {
-  var user = {
-    firstName: "Duy An",
-    lastName: "Nguyễn",
-    email: "nduyan1601@gmail.com",
-    phoneNumber: "0938269974",
-    gender: "male",
-    birthday: new Date("2001-01-16").toLocaleDateString('pt-PT'),
-    avatar: DuyAnAvatar,
-  }
+  // var user = {
+  //   firstName: "Duy An",
+  //   lastName: "Nguyễn",
+  //   email: "nduyan1601@gmail.com",
+  //   phoneNumber: "0938269974",
+  //   gender: "male",
+  //   birthday: new Date("2001-01-16").toLocaleDateString('pt-PT'),
+  //   avatar: DuyAnAvatar,
+  // }
 
   const [selectedImage, setSelectedImage] = useState(null)
 
@@ -21,14 +23,36 @@ function Account() {
 
   }
 
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    UserApi.getMe({id: localStorage.getItem("userid")})
+    .then(data => setUser({...data}));
+  }, [])
+
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userid");  
+    localStorage.removeItem("role"); 
+    navigate('/');
+    window.location.reload();
+  }
+
+
   return (
     <div className="account">
       <div className="account-nav">
-        <div className="account-nav-name">{user.firstName}</div>
+        <div className="account-nav-name">{user.lastName} {user.firstName}</div>
         <div className="account-nav-update">
           <FontAwesomeIcon className="account-nav-update--icon" icon={solid("pen")} />
           <div className="account-nav-update--title">Sửa hồ sơ</div>
         </div>
+        <div className="account-nav-update">
+          <FontAwesomeIcon className="account-nav-update--icon" icon={solid("arrow-right-from-bracket")} />
+          <div className="account-nav-update--title logout" onClick={handleLogOut}>Đăng xuất</div>
+        </div>  
       </div>
 
       <form className="account-info">

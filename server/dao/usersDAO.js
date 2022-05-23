@@ -134,7 +134,7 @@ export default class UsersDAO {
             return {user, validPassword}
         }
         catch (e) {
-            res.status(500).json(e);
+            return e;
         }
     }
 
@@ -150,8 +150,14 @@ export default class UsersDAO {
         }
         let user;
         try {
-            user = await users.insertOne(query);
-            return user;
+            user = await users.findOne({'email': email})
+            if(user) {
+                return {status: "Email đã được đăng kí!"}
+            } else {
+                user = await users.insertOne(query);
+                return user;
+            }
+            
         } catch (e) {
             return e;
         }

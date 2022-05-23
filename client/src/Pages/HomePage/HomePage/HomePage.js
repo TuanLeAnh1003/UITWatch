@@ -21,6 +21,7 @@ import About from '../About';
 import Consult from '../Consult';
 import Sale from '../Sale';
 import Account from '../Account';
+import PrivateRoute from '../../../Routes/PrivateRoute';
 
 function HomePage() {
   return (
@@ -43,7 +44,7 @@ function HomePage() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/liked-products" element={<LikedProduct />} />
       <Route path="/policy" element={<Policy />} />
-      <Route path="/account/:id" element={<Account />} />
+      <Route path="/account/:id" element={<PrivateRoute><Account /></PrivateRoute>} />
       <Route path="/about" element={<About />} />
       <Route path="/consult" element={<Consult />} />
     </Routes>

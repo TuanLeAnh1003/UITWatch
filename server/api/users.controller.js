@@ -111,16 +111,16 @@ export default class UsersController {
         try {
             const email = req.body.email;
             const password = req.body.password;
-            console.log(password);
+
             const UserResponse = await UsersDAO.checkLogIn(
                 email,
                 password
             );
             if(!UserResponse.user) {
-                res.status(404).json("Wrong email!")
+                res.status(404).json("Không tìm thấy email!")
             }
             if(!UserResponse.validPassword) {
-                res.status(404).json("Wrong password!");
+                res.status(404).json("Sai mật khẩu!");
             }
             if (UserResponse.user && UserResponse.validPassword) {
                 const accessToken = jwt.sign(UserResponse.user, process.env.ACCESS_TOKEN);
@@ -140,6 +140,7 @@ export default class UsersController {
             const salt = await bcrypt.genSalt(10);
             const password = await bcrypt.hash(req.body.password, salt);
 
+
             const UserResponse = await UsersDAO.register(
                 firstName,
                 lastName,
@@ -147,7 +148,7 @@ export default class UsersController {
                 phoneNumber,
                 password
             );
-            res.status(200).json(UserResponse);
+            res.status(200).json({data: UserResponse});
         } catch (e) {
             res.status(500).json({ error: e.message });
         }

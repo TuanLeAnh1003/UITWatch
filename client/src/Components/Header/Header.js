@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +12,8 @@ import SignUp from "../SignUp/SignUp";
 import AdminSignIn from "../AdminSignIn/AdminSignIn";
 import { Link } from "react-router-dom";
 import { actions, useStore } from '../../Store';
-
+import autoAvatar from '../../Assets/Images/avatarclone.jpg';
+import UserApi from "../../Apis/UserApi";
 
 function Header() {
   const [isSignInShowed, setIsSignInShowed] = useState(false);
@@ -57,11 +58,17 @@ function Header() {
 
 
   const [searchInput, setSearchInput] = useState("");
-  const [state, dispatch] = useStore();
+  const [state, dispatch, isAuthen] = useStore();
+  const [user, setUser] = useState({})
 
   const handleSearchInput = () => {
     dispatch(actions.getSearchInput(searchInput));
   }
+
+  useEffect(() => {
+    UserApi.getMe({id: localStorage.getItem("userid")})
+    .then(data => setUser({...data}));
+  }, [])
 
   return (
     <div className='header'>
@@ -82,21 +89,16 @@ function Header() {
             <Link to='/liked-products'>Yêu thích</Link>
           </div>
 
-          <div
-            className='header-first__more-item header-first__more-search'
-            onClick={handleShowSignIn}
-          >
-            <FontAwesomeIcon icon={solid("user")} />
-            <span>Đăng nhập</span>
-          </div>
-
-          <div
-            className='header-first__more-item header-first__more-user'
-            onClick={handleShowAdminSignIn}
-          >
-            <FontAwesomeIcon icon={solid("circle-user")} />
-            <span>Quản lí</span>
-          </div>
+          {isAuthen() 
+            ?<Link to={localStorage.getItem("role") === "user" ? `account/${user._id}` : `/admin`} className="header-first__more-item header-first__more-search user-button">
+              <p>Chào, {user.lastName} {user.firstName}</p>
+              <img className="user-avatar" src={user.image ? user.image : autoAvatar} />
+            </Link>
+            :<div className="header-first__more-item header-first__more-search" onClick={handleShowSignIn}>
+              <FontAwesomeIcon icon={solid('user')} />
+              <span>Đăng nhập</span>
+            </div>
+          }
         </div>
       </div>
 

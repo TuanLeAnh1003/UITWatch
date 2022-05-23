@@ -8,7 +8,10 @@ import Facebook from '../../Assets/Images/SignIn_fb.png';
 import Google from '../../Assets/Images/SignIn_gg+.png';
 import UserApi from '../../Apis/UserApi';
 // import SweetAlert from 'sweetalert2-react';
+import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
+import { actions, useStore } from '../../Store';
+
 
 function SignIn({handleShowSignIn1, handleShowSignUp1}) {
   const [show, setShow] = useState(false);
@@ -28,6 +31,10 @@ function SignIn({handleShowSignIn1, handleShowSignUp1}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
 
+  const [state, dispatch] = useStore();
+
+  const navigate = useNavigate();
+
   const handleLogin = () => {
     if(email === "" || password === "") {
       alert("Email hoặc pasword còn trống!");
@@ -37,17 +44,45 @@ function SignIn({handleShowSignIn1, handleShowSignUp1}) {
         password: password
       })
       .then(data => {
-        console.log(data);
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Đăng nhập thành công',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        handleExitSignIn();
+        console.log(data.user.role);
+        dispatch(actions.login(data.accessToken));
+        localStorage.setItem("token", data.accessToken)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Đăng nhập thành công',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          handleExitSignIn();
+        if(data.user.role !== "user") {
+          navigate("/admin")
+        }
+        window.location.reload();
       })
-      .catch(err => console.log("Đăng nhập thát bại!"))
+      .catch(err => {
+        console.log(err.response);
+        if(err.response.data ===  "Không tìm thấy email!") {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
+          setEmail("");
+        } else if(err.response.data ===  "Sai mật khẩu!") {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
+          setPassword("")
+        } else {
+          Swal.fire({
+            icon: 'error',
+            text: "Lỗi hệ thống!",
+          })
+        }
+      })
     }
   }
 

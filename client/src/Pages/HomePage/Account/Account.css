@@ -13,15 +13,25 @@
   font-weight: bold;
   text-align: center;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .account-nav-update {
   display: flex;
-  width: 140px;
   margin: 0 auto;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: space-around;
   align-items: center;
+  padding: 10px 4px;
+}
+
+.account-nav-update:hover {
+  cursor: pointer;
+  background-color: #6c6867;
+  color: #fff
+}
+
+.account-nav-update:hover > .account-nav-update--icon {
+  color: #fff;
 }
 
 .account-nav-update--icon {

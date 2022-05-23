@@ -1,77 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Product from '../../../Components/Product'
 import RolexImg from './../../../Assets/Images/rolex-img.svg'
-import './Search.css'
+import './Search.css';
+import { actions, useStore } from '../../../Store';
+import ProductApi from '../../../Apis/ProductApi';
 
 function Search() {
-  const productList = [{
-    img: RolexImg,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }, {
-    img: RolexImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "165.000.000 VNĐ",
-    discount: "132.000.000 VNĐ"
-  }]
+
+  const [state, dispatch] = useStore();
+
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    ProductApi.getProducts(state.searchInput)
+    .then(data => setProductList([...data]))
+  }, [state.searchInput])
 
   return (
     <div className="search">
-      <div className="search-title">TÌM THẤY {productList.length} KẾT QUẢ CHO "{"Rolex"}"</div>
+      <div className="search-title">TÌM THẤY {productList.length} KẾT QUẢ CHO "{state.searchInput}"</div>
       <div className="search-cate">
         <div className="search-cate-product">
-          <input className="search-cate-product-input" type="checkbox" id="product" checked/>
+          <input className="search-cate-product-input" type="checkbox" id="product"/>
           <label className="search-cate-product-label">Sản phẩm</label>
         </div>
         <div className="search-cate-post">
@@ -83,9 +33,9 @@ function Search() {
       <div className="search-list">
         {
           productList.map((product, index) => (
-            <div className="search-list-item">
+            <div className="search-list-item" key={index}>
               <Product 
-                key={index} 
+                 
                 img={product.img}
                 name={product.name}
                 type={product.type}

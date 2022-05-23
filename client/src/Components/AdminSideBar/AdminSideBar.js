@@ -1,15 +1,25 @@
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import UserApi from '../../Apis/UserApi';
 import { Link } from 'react-router-dom';
 import './AdminSideBar.css';
+import autoAvatar from '../../Assets/Images/avatarclone.jpg';
 
 function AdminSideBar() {
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    UserApi.getMe({id: localStorage.getItem("userid")})
+    .then(data => setUser({...data}));
+  }, [])
+
   return (
     <div className="ad-sidebar">
       <div className="ad-sidebar__info">
-        <img src="" alt="avatar" />
-        <h4>Duy An</h4>
+        <img src={user.image ? user.image : autoAvatar} alt="avatar" />
+        <h4>{`${user.lastName} ${user.firstName}`}</h4>
       </div>
 
       <div className="ad-sidebar__items">

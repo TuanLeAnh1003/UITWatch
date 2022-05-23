@@ -1,11 +1,8 @@
 import express from 'express';
 import UsersController from './users.controller.js';
 import CartsController from './carts.controller.js';
-<<<<<<< HEAD
 import middlewareController from './middleware.controller.js';
-=======
 import LikesController from './likes.controller.js';
->>>>>>> Khoa
 
 const router = express.Router();
 
