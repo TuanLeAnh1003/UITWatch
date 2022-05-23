@@ -10,6 +10,7 @@ router
     .route('/')
     .get(UsersController.apiGetUsers)
     .put(UsersController.apiUpdateUser)
+    .post(UsersController.apiCreateUser)
     .delete(UsersController.apiRemoveUser);
 
 router
