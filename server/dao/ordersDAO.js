@@ -24,7 +24,6 @@ export default class OrdersDAO {
         let query;
         if (filters) {
             if ("orderId" in filters) {
-                query = { "_id": ObjectId(filters['orderId']), "user.phoneNumber": filters['phoneNumber'] };
                 let order;
                 try {
                     order = await orders.aggregate([{

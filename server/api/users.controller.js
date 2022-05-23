@@ -46,7 +46,7 @@ export default class UsersController {
             const userId = req.body.userId;
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
-            const birthday = Date.parse(req.body.birthday);
+            const birthday = req.body.birthday;
             const phoneNumber = req.body.phoneNumber;
             const email = req.body.email;
             const image = req.body.image

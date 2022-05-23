@@ -33,38 +33,33 @@ export default class LikesDAO {
                         from: 'products',
                         localField: 'likeProduct.productId',
                         foreignField: '_id',
-                        as: 'products'
+                        as: 'likeProducts'
                     }
-                }/*,
+                },
                 {
                     "$addFields": {
-                        "likeProduct": {
+                        "likeProducts": {
                             "$map": {
-                                "input": "$likeProduct",
+                                "input": "$likeProducts",
                                 "in": {
-                                    "$mergeObjects": [
-                                        "$$this",
-                                        {
-                                            "productId": {
-                                                "$arrayElemAt": [
-                                                    "$products",
-                                                    {
-                                                        "$indexOfArray": [
-                                                            "$products._id",
-                                                            "$$this.productId"
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    ]
+                                    productId: "$$this._id",
+                                    productName:"$$this.name"
                                 }
                             }
                         }
                     }
-                }*/
+                }
+                , {
+                    $unset: [
+                      "likeProduct"
+                    ]
+                  }
+                /*, { $match: { "_id": ObjectId(userId) } }*/
             ]).toArray();
-            return user;
+            console.log(user);
+            const totalNumLikes = user.likedProducts.lenght();
+            const LikesList = user;
+            return {LikesList, totalNumLikes};
             /*if (user) {
                 user = user[0];
                 user.likeProduct = user.likeProduct[0];
