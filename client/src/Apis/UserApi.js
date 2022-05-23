@@ -27,17 +27,14 @@ const filter = async (data) => {
   return await axiosInstance.get("/api/v1/users/filter", data)
 }
 
-// const getMe = async (data) => {
-//   return await axiosInstance.get(`/users/getMe/${data.userId}`)
-// }
 const getMe = async (data) => {
   return await axiosInstance.get(`/users/id/${data.id}`)
 }
 
-// const updateUser = async (data) => {
-//   console.log(data);
-//   return await axiosInstance.put("/users/", data)
-// }
+const updateUser = async (data) => {
+  console.log(data);
+  return await axiosInstance.put("/users/", data)
+}
 
 // const getAll = async (data) => {
 //   return await axiosInstance.get('/users/')
@@ -51,6 +48,6 @@ export default {
   addToCart,
   filter,
   getMe,
-  // updateUser,
+  updateUser,
   // getAll
 }

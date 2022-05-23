@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './Account.css'
-import DuyAnAvatar from '../../../Assets/Images/DuyAnAvatar.jpg'
+import DuyAnAvatar from '../../../Assets/Images/DuyAnAvatar.jpg';
+import autoAvatar from '../../../Assets/Images/avatarclone.jpg';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UserApi from '../../../Apis/UserApi'
 import { useNavigate } from 'react-router-dom';
+import  {storage}  from '../../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from "uuid";
 
 function Account() {
   // var user = {
@@ -17,11 +21,6 @@ function Account() {
   //   avatar: DuyAnAvatar,
   // }
 
-  const [selectedImage, setSelectedImage] = useState(null)
-
-  const handleSubmit = () => {
-
-  }
 
   const [user, setUser] = useState({});
 
@@ -40,6 +39,41 @@ function Account() {
     window.location.reload();
   }
 
+  const [image, setImage] = useState(null);
+  // const [curentImage, setcurrentImage] = useState();
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [birthday, setBirthday] = useState("");
+
+  const handleSubmit = (e) => {
+    // console.log(document.querySelector("input[name: 'lastName']"))
+
+    e.preventDefault();
+    if (image == null) return;
+    const imageRef = ref(storage, `images/${image.name + v4()}`);
+    uploadBytes(imageRef, image).then(() => {
+      getDownloadURL(imageRef).then(data => {
+        UserApi.updateUser({
+          userId: localStorage.getItem("userid"),
+          lastName: lastName,
+          firstName: firstName,
+          email: email,
+          phoneNumber: phoneNumber,
+          birthday: birthday,
+          image: data
+        })
+        .then(data => {
+          UserApi.getMe({id: localStorage.getItem("userid")})
+          .then(data => setUser({...data}));
+          window.location.reload();
+        })
+      });
+    })    
+  }
+
+  // console.log("image: ", image)
 
   return (
     <div className="account">
@@ -62,19 +96,19 @@ function Account() {
           <div className="account-info-left">
             <div className="account-info-left-item">
               <label>Họ:</label>
-              <input type="text" placeholder={user.lastName} name="lastName"/>
+              <input type="text" placeholder={user.lastName} name="lastName" onChange={e => setLastName(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
             </div>
             <div className="account-info-left-item">
               <label>Tên:</label>
-              <input type="text" placeholder={user.firstName} name="firstName"/>
+              <input type="text" placeholder={user.firstName} name="firstName" onChange={e => setFirstName(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
             </div>
             <div className="account-info-left-item">
               <label>Email:</label>
-              <input type="email" placeholder={user.email} name="email"/>
+              <input type="email" placeholder={user.email} name="email" onChange={e => setEmail(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
             </div>
             <div className="account-info-left-item">
               <label>Số điện thoại:</label>
-              <input type="text" placeholder={user.phoneNumber} name="phoneNumber"/>
+              <input type="text" placeholder={user.phoneNumber} name="phoneNumber" onChange={e => setPhoneNumber(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
             </div>
             <div className="account-info-left-item">
               <label>Giới tính:</label>
@@ -92,19 +126,22 @@ function Account() {
                 placeholder={user.birthday} 
                 onBlur={e => e.target.type='text'} 
                 onFocus={e => e.target.type='date'}
+                onChange={e => setBirthday(e.target.value === "" ? e.target.placeholder : e.target.value)}
               />
             </div>
           </div>
 
           <div className="account-info-right">
-            {
+            {/*
               (selectedImage === null) ? (
                 <img className="account-info-right-image" src={user.avatar} alt="" />
               ) : (
                 <img className="account-info-right-image" src={window.URL.createObjectURL(selectedImage)} alt="" />
               )
-            }
-            <input type="file" name="Chọn ảnh" onChange={e => setSelectedImage(e.target.files[0])} />
+            */}
+            <img className="account-info-right-image" src={user.image ? user.image : autoAvatar} alt="" />
+
+            <input type="file" name="Chọn ảnh" onChange={e => setImage(e.target.files[0])}/>
           </div>
         </div>
         <input className="account-info-submit" type="submit" onClick={handleSubmit} value="LƯU"/>
