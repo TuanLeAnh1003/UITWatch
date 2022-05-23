@@ -27,27 +27,6 @@ export default class UsersController {
         res.json(usersList);
     }
 
-    static async apiCreateUser(req, res, next) {
-        try {
-            const password = req.body.password;
-            const firstName = req.body.firstName;
-            const lastName = req.body.lastName;
-            const phoneNumber = req.body.phoneNumber;
-            const email = req.body.email;
-
-            const UserResponse = await UsersDAO.createUser(
-                password,
-                firstName,
-                lastName,
-                phoneNumber,
-                email
-            );
-            res.json({ status: "success" });
-        } catch (e) {
-            res.status(500).json({ error: e.message });
-        }
-    }
-
     static async apiUpdateUser(req, res, next) {
         try {
             const userId = req.body.userId;

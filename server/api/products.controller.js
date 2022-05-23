@@ -70,7 +70,6 @@ export default class ProductsController {
             };
             const price = req.body.price || null;
             const company = req.body.company || null;
-            const productDate = Date.parse(req.body.product_date) || null;
             const description = req.body.description || null;
             const quantity = req.body.quantity || null;
             const status = req.body.status || null;

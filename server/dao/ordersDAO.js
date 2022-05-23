@@ -65,12 +65,12 @@ export default class OrdersDAO {
         }
     }
 
-    static async createOrder(userId, paymentId, shipmentId, orderDate, totalPrice, state, address, note, items) {
+    static async createOrder(userId, paymentName, shipmentName, orderDate, totalPrice, state, address, note, items) {
         try {
             const orderDoc = {
                 userId: ObjectId(userId),
-                paymentId,
-                shipmentId,
+                paymentName,
+                shipmentName,
                 orderDate,
                 totalPrice,
                 state,

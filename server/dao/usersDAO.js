@@ -44,27 +44,6 @@ export default class UsersDAO {
         }
     }
 
-    static async createUser(password, firstName, lastName, phoneNumber, email) {
-        try {
-            const userDoc = {
-                password,
-                firstName,
-                lastName,
-                phoneNumber,
-                email,
-                role:"user"
-            }
-            for (let p in userDoc)
-                if (userDoc[p] == null)
-                    delete userDoc[p];
-            return await users.insertOne(userDoc);
-        }
-        catch (e) {
-            console.error(`unable to create user: ${e}`);
-            return { error: e };
-        }
-    }
-
     static async updateUser(userId, password, firstName, lastName, birthday, phoneNumber, email, address) {
         try {
             const userDoc = {

@@ -32,8 +32,8 @@ export default class OrdersController {
     static async apiCreateOrder(req, res, next) {
         try {
             const userId = req.body.userId;
-            const paymentId = req.body.paymentId;
-            const shipmentId = req.body.shipmentId;
+            const paymentName = req.body.paymentName;
+            const shipmentName = req.body.shipmentName;
             const orderDate = Date.parse(req.body.orderDate);
             const totalPrice = req.body.totalPrice;
             const state = "pending";
@@ -43,8 +43,8 @@ export default class OrdersController {
 
             const OrdersResponse = await OrdersDAO.createOrder(
                 userId,
-                paymentId,
-                shipmentId,
+                paymentName,
+                shipmentName,
                 orderDate,
                 totalPrice,
                 state,

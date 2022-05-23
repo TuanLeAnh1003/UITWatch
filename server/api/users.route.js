@@ -9,7 +9,6 @@ const router = express.Router();
 router
     .route('/')
     .get(UsersController.apiGetUsers)
-    .post(UsersController.apiCreateUser)
     .put(UsersController.apiUpdateUser)
     .delete(UsersController.apiRemoveUser);
 

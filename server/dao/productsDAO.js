@@ -44,19 +44,20 @@ export default class ProductsDAO {
         }
     }
 
-    static async createProduct(name, image, type, price, company, productDate, description, quantity, status, discount) {
+    static async createProduct(name, image, type, price, company, description, quantity, status, discount) {
         try {
+            let date = new Date();
             const productDoc = {
                 name,
                 image,
                 type,
                 price,
                 company,
-                productDate,
                 description,
                 quantity,
                 status,
-                discount
+                discount,
+                date
             }
             for (let p in productDoc)
                 if (productDoc[p] == null)
