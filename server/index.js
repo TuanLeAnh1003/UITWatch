@@ -5,6 +5,7 @@ import ProductsDAO from "./dao/productsDAO.js";
 import UsersDAO from "./dao/usersDAO.js";
 import OrdersDAO from "./dao/ordersDAO.js";
 import CartsDAO from "./dao/cartsDAO.js";
+import LikesDAO from "./dao/likesDAO.js";
 import RatingsDAO from "./dao/ratingsDAO.js";
 import NewsDAO from "./dao/newsDAO.js";
 
@@ -22,6 +23,7 @@ async function main() {
         await UsersDAO.injectDB(client);
         await OrdersDAO.injectDB(client);
         await CartsDAO.injectDB(client);
+        await LikesDAO.injectDB(client);
         await RatingsDAO.injectDB(client);
         await NewsDAO.injectDB(client);
 

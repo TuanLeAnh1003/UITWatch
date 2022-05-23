@@ -10,6 +10,7 @@ router
     .route('/')
     .get(UsersController.apiGetUsers)
     .put(UsersController.apiUpdateUser)
+    .post(UsersController.apiCreateUser)
     .delete(UsersController.apiRemoveUser);
 
 router
@@ -22,7 +23,13 @@ router
     .route('/register').post(UsersController.apiRegister);
 
 router
-    .route('/liked_products').get(LikesController.apiGetLikedProducts);
+    .route('/likedProducts')
+    .get(LikesController.apiGetLikedProducts)
+    .put(LikesController.apiAddToLike);
+
+router
+    .route('/unlikeProducts')
+    .put(LikesController.apiUnlike);
 
 router
     .route('/carts')

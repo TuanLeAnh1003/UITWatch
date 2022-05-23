@@ -17,14 +17,28 @@ export default class UsersController {
             filters, page,
             usersPerPage
         });
-        let response = {
-            users: usersList,
-            page: page,
-            filters: filters,
-            entries_per_page: usersPerPage,
-            total_results: totalNumUsers
-        };
         res.json(usersList);
+    }
+
+    static async apiCreateUser(req, res, next) {
+        try {
+            const firstName = req.body.firstName;
+            const lastName = req.body.lastName;
+            const password = req.body.password;
+            const email = req.body.email;
+            const role = req.body.role;
+
+            const UserResponse = await UsersDAO.createUser(
+                firstName,
+                lastName,
+                password,
+                email,
+                role
+            );
+            res.json({ status: "success" });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
     }
 
     static async apiUpdateUser(req, res, next) {

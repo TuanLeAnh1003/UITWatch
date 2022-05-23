@@ -8,11 +8,11 @@ router
     .get(ProductsController.apiGetProducts)
     .post(ProductsController.apiPostProduct)
     .put(ProductsController.apiUpdateProduct)
-    .delete(ProductsController.apiRemoveProduct);
 
 router
     .route('/:productId')
     .delete(ProductsController.apiRemoveProduct);
+    
 router
     .route('/id/:id').get(ProductsController.apiGetProductById);
 

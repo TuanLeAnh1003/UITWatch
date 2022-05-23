@@ -16,8 +16,66 @@ export default class LikesDAO {
     }
     
     static async getLikes(userId) {
-        let query;
-        query = {"_id":ObjectId(userId)};
+        
+        /*let query;
+        query = {"_id":ObjectId(userId)};*/
+
+        let user;
+        try {
+            user = await users.aggregate([
+                /*{
+                    "$addFields": {
+                        "likeProduct": { "$ifNull": ["$likeproduct", []] }
+                    }
+                },*/
+                {
+                    $lookup: {
+                        from: 'products',
+                        localField: 'likeProduct.productId',
+                        foreignField: '_id',
+                        as: 'products'
+                    }
+                }/*,
+                {
+                    "$addFields": {
+                        "likeProduct": {
+                            "$map": {
+                                "input": "$likeProduct",
+                                "in": {
+                                    "$mergeObjects": [
+                                        "$$this",
+                                        {
+                                            "productId": {
+                                                "$arrayElemAt": [
+                                                    "$products",
+                                                    {
+                                                        "$indexOfArray": [
+                                                            "$products._id",
+                                                            "$$this.productId"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }*/
+            ]).toArray();
+            return user;
+            /*if (user) {
+                user = user[0];
+                user.likeProduct = user.likeProduct[0];
+                    return user;
+            }
+            else return null;*/
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return null;
+        }
 
         let cursor;
         try {
@@ -29,6 +87,45 @@ export default class LikesDAO {
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);
             return { likesList: [], totalNumLikes: 0 };
+        }
+    }
+
+    static async addToLike(userId, productId, date) {
+        const likeDoc = {
+            productId,
+            date
+        }
+        
+        console.log(users);
+
+        try {
+            const updateResponse = await users.updateOne(
+                {"_id": ObjectId(userId)},
+                {$push: {'likeProduct': likeDoc}}
+            );
+            return updateResponse;
+        }
+        catch (e) {
+            console.error(`unable to add to like: ${e}`);
+            return { error: e };
+        }
+    }
+
+    static async unlike(userId, productId) {
+        const likeDoc = {
+            productId
+        }
+        
+        try {
+            const updateResponse = await users.updateOne(
+                {"_id": ObjectId(userId)},
+                {$pull: {'likeProduct': likeDoc}}
+            );
+            return updateResponse;
+        }
+        catch (e) {
+            console.error(`unable to unlike: ${e}`);
+            return { error: e };
         }
     }
 }

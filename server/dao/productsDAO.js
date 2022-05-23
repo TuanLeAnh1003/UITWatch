@@ -46,7 +46,7 @@ export default class ProductsDAO {
 
     static async createProduct(name, image, type, price, company, description, quantity, status, discount) {
         try {
-            let date = new Date();
+            let date = new Date().getFullYear();
             const productDoc = {
                 name,
                 image,
