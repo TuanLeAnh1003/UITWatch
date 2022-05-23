@@ -20,10 +20,15 @@ const removeProduct = async (data) => {
   return await axiosInstance.delete('/products', data)
 }
 
+const getProducts = async (data) => {
+  return await axiosInstance.get(`/products?name=${data}`)
+}
+
 export default {
   getAll,
   getProductById,
   createProduct,
   updateProduct,
   removeProduct,
+  getProducts
 }

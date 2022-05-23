@@ -1,6 +1,6 @@
 .footer-first {
   width: 100%;
-  height: 300px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@
 
 .footer-first__wrapper > .footer-first__icon > svg {
   color: #D7CECB;
-  font-size: 200px;
+  font-size: 170px;
 }
 
 .footer-first__wrapper > .footer-first__social-media svg {
@@ -56,7 +56,7 @@
 
 .footer-second {
   width: 100%;
-  height: 80px;
+  height: 45px;
   background-color: #D7CECB;
   display: flex;
   align-items: center;
@@ -69,7 +69,7 @@
 }
 
 .footer-second > .footer-second__payment-methods > svg {
-  font-size: 50px;
+  font-size: 35px;
   margin: 0 10px;
   color: #BD9A8F;
 }

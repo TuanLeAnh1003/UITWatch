@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import UserApi from '../../../Apis/UserApi';
 import './AdminProfile.css';
 
 function AdminProfile() {
+
   return (
     <div className="ad-pfl">
       <h1>HỒ SƠ CỦA TÔI</h1>

@@ -4,7 +4,7 @@ import axiosInstance from "./axiosInstance";
 //   return await axiosInstance.post("/login", data);
 // };
 const register = async (data) => {
-  return await axiosInstance.post("users", data);
+  return await axiosInstance.post("/users/register", data);
 }
 
 const login = async (data) => {
@@ -31,7 +31,7 @@ const filter = async (data) => {
 //   return await axiosInstance.get(`/users/getMe/${data.userId}`)
 // }
 const getMe = async (data) => {
-  return await axiosInstance.get(`/users/getMe/${data.userId}`)
+  return await axiosInstance.get(`/users/id/${data.id}`)
 }
 
 // const updateUser = async (data) => {

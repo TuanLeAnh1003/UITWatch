@@ -54,6 +54,12 @@
   color: #fff;
 }
 
+.header-first > .header-first__more > .header-first__more-search {
+  width: fit-content;
+  justify-content: flex-end;
+}
+
+
 .header-first > .header-first__search > input {
   height: 30px;
   width: 100%;
@@ -121,6 +127,26 @@
 .header-second > .header-second__cart > svg {
   font-size: 1.875em;
   color: #855446;
+}
+
+.user-avatar {
+  object-fit: contain;
+  width: 30px;
+  border-radius: 50%;
+  margin-left: 10%;
+}
+
+.user-button {
+  text-decoration: none;
+  color: #fff;
+}
+
+.user-button > p {
+  width: 150px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
 }
 
 .header-overlay {

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Context from "./Context";
-// import jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 export const useStore = () => {
   const [state, dispatch] = useContext(Context);
@@ -22,8 +22,8 @@ export const useStore = () => {
 
     if(token) {
       try {
-        // const info = jwt_decode(token);
-        // return (info.id.userId !== undefined);
+        const info = jwt_decode(token);
+        return (info._id !== undefined);
       } catch (error) {
         return false;
       }
