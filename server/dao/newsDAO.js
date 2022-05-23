@@ -39,12 +39,13 @@ export default class NewsDAO {
         }
     }
 
-    static async addNews(userId, title, subHeader, content, date) {
+    static async addNews(userId, title, subHeader, image, content, date) {
         try {
             const newsDoc = {
                 user_id: ObjectId(userId),
                 title: title,
                 sub_header: subHeader,
+                image: image,
                 content: content,
                 date: date,
             }

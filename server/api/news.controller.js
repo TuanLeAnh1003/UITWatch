@@ -34,6 +34,7 @@ export default class NewsController {
                 req.body.userId,
                 req.body.title,
                 req.body.subHeader,
+                req.body.image,
                 req.body.content,
                 new Date(),
             );

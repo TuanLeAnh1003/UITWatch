@@ -5,11 +5,16 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import NewsApi from '../../../Apis/NewsApi'
 import UserApi from '../../../Apis/UserApi'
+import  {storage}  from '../../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from "uuid";
 
 function NewsCreate() {
   const [content, setContent] = useState()
   const [firstName, setFirstName] = useState()
   const [title, setTitle] = useState()
+  const [image, setImage] = useState()
+  const [imageUrl, setImageUrl] = useState()
   const [subHeader, setSubHeader] = useState()
   
   useEffect(() => {
@@ -22,10 +27,20 @@ function NewsCreate() {
   console.log(content);
 
   const handleCreateNews = () => {
+    if (image == null) return;
+    const imageRef = ref(storage, `news/${image.name + v4()}`);
+    uploadBytes(imageRef, image).then(() => {
+      getDownloadURL(imageRef).then(data => {
+        setImageUrl(data)
+        console.log(imageUrl);
+      })
+    })
+
     NewsApi.createNews({
       userId: localStorage.getItem("userid"),
       title: title,
       subHeader: subHeader,
+      image: imageUrl,
       content: content
     })
     .then((res) => {  
@@ -47,6 +62,10 @@ function NewsCreate() {
         <div className="news-create-item">
           <p>Tiêu đề phụ</p>
           <input type="text" name="subHeader" placeholder="Nhập tiêu đề phụ ..." onChange={e => setSubHeader(e.target.value)}/>
+        </div>
+        <div className="news-create-item">
+          <p>Hình ảnh chung</p>
+          <input type="file" name="image" onChange={e => setImage(e.target.files[0])}/>
         </div>
         <div className="news-create-item">
           <p>Nội dung</p>
