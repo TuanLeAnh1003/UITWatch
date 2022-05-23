@@ -17,7 +17,7 @@ const updateProduct = async (data) => {
 }
 
 const removeProduct = async (data) => {
-  return await axiosInstance.delete('/products', data)
+  return await axiosInstance.delete(`/products/${data.productId}`)
 }
 
 const getProducts = async (data) => {

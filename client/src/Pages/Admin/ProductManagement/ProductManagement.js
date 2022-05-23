@@ -87,7 +87,7 @@ function ProductManagement() {
                 <Link to={`product-update/${product._id}`}>
                   <FontAwesomeIcon icon={solid('pen')} />{"  "}
                 </Link>
-                <FontAwesomeIcon icon={solid('trash')} style={{cursor: 'pointer'}} onClick={e => {setHideDeletePopup(true); setRemoveProduct(product.id)}} />
+                <FontAwesomeIcon icon={solid('trash')} style={{cursor: 'pointer'}} onClick={e => {setHideDeletePopup(true); setRemoveProduct(product._id)}} />
               </td>
             </tr>
           ))}

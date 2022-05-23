@@ -36,8 +36,8 @@ export default class ProductsController {
         if (req.body.size)
             filters.type["type.size"] = req.body.size;
 
-        if (req.body.waterRessistance)
-            filters.type["type.waterRessistance"] = req.body.waterRessistance;
+        if (req.body.waterRessitance)
+            filters.type["type.waterRessitance"] = req.body.waterRessitance;
 
         if (req.body.feature)
             filters.type["type.feature"] = req.body.feature;
@@ -65,7 +65,7 @@ export default class ProductsController {
             	caseColor: req.body.caseColor || null,
             	shape: req.body.shape || null,
             	size: req.body.size || null,
-            	waterRessistance: req.body.waterRessistance || null,
+            	waterRessitance: req.body.waterRessitance || null,
             	feature: req.body.feature || null
             };
             const price = req.body.price || null;
@@ -94,25 +94,24 @@ export default class ProductsController {
 
     static async apiUpdateProduct(req, res, next) {
         try {
-            const productId = req.body.product_id;
+            const productId = req.body.productId;
             const name = req.body.name || null;
             const image = req.body.image || null;
             const type = {
-                brand: req.body.type.brand || null,
-	            albert: req.body.type.albert || null,
-	            priceRange: req.body.type.priceRange || null,
-	            glass: req.body.type.glass || null,
-	            energyCore: req.body.type.energyCore || null,
-            	interfaceColor: req.body.type.interfaceColor || null,
-            	caseColor: req.body.type.caseColor || null,
-            	shape: req.body.type.shape || null,
-            	size: req.body.type.size || null,
-            	waterRessistance: req.body.type.waterRessistance || null,
-            	feature: req.body.type.feature || null
+                brand: req.body.brand || null,
+	            albert: req.body.albert || null,
+	            priceRange: req.body.priceRange || null,
+	            glass: req.body.glass || null,
+	            energyCore: req.body.energyCore || null,
+            	interfaceColor: req.body.interfaceColor || null,
+            	caseColor: req.body.caseColor || null,
+            	shape: req.body.shape || null,
+            	size: req.body.size || null,
+            	waterRessitance: req.body.waterRessitance || null,
+            	feature: req.body.feature || null
             };
             const price = req.body.price || null;
             const company = req.body.company || null;
-            const productDate = Date.parse(req.body.product_date) || null;
             const description = req.body.description || null;
             const quantity = req.body.quantity || null;
             const status = req.body.status || null;
@@ -125,7 +124,6 @@ export default class ProductsController {
                 type,
                 price,
                 company,
-                productDate,
                 description,
                 quantity,
                 status,
@@ -147,7 +145,7 @@ export default class ProductsController {
 
     static async apiRemoveProduct(req, res, next) {
         try {
-            const productId = req.body.product_id;
+            const productId = req.params.productId;
             const ProductResponse = await ProductsDAO.removeProduct(
                 productId
             );
