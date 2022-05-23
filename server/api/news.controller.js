@@ -31,9 +31,9 @@ export default class NewsController {
     static async apiPostNews(req, res) {
         try {
             const newsResponse = await NewsDAO.addNews(
-                req.body.user_id,
+                req.body.userId,
                 req.body.title,
-                req.body.sub_header,
+                req.body.subHeader,
                 req.body.content,
                 new Date(),
             );

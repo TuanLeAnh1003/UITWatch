@@ -22,58 +22,6 @@ import poster from './../../../Assets/Images/image 2.png';
 import ProductApi from '../../../Apis/ProductApi';
 import NewsApi from '../../../Apis/ProductApi';
 
-const productList = [{
-  img: pro1,
-  name: "Rolex Oyster Perpetual",
-  type: ["silver", "bronze"],
-  price: "370.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}, {
-  img: pro1,
-  name: "Rolex Oyster ",
-  type: ["silver", "bronze"],
-  price: "50.000.000 VNĐ",
-}]
-
 const contactList = [
   {
     title: "ĐỊA CHỈ",
@@ -121,6 +69,8 @@ const newsList = [
 ]
 
 function Home() {
+  const [productList, setProductList] = useState();
+
   const [trans, setTrans] = useState(0);
   const [num, setNum] = useState(0);
 
@@ -131,6 +81,7 @@ function Home() {
     ProductApi.getAll()
       .then((res) => {
         console.log(res);
+        setProductList(res)
       })
   }, [])
 
@@ -221,13 +172,13 @@ function Home() {
             style={{left: trans + "px"}}
             ref={move}
           >
-            {productList.map((item, index) => (
+            {productList?.map((item, index) => (
               <li key={index}>
                 <div className="home__product-frame">
                   <div className="home__product">
                     <Product 
                       ref={product}
-                      img={item.img}
+                      img={item.image}
                       name={item.name}
                       type={item.type}
                       price={item.price}

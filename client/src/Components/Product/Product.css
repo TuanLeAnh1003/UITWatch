@@ -9,7 +9,12 @@
   color: #000;
 }
 
-.product > img {
+.product > div {
+  display: flex;
+  align-items: center;
+}
+
+.product > div > img {
   object-fit: contain;
   width: 100%;
 }
@@ -25,9 +30,9 @@
 }
 
 .product > .product__price {
-  /* display: flex; */
+  display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   color: #000;
   font-weight: bold;
 }

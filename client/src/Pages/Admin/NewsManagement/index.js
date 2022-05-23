@@ -1,28 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './NewsManagement.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { Link } from 'react-router-dom'
+import NewsApi from '../../../Apis/NewsApi'
+import UserApi from '../../../Apis/UserApi'
 
 function NewsManagement() {
   const [hideDeletePopup, setHideDeletePopup] = useState(false)
+  const [newsList, setNewsList] = useState()
+  const [firstName, setFirstName] = useState()
 
-  const listNews = [
-    {
-      title: "Phillipe Auguste",
-      subHeader: "Phillipe Auguste mang phong cách cổ điển, sang trọng với những thiết kế đồng hồ dành riêng cho thị trường. Mức giá vô cùng hợp lý...",
-      author: "Duy An",
-      content: "Bắt nguồn từ câu chuyện về hoàng đế Philippe Auguste (Philipe II) - Quốc vương đầu tiên của nước Pháp với tham vọng gây dựng... Bắt nguồn từ câu chuyện về hoàng đế Philippe Auguste (Philipe II) - Quốc vương đầu tiên của nước Pháp với tham vọng gây dựng...",
-      datetime: "31/03/2022 lúc 10:43 chiều"
-    },
-    {
-      title: "Phillipe Auguste",
-      subHeader: "Phillipe Auguste mang phong cách cổ điển, sang trọng với những thiết kế đồng hồ dành riêng cho thị trường. Mức giá vô cùng hợp lý...",
-      author: "Duy An",
-      content: "Bắt nguồn từ câu chuyện về hoàng đế Philippe Auguste (Philipe II) - Quốc vương đầu tiên của nước Pháp với tham vọng gây dựng... Bắt nguồn từ câu chuyện về hoàng đế Philippe Auguste (Philipe II) - Quốc vương đầu tiên của nước Pháp với tham vọng gây dựng...",
-      datetime: "31/03/2022 lúc 10:43 chiều"
-    }
-  ]
+  useEffect(() => {
+    NewsApi.getAll()
+    .then((res) => {
+      console.log(res);
+      setNewsList(res)
+    })
+  }, [])
 
   return (
     <div className="news-mng">
@@ -46,31 +41,31 @@ function NewsManagement() {
           </tr>
         </thead>
         <tbody>
-          {listNews.map((news, i) => (
+          {newsList?.map((news, i) => (
             <tr key={i}>
-              <td>{news.title}</td>
+              <td>{news?.title}</td>
               {
-                news.subHeader.length > 100 ? (
+                news?.sub_header.length > 100 ? (
                   <td>
                     {
-                      `${news.subHeader.substring(0, 100)}...`
+                      `${news?.sub_header.substring(0, 100)}...`
                     }
                   </td>
                 ) : (
-                  <td>{news.subHeader}</td>
+                  <td>{news?.sub_header}</td>
                 )
               }
-              <td>{news.author}</td>
-              <td>{news.datetime}</td>
+              <td>{news?.user_id}</td>
+              <td>{news?.date}</td>
               {
-                news.content.length > 100 ? (
+                news?.content.length > 100 ? (
                   <td>
                     {
-                      `${news.content.substring(0, 100)}...`
+                      `${news?.content.substring(0, 100)}...`
                     }
                   </td>
                 ) : (
-                  <td>{news.content}</td>
+                  <td>{news?.content}</td>
                 )
               }
               <td>

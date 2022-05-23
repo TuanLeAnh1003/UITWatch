@@ -29,7 +29,7 @@ function AdminSideBar() {
         </Link>
         <Link to="/admin" className="ad-sidebar__line">
         </Link>
-        <Link to="/admin">
+        <Link to="/admin/news-management">
           <FontAwesomeIcon icon={solid("file")} />
           <p>Bài viết</p>
         </Link>
