@@ -6,119 +6,23 @@ import banner from './../../../Assets/Images/Clearance-Sale-Desktop 1.png';
 import ProductApi from '../../../Apis/ProductApi';
 
 function SaleOff() {
+  const [productList, setProductList] = useState()
 
   useEffect(() => {
     ProductApi.getAll()
       .then((res) => {
         console.log(res);
+        setProductList(res)
       })
   }, [])
-
-  const productList = [{
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  },{
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }, {
-    img: rolex1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "132.000.000 VNĐ",
-    discount: "165.000.000 VNĐ",
-  }];
 
   return (
     <div className="saleoff">
       <img src={banner} alt="banner" />
-      {productList.map((item, index) => (
+      {productList?.map((item, index) => (
         <div className="saleoff__product" key={index}>
           <Product 
-            img={item.img}
+            img={item.image}
             name={item.name}
             type={item.type}
             price={item.price}

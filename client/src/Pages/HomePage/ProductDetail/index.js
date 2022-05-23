@@ -10,115 +10,13 @@ import ProductApi from '../../../Apis/ProductApi';
 import UserApi from '../../../Apis/UserApi';
 import { useParams, Link } from 'react-router-dom'
 
-function ProductDetail({brand, type}) {
+function ProductDetail() {
   const userId = localStorage.getItem("userId")
   const [product, setProduct] = useState() 
+  const [productList, setProductList] = useState() 
 
   const fetures = ["Thương hiệu", "Đường kính mặt", "Chống nước", "Chất liệu mặt", "Năng lượng sử dụng", "Dự trữ năng lượng", "Chất liệu dây", "Chất liệu vỏ", "Khóa", "Xuất xứ", "Chế độ bảo hành"];
   const figures = ["Rolex", "36mm", "100m", "Chất liệu mặt", "Automatic (Cơ tự động)", "55 giờ", "Vàng hồng 18k và thép", "Vàng hồng 18k và thép", "Crownclasp", "Thụy Sĩ", "5 năm"];
-  const productList = [{
-    img: pro1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "370.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }];
-
-  const hotProduct = [{
-    img: pro1,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "370.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: pro1,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }];
 
   // -------------------------
   const [trans1, setTrans1] = useState(0);
@@ -217,58 +115,63 @@ function ProductDetail({brand, type}) {
     ProductApi.getAll()
       .then((res) => {
         console.log(res);
+        setProductList(res)
       })
   }, [])
 
-  // useEffect(() => {
-  //   ProductApi.getProductById({productId: productId})
-  //     .then((res) => {
-  //       console.log(res);
-  //       setProduct(res);
-  //     })
-  // }, [])
+  useEffect(() => {
+    console.log(productId);
+    ProductApi.getProductById({productId: productId})
+      .then(async (res) => {
+        console.log(res);
+        await setProduct(res);
+      })
+  }, [])
 
   return (
     
     <div className="pro-detail">
       <ul className="pro-detail__type">
         <li>Đồng hồ</li>
-        <li>{brand}</li>
-        <li>{type}</li>
+        {
+          product?.type.brand && <li>{product?.type.brand}</li>
+        }
+        {
+          product?.type.caseColor && <li>{product?.type.caseColor}</li>
+        }
+        {
+          product?.type.glass && <li>{product?.type.glass}</li>
+        }
+        {
+          product?.type.feature && <li>{product?.type.feature}</li>
+        }
       </ul>
 
       <hr />
 
       <div className="pro-detail__brief">
         <div className="pro-detail__imgs">
-          <img src={img} alt="img" />
+          <img src={product?.image} alt="img" />
           <div className="pro-detail__more-img">
-            <img src={smallImg} alt="smallImg" />
-            <img src={smallImg} alt="smallImg" />
-            <img src={smallImg} alt="smallImg" />
-            <img src={smallImg} alt="smallImg" />
+            <img src={product?.image} alt="smallImg" />
+            <img src={product?.image} alt="smallImg" />
+            <img src={product?.image} alt="smallImg" />
+            <img src={product?.image} alt="smallImg" />
           </div>
         </div>
 
         <div className="pro-detail__more">
-          <h3>ROLEX DATEJUST 31 278271 MẶT SỐ NÂU NẠM KIM CƯƠNG</h3>
+          <h3>{product?.name}</h3>
           <div className="pro-detail__status">
-            <span>Mã sản phẩm: <b>AV00001</b></span>
-            <span>Tình trạng: <b>Hàng mới</b></span>
+            <span>Mã sản phẩm: <b>{product?._id}</b></span>
+            <span>Tình trạng: <b>{product?.status}</b></span>
           </div>
 
-          <h3>276.000.000 VNĐ</h3>
+          <h3>{product?.price} VNĐ</h3>
 
           <div className="dotted-line"></div>
 
-          <p className="pro-detail__description">
-            Rolex tiếp tục giới thiệu đến giới sưu tập đồng hồ tại sự kiện Baselworld 
-            2019 bộ sưu tập Rolex Oyster Perpetual Datejust 31mm hoàn toàn mới với nhiều 
-            cải tiến hữu ích từ cỗ máy vốn đã được rất nhiều người chơi biết đến qua giá 
-            trị sử dụng bền bỉ và tính chính xác của mình. Chúng ta hãy cũng đến với 
-            phiên bản Datejust Oyster Perpetual xuất hiện hiện trong lớp mặt số chocolate 
-            rất sang trọng với những quý cô, cọc số kim cương trong lớp vỏ oyster hiện đại.
-          </p>
+          <p className="pro-detail__description">{product?.description}</p>
 
           <div className="dotted-line"></div>
 
@@ -314,12 +217,7 @@ function ProductDetail({brand, type}) {
 
         <div className="pro-detail__info-content">
           <div className="pro-detail__info-first">
-            <p>Thương hiệu Rolex từ lâu đã hằn sâu vào tâm trí của rất nhiều 
-            người. Cho dù ngành công nghiệp sản xuất đồng hồ có trải qua bao 
-            thăng trầm thì cái tên Rolex vẫn luôn toả sáng và dường như thương 
-            hiệu này sinh ra là để làm cái mốc chinh phục của những giấc mơ, 
-            của những khát khao, đam mê cháy bỏng của một người ưa chuộng 
-            đồng hồ.</p>
+            <p>{product.description}</p>
             <iframe 
               width="100%" 
               height="100%" 
@@ -424,13 +322,13 @@ function ProductDetail({brand, type}) {
               style={{left: trans1 + "px"}}
               ref={move1}
             >
-              {productList.map((item, index) => (
+              {productList?.map((item, index) => (
                 <li key={index}>
                   <div className="pro-detail__product-frame">
                     <div className="pro-detail__product">
                       <Product
                         ref={product1}
-                        img={item.img}
+                        img={item.image}
                         name={item.name}
                         type={item.type}
                         price={item.price}
@@ -442,38 +340,6 @@ function ProductDetail({brand, type}) {
             </ul>
           </div>
           <FontAwesomeIcon icon={solid('angle-right')} onClick={handleRightClick1}/>
-        </div>
-      </div>
-
-      <div className="pro-detail__relation">
-        <h2>SẢN PHẨM LIÊN QUAN</h2>
-        <div className="pro-detail__products-wrapper">
-          <FontAwesomeIcon icon={solid('angle-left')} onClick={handleLeftClick2}/>
-          
-          <div className="pro-detail__products">
-            <ul 
-              className="pro-detail__product-wrap"
-              style={{left: trans2 + "px"}}
-              ref={move2}
-            >
-              {hotProduct.map((item, index) => (
-                <li key={index}>
-                  <div className="pro-detail__product-frame">
-                    <div className="pro-detail__product">
-                      <Product 
-                        ref={product2}
-                        img={item.img}
-                        name={item.name}
-                        type={item.type}
-                        price={item.price}
-                      />
-                    </div>    
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <FontAwesomeIcon icon={solid('angle-right')} onClick={handleRightClick2}/>
         </div>
       </div>
 

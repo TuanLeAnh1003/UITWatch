@@ -30,7 +30,7 @@ function HomePage() {
       <Route path="/" element={<Home />} />
       <Route path="/sale" element={<Sale />} />
       <Route path="/saleoff" element={<SaleOff />} />
-      <Route path="/product/:productId" element={<ProductDetail brand="Rolex" type="Rolex bạc"/>} />
+      <Route path="/product/:productId" element={<ProductDetail />} />
       <Route path="/search-order" element={<SearchOrder />} />
       <Route path="/result-search-order/:orderId" element={<ResultSearchOrder />} />
       <Route path="/news" element={<News />} />

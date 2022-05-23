@@ -13,6 +13,24 @@
   /* background-color: red; */
 }
 
+.sale__category > button {
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 60px;
+  height: 40px;
+  color: #fff;
+  background-color: #513027;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sale__category > button:hover {
+  background-color: #564642;
+}
+
 .sale__category-gender {
   padding: 1.25em;
   padding-bottom: 0;

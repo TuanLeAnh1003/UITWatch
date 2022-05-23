@@ -19,6 +19,8 @@ import NewsCreate from '../NewsManagement/NewsCreate';
 import NewsUpdate from '../NewsManagement/NewsUpdate';
 import CustomerManagement from '../CustomerManagement/CustomerManagement';
 import ProductManagement from '../ProductManagement/ProductManagement';
+import ProductCreate from '../ProductManagement/ProductCreate';
+import ProductUpdate from '../ProductManagement/ProductUpdate';
 
 function Admin() {
   return (
@@ -36,6 +38,8 @@ function Admin() {
               <Route path='user-management' element={<UserManagement />} />
               <Route path='customer-management' element={<CustomerManagement />} />
               <Route path='product-management' element={<ProductManagement />} />
+              <Route path='product-management/product-create' element={<ProductCreate />} />
+              <Route path='product-management/product-update/:productId' element={<ProductUpdate />} />
               <Route path='user-create' element={<UserCreate />} />
               <Route path='user-update' element={<UserUpdate />} />
               <Route

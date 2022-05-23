@@ -23,6 +23,10 @@ const addToCart = async (data) => {
   return await axiosInstance.post("/api/v1/users/addToCart", data)
 }
 
+const filter = async (data) => {
+  return await axiosInstance.get("/api/v1/users/filter", data)
+}
+
 // const getMe = async (data) => {
 //   return await axiosInstance.get(`/users/getMe/${data.userId}`)
 // }
@@ -45,6 +49,7 @@ export default {
   likeProduct,
   removeLikeProduct,
   addToCart,
+  filter,
   getMe,
   // updateUser,
   // getAll

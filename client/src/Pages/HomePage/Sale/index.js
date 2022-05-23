@@ -6,9 +6,27 @@ import ProductImageMain from './../../../Assets/Images/omega-watches.svg';
 import ProductImg from './../../../Assets/Images/Rectangle 11.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ProductApi from '../../../Apis/ProductApi';
+import UserApi from '../../../Apis/UserApi';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { Link } from 'react-router-dom'
 
 function Sale() {
+  const [brand, setBrand] = useState('')
+  const [albert, setAlbert] = useState('')
+  const [priceRange, setPriceRange] = useState('')
+  const [glass, setGlass] = useState('')
+  const [energyCore, setEnergyCore] = useState('')
+  const [interfaceColor, setInterfaceColor] = useState('')
+  const [caseColor, setCaseColor] = useState('')
+  const [shape, setShape] = useState('')
+  const [size, setSize] = useState('')
+  const [waterRessitance, setWaterRessitance] = useState('')
+  const [feature, setFeature] = useState('')
+
+  const [productList, setProductList] = useState()
+
+  console.log();
+
   const cateList = [
     {
       title: "THƯƠNG HIỆU",
@@ -56,66 +74,34 @@ function Sale() {
     }
   ]
 
-  const productList = [{
-    img: ProductImg,
-    name: "Rolex Oyster Perpetual",
-    type: ["silver", "bronze"],
-    price: "370.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }, {
-    img: ProductImg,
-    name: "Rolex Oyster ",
-    type: ["silver", "bronze"],
-    price: "50.000.000 VNĐ",
-  }]
-
   useEffect(() => {
     ProductApi.getAll()
       .then((res) => {
         console.log(res);
+        setProductList(res)
       })
   }, [])
 
   const [hideCate, setHideCate] = useState(false)
+
+  const handleFilter = () => {
+    UserApi.filter({
+      brand: {brand},
+      albert: {albert}, 
+      priceRange: {priceRange}, 
+      glass: {glass}, 
+      energyCore: {energyCore}, 
+      interfaceColor: {interfaceColor}, 
+      caseColor: {caseColor}, 
+      shape: {shape}, 
+      size: {size}, 
+      waterRessitance: {waterRessitance}, 
+      feature: {feature}
+    })
+    .then((res) => {
+      console.log(res)
+    })
+  }
  
   return (
     <div className="sale" onClick={() => setHideCate(false)}>
@@ -125,17 +111,17 @@ function Sale() {
           hideCate && 
           <div className="sale__category-bars--2">
             <div className="sale__category-gender">
-              <a href="/" className="sale__category-gender-item sale__category-gender-item--active">
+              <Link to="/sale" className="sale__category-gender-item sale__category-gender-item--active">
                 TẤT CẢ
-              </a>
+              </Link>
               <div className="sale__category-gender-line"></div>
-              <a href="/" className="sale__category-gender-item">
+              <Link href="/sale" className="sale__category-gender-item">
                 NAM
-              </a>
+              </Link>
               <div className="sale__category-gender-line"></div>
-              <a href="/" className="sale__category-gender-item">
+              <Link href="/sale" className="sale__category-gender-item">
                 NỮ
-              </a>
+              </Link>
             </div>
 
             <div className="sale__category-line"></div>
@@ -145,35 +131,48 @@ function Sale() {
               <a href="/" className="sale__category-type-accessory">Phụ kiện</a>
             </div>
 
-
             {cateList.map((element, index) => index <= 3 && (
                 <div key={index} className="sale__category-element">
                   <div className="sale__category-line"></div>
 
                   <CategoryItem
+                    cate={index}
                     title={element.title}
                     contentList={element.contentList}
+                    setBrand={setBrand}
+                    setAlbert={setAlbert}
+                    setPriceRange={setPriceRange}
+                    setGlass={setGlass}
+                    setEnergyCore={setEnergyCore}
+                    setInterfaceColor={setInterfaceColor}
+                    setCaseColor={setCaseColor}
+                    setShape={setShape}
+                    setSize={setSize}
+                    setWaterRessitance={setWaterRessitance}
+                    setFeature={setFeature}
                   ></CategoryItem>
                 </div>
             )
             )}
+
+            <button onClick={handleFilter}>Lọc</button>
           </div>  
         }
       </div>
 
       <div className="sale__category">
         <div className="sale__category-gender">
-          <a href="/" className="sale__category-gender-item sale__category-gender-item--active">
+          <Link to="/sale" className="sale__category-gender-item sale__category-gender-item--active">
             TẤT CẢ
-          </a>
+          </Link>
           <div className="sale__category-gender-line"></div>
-          <a href="/" className="sale__category-gender-item">
+          <Link to="/sale" className="sale__category-gender-item">
             NAM
-          </a>
+          </Link>
           <div className="sale__category-gender-line"></div>
-          <a href="/" className="sale__category-gender-item">
+          <Link to="/sale" className="sale__category-gender-item">
             NỮ
-          </a>
+          </Link>
         </div>
 
         <div className="sale__category-line"></div>
@@ -189,12 +188,27 @@ function Sale() {
               <div className="sale__category-line"></div>
 
               <CategoryItem
+                cate={index}
                 title={element.title}
                 contentList={element.contentList}
+                setBrand={setBrand}
+                setAlbert={setAlbert}
+                setPriceRange={setPriceRange}
+                setGlass={setGlass}
+                setEnergyCore={setEnergyCore}
+                setInterfaceColor={setInterfaceColor}
+                setCaseColor={setCaseColor}
+                setShape={setShape}
+                setSize={setSize}
+                setWaterRessitance={setWaterRessitance}
+                setFeature={setFeature}
               ></CategoryItem>
             </div>
         )
         )}
+
+        <button onClick={handleFilter}>Lọc</button>
+
       </div>
 
       <div className="sale__product">
@@ -203,10 +217,11 @@ function Sale() {
           </div>
           <div className="sale__product-list">
             {
-              productList.map((element, index) => (
+              productList?.map((element, index) => (
                 <div key={index} className="sale__product-list-item">
                   <Product
-                    img= {element.img}
+                    productId={element._id}
+                    img= {element.image}
                     name= {element.name}
                     type= {element.type}
                     price= {element.price}

@@ -66,6 +66,7 @@
   font-size: 18px;
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
 }
 
 .pro-detail__brief > .pro-detail__more > .pro-detail__description {
