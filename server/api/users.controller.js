@@ -44,23 +44,21 @@ export default class UsersController {
     static async apiUpdateUser(req, res, next) {
         try {
             const userId = req.body.userId;
-            const password = req.body.password;
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
             const birthday = Date.parse(req.body.birthday);
             const phoneNumber = req.body.phoneNumber;
             const email = req.body.email;
-            const address = req.body.address;
+            const image = req.body.image
 
             const UserResponse = await UsersDAO.updateUser(
                 userId,
-                password,
                 firstName,
                 lastName,
                 birthday,
                 phoneNumber,
                 email,
-                address
+                image
             );
 
             var { error } = UserResponse;

@@ -81,7 +81,7 @@ function Header() {
         <div className='header-first__more'>
           <div className='header-first__more-item header-first__more-order'>
             <FontAwesomeIcon icon={solid("box")} />
-            <Link to=''>Tra cứu đơn hàng</Link>
+            <Link to='/search-order'>Tra cứu đơn hàng</Link>
           </div>
 
           <div className='header-first__more-item header-first__more-like'>

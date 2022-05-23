@@ -61,16 +61,15 @@ export default class UsersDAO {
         }
     }
 
-    static async updateUser(userId, password, firstName, lastName, birthday, phoneNumber, email, address) {
+    static async updateUser(userId, firstName, lastName, birthday, phoneNumber, email) {
         try {
             const userDoc = {
-                password,
                 firstName,
                 lastName,
                 birthday,
                 phoneNumber,
                 email,
-                address
+                image
             }
             for (let p in userDoc)
                 if (userDoc[p] == null)
