@@ -56,17 +56,17 @@ export default class ProductsController {
             const name = req.body.name || null;
             const image = req.body.image || null;
             const type = {
-                brand: req.body.type.brand || null,
-	            albert: req.body.type.albert || null,
-	            priceRange: req.body.type.priceRange || null,
-	            glass: req.body.type.glass || null,
-	            energyCore: req.body.type.energyCore || null,
-            	interfaceColor: req.body.type.interfaceColor || null,
-            	caseColor: req.body.type.caseColor || null,
-            	shape: req.body.type.shape || null,
-            	size: req.body.type.size || null,
-            	waterRessistance: req.body.type.waterRessistance || null,
-            	feature: req.body.type.feature || null
+                brand: req.body.brand || null,
+	            albert: req.body.albert || null,
+	            priceRange: req.body.priceRange || null,
+	            glass: req.body.glass || null,
+	            energyCore: req.body.energyCore || null,
+            	interfaceColor: req.body.interfaceColor || null,
+            	caseColor: req.body.caseColor || null,
+            	shape: req.body.shape || null,
+            	size: req.body.size || null,
+            	waterRessistance: req.body.waterRessistance || null,
+            	feature: req.body.feature || null
             };
             const price = req.body.price || null;
             const company = req.body.company || null;
@@ -81,7 +81,6 @@ export default class ProductsController {
                 type,
                 price,
                 company,
-                productDate,
                 description,
                 quantity,
                 status,
