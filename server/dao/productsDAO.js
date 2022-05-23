@@ -25,11 +25,12 @@ export default class ProductsDAO {
         if (filters) {
             if ("name" in filters) {
                 query = { $text: { $search: filters['name'] } };
-            } else if ("status" in filters) {
-                query = { "status": { $eq: filters['status'] } }
+            }
+            if ("type" in filters) {
+                if(query) Object.assign(query, filters["type"]);
+                else query = filters["type"];
             }
         }
-
         let cursor;
         try {
             cursor = await products.find(query).limit(productsPerPage).skip(productsPerPage * page);
@@ -63,6 +64,7 @@ export default class ProductsDAO {
             for (let p in productDoc.type)
                 if (productDoc.type[p] == null)
                     delete productDoc.type[p];
+            if (Object.keys(productDoc.type).length === 0) delete productDoc.type;
             return await products.insertOne(productDoc);
         }
         catch (e) {
@@ -91,6 +93,7 @@ export default class ProductsDAO {
             for (let p in productDoc.type)
                 if (productDoc.type[p] == null)
                     delete productDoc.type[p];
+            if (Object.keys(productDoc.type).length === 0) delete productDoc.type;
             const updateResponse = await products.updateOne(
                 { "_id": ObjectId(productId) },
                 { $set: productDoc }
