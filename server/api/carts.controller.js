@@ -75,4 +75,16 @@ export default class CartsController {
             res.status(500).json({ error: e.message });
         }
     }
+
+    static async apiRemoveAllCart(req, res, next) {
+        try {
+            const userId = req.body.userId;
+            const CartResponse = await CartsDAO.removeAllCart(
+                userId
+            );
+            res.json({ status: "success " });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
 }
