@@ -37,14 +37,14 @@ export default class CartsDAO {
 
     static async addToCart(userId, productId, quantity) {
         const cartDoc = {
-            productId,
+            productId: ObjectId(productId),
             quantity
         }
         
         try {
             const updateResponse = await users.updateOne(
                 {"_id": ObjectId(userId)},
-                {$push: {'carts': cartDoc}}
+                {$push: {'cart': cartDoc}}
             );
             return updateResponse;
         }
@@ -54,39 +54,35 @@ export default class CartsDAO {
         }
     }
 
-    /*static async updateCart(userId, productId, quantity) {
+    static async removeCart(userId, productId) {
+        const cartDoc = {
+            productId:ObjectId(productId)
+        }
+        
         try {
-            const cartDoc = {
-                userId,
-                productId,
-                quantity
-            }
-            for (let p in cartDoc)
-                if (cartDoc[p] == null)
-                    delete cartDoc[p];
-            const updateResponse = await carts.updateOne(
-                //{ "userId": ObjectId(userId), "productId": ObjectId(productId) },
-                { "userId": userId, "productId": productId }, {$set: cartDoc}
+            const updateResponse = await users.updateOne(
+                {"_id": ObjectId(userId)},
+                {$pull: {'cart': cartDoc}}
             );
             return updateResponse;
-        }
-        catch (e) {
-            console.error(`unable to update cart: ${e}`);
-            return { error: e };
-        }
-    }*/
-
-    /*static async removeCart(userId, productId) {
-        try {
-            const deleteResponse = await carts.deleteOne({
-                //"userId": ObjectId(userId), "productId": ObjectId(productId)
-                "userId": userId, "productId": productId
-            });
-            return deleteResponse;
         }
         catch (e) {
             console.error(`unable to delete cart: ${e}`);
             return { error: e };
         }
-    }*/
+    }
+
+    static async removeAllCart(userId) {     
+        try {
+            const updateResponse = await users.updateOne(
+                {"_id": ObjectId(userId)},
+                {$unset: {'cart':""}}
+            );
+            return updateResponse;
+        }
+        catch (e) {
+            console.error(`unable to delete cart: ${e}`);
+            return { error: e };
+        }
+    }
 }

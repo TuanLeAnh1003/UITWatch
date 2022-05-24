@@ -44,8 +44,8 @@ router
     .route('/carts/removeCart')
     .put(CartsController.apiRemoveCart);
 
-/*router
+router
     .route('/carts/removeAllCart')
-    .put(CartsController.apiRemoveAllCart);*/
+    .put(CartsController.apiRemoveAllCart);
 
 export default router;
