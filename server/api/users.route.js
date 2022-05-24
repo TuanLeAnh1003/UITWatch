@@ -23,12 +23,12 @@ router
     .route('/register').post(UsersController.apiRegister);
 
 router
-    .route('/likedProducts')
+    .route('/likeProduct')
     .get(LikesController.apiGetLikedProducts)
     .put(LikesController.apiAddToLike);
 
 router
-    .route('/unlikeProducts')
+    .route('/unlikeProduct')
     .put(LikesController.apiUnlike);
 
 router

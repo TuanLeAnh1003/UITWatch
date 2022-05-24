@@ -100,6 +100,7 @@ function Sale() {
     })
     .then((res) => {
       console.log(res)
+      setProductList(res)
     })
   }
  

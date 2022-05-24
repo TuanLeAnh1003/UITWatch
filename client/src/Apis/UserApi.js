@@ -12,11 +12,11 @@ const login = async (data) => {
 }
 
 const likeProduct = async (data) => {
-  return await axiosInstance.post("/users/likeProduct", data)
+  return await axiosInstance.put("/users/likeProduct", data)
 }
 
 const removeLikeProduct = async (data) => {
-  return await axiosInstance.delete("/users/likeProduct", data)
+  return await axiosInstance.put("/users/unlikeProduct", data)
 }
 
 const addToCart = async (data) => {

@@ -26,7 +26,7 @@ const getProducts = async (data) => {
 
 const filter = async(data) => {
   console.log(data);
-  return await axiosInstance.get('/products', data)
+  return await axiosInstance.post('/products/filter', data)
 }
 
 const getDiscountProduct = async() => {
