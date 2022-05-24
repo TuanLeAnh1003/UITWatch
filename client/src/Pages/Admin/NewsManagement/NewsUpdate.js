@@ -4,6 +4,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import parse from 'html-react-parser'
 import NewsApi from '../../../Apis/NewsApi';
+import  {storage}  from '../../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from "uuid";
 
 function NewsUpdate() {
   const [news, setNews] = useState({
@@ -12,6 +15,7 @@ function NewsUpdate() {
     image: '',
     content: ''
   })
+  const [imageUrl, setImageUrl] = useState()
 
   const [title, setTitle] = useState(news.title)
   const [image, setImage] = useState(news.image)
@@ -34,14 +38,24 @@ function NewsUpdate() {
   }, [])
 
   const handleUpdateNews = () => {
-    NewsApi.updateNews({
-      news_id: newsId,
-      title: title,
-      sub_header: subHeader,
-      content: content,
-    })
-    .then((res) => {
-      console.log(res);
+    if (image == null) return;
+    const imageRef = ref(storage, `news/${image.name + v4()}`);
+    uploadBytes(imageRef, image).then(() => {
+      getDownloadURL(imageRef).then(async data => {
+        await setImageUrl(data)
+        console.log(imageUrl);
+
+        NewsApi.updateNews({
+          news_id: newsId,
+          title: title,
+          sub_header: subHeader,
+          image: imageUrl,
+          content: content,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+      })
     })
   }
 

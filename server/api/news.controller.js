@@ -50,13 +50,14 @@ export default class NewsController {
                 req.body.news_id,
                 req.body.title,
                 req.body.sub_header,
+                req.body.image,
                 req.body.content,
                 new Date(),
             );
             if (newsResponse.modifiedCount === 0) {
                 throw new Error("No document has been modified.");
             }
-            res.json({ status: "success" });
+            res.json({ status: "update success" });
         } catch (e) {
             res.status(500).json({ error: e.message });
         }

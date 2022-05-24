@@ -19,7 +19,8 @@
 }
 
 .news-popular-image {
-  
+  max-width: 1000px;
+  object-fit: contain;
 }
 
 .news-popular-right {

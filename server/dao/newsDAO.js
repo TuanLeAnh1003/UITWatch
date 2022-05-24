@@ -80,13 +80,14 @@ export default class NewsDAO {
         }
     }
 
-    static async updateNews(newsId, title, subHeader, content, date) {
+    static async updateNews(newsId, title, subHeader, image, content, date) {
         try {
             const updateResponse = await news.updateOne(
                 {_id: ObjectId(newsId)},
                 {$set: {
                     title: title,
                     sub_header: subHeader,
+                    image: iamge,
                     content: content,
                     date: date,
                 }}
