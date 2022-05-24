@@ -5,6 +5,9 @@
 .news-item-img-wrapper {
   width: 570px;
   /* height: 320px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .news-item-img {

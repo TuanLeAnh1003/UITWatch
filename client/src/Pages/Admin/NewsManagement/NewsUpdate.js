@@ -1,16 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import parse from 'html-react-parser'
+import NewsApi from '../../../Apis/NewsApi';
 
 function NewsUpdate() {
-  const news = {
-    title: "Phillipe Auguste",
-    subHeader: "Phillipe Auguste mang phong cách cổ điển, sang trọng với những thiết kế đồng hồ dành riêng cho thị trường. Mức giá vô cùng hợp lý...",
-    author: "Duy An",
-    content: "Bắt nguồn từ câu chuyện về hoàng đế Philippe Auguste (Philipe II) - Quốc vương đầu tiên của nước Pháp với tham vọng gây dựng... Bắt nguồn từ câu chuyện về hoàng đế Philippe Auguste (Philipe II) - Quốc vương đầu tiên của nước Pháp với tham vọng gây dựng...",
-    datetime: "31/03/2022 lúc 10:43 chiều"
+  const [news, setNews] = useState({
+    title: '',
+    sub_header: '',
+    image: '',
+    content: ''
+  })
+
+  const [title, setTitle] = useState(news.title)
+  const [image, setImage] = useState(news.image)
+  const [subHeader, setSubHeader] = useState(news.sub_header)
+  const [content, setContent] = useState(news.content)
+  const { newsId } = useParams()
+
+  useEffect(() => {
+    NewsApi.getNewsById({
+      newsId: newsId,
+    })
+    .then((res) => {
+      console.log(res);
+      setNews(res)
+      setImage(res.image)
+      setContent(res.content)
+      setTitle(res.title)
+      setSubHeader(res.sub_header)
+    })
+  }, [])
+
+  const handleUpdateNews = () => {
+    NewsApi.updateNews({
+      news_id: newsId,
+      title: title,
+      sub_header: subHeader,
+      content: content,
+    })
+    .then((res) => {
+      console.log(res);
+    })
   }
 
   return (
@@ -22,36 +54,46 @@ function NewsUpdate() {
       <div className="news-create-form">
         <div className="news-create-item">
           <p>Tên chủ đề</p>
-          <input type="text" name="title" placeholder={news.title}/>
+          <input type="text" name="title" placeholder={news?.title} onChange={e => setTitle(e.target.value)}/>
         </div>
         <div className="news-create-item">
           <p>Tiêu đề phụ</p>
-          <input type="text" name="subHeader" placeholder={news.subHeader}/>
+          <input type="text" name="subHeader" placeholder={news?.sub_header} onChange={e => setSubHeader(e.target.value)}/>
         </div>
         <div className="news-create-item">
-          <p>Tác giả</p>
-          <input type="text" name="author" placeholder={news.author}/>
+          <p>Hình ảnh chung</p>
+          <input type="file" name="image" onChange={e => setImage(e.target.files[0])}/>
         </div>
+        {
+          typeof image === "object" ? 
+          (<img style={{ maxWidth: '200px' }} src={window.URL.createObjectURL(image)} alt="img" />)
+          : 
+          (<img style={{ maxWidth: '200px' }} src={image} alt="img" />)
+        }
         <div className="news-create-item">
           <p>Nội dung</p>
           <CKEditor
-            data={parse(news.content)}
+            data = {content}
             editor = { ClassicEditor }
             // onReady = {editor => {
             //   // test
             // }}
             config = {
               {
-                // ckfinder:{
-                //   uploadUrl: 'http://localhost:8000/upload'
-                // },
+                ckfinder: {
+                  uploadUrl: 'http://localhost:5000/uploads'
+                }
               }
             }
+            onChange = {(event, editor) => {
+              const data = editor.getData();
+              setContent(data)
+            }}
           />
         </div>
       </div>
       <div className="news-create-func">
-        <button>TẠO</button>
+        <div onClick={handleUpdateNews}>CẬP NHẬT</div>
         <Link className="news-create-func--cancel" to="/admin/news-management">HỦY</Link>
       </div>
     </form>

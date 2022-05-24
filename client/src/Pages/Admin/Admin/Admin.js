@@ -50,7 +50,7 @@ function Admin() {
               <Route path='order-view' element={<OrderView />} />
               <Route path='news-management' element={<NewsManagement />} />
               <Route path='news-create' element={<NewsCreate />} />
-              <Route path='news-update' element={<NewsUpdate />} />
+              <Route path='news-update/:newsId' element={<NewsUpdate />} />
             </Routes>
           </div>
 

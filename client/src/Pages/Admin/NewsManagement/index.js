@@ -5,19 +5,29 @@ import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import
 import { Link } from 'react-router-dom'
 import NewsApi from '../../../Apis/NewsApi'
 import UserApi from '../../../Apis/UserApi'
+import parse from 'html-react-parser'
 
 function NewsManagement() {
   const [hideDeletePopup, setHideDeletePopup] = useState(false)
   const [newsList, setNewsList] = useState()
   const [firstName, setFirstName] = useState()
+  const [removeNews, setRemoveNews] = useState()
 
   useEffect(() => {
     NewsApi.getAll()
     .then((res) => {
-      console.log(res);
       setNewsList(res)
     })
   }, [])
+
+  const handleDeleteNews = () => {
+    NewsApi.removeNews({
+      newsId: removeNews
+    })
+    .then((res) => {
+      console.log(res);
+    })
+  }
 
   return (
     <div className="news-mng">
@@ -35,6 +45,7 @@ function NewsManagement() {
               <th>Tiêu đề</th>
               <th>Tiêu đề phụ</th>
               <th>Tác giả</th>
+              <th>Hình ảnh</th>
               <th>Thời gian</th>
               <th>Nội dung</th>
               <th></th>
@@ -45,7 +56,7 @@ function NewsManagement() {
             <tr key={i}>
               <td>{news?.title}</td>
               {
-                news?.sub_header.length > 100 ? (
+                news?.sub_header?.length > 100 ? (
                   <td>
                     {
                       `${news?.sub_header.substring(0, 100)}...`
@@ -56,12 +67,15 @@ function NewsManagement() {
                 )
               }
               <td>{news?.user_id}</td>
+              <td>
+                <img style={{width: '100px'}} src={news?.image} alt="img" />
+              </td>
               <td>{news?.date}</td>
               {
-                news?.content.length > 100 ? (
+                news?.content?.length > 50 ? (
                   <td>
                     {
-                      `${news?.content.substring(0, 100)}...`
+                      `${news?.content.substring(0, 50)}...`
                     }
                   </td>
                 ) : (
@@ -70,10 +84,10 @@ function NewsManagement() {
               }
               <td>
                 <FontAwesomeIcon icon={solid('eye')} />{"  "}
-                <Link to="/admin/news-update" style={{textDecoration: 'none', color: '#855446'}}>
+                <Link to={`/admin/news-update/${news?._id}`} style={{textDecoration: 'none', color: '#855446'}}>
                   <FontAwesomeIcon icon={solid('pen')} />{"  "}
                 </Link>
-                <FontAwesomeIcon icon={solid('trash')} style={{cursor: 'pointer'}} onClick={e => setHideDeletePopup(true)}/>
+                <FontAwesomeIcon icon={solid('trash')} style={{cursor: 'pointer'}} onClick={e => {setHideDeletePopup(true); setRemoveNews(news?._id)}}/>
               </td>
             </tr>
           ))}
@@ -87,12 +101,14 @@ function NewsManagement() {
               <h3>Xóa bài viết</h3>
               <FontAwesomeIcon className="news-mng-delete-icon" icon={solid('circle-xmark')} onClick={e => setHideDeletePopup(false)}/>
               <p>Bạn có chắc mình muốn xóa bài viết này?</p>
-              <button>
-                Hủy bỏ
-              </button>
-              <button>
-                Xóa luôn
-              </button>
+              <div>
+                <button onClick={e => setHideDeletePopup(false)}>
+                  Hủy bỏ
+                </button>
+                <div onClick={handleDeleteNews}>
+                  Xóa luôn
+                </div>
+              </div>
             </div>
           </div>
         )

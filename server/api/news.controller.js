@@ -64,7 +64,7 @@ export default class NewsController {
 
     static async apiDeleteNews(req, res) {
         try {
-            const newsResponse = await NewsDAO.deleteNews(req.body.news_id);
+            const newsResponse = await NewsDAO.deleteNews(req.params.newsId);
             res.json({ status: "success " });
         } catch (e) {
             res.status(500).json({ error: e.message });

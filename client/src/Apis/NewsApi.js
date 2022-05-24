@@ -12,8 +12,18 @@ const createNews = async (data) => {
   return await axiosInstance.post('/news', data)
 }
 
+const removeNews = async (data) => {
+  return await axiosInstance.delete(`/news/${data.newsId}`)
+}
+
+const updateNews = async (data) => {
+  return await axiosInstance.put('/news', data)
+}
+
 export default {
   getAll,
   getNewsById,
   createNews,
+  removeNews,
+  updateNews,
 }

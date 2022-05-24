@@ -35,7 +35,7 @@ function HomePage() {
       <Route path="/search-order" element={<SearchOrder />} />
       <Route path="/result-search-order/:orderId" element={<ResultSearchOrder />} />
       <Route path="/news" element={<News />} />
-      <Route path="/watch-news/:id" element={<WatchNews />} />
+      <Route path="/watch-news/:newsId" element={<WatchNews />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/cash" element={<Cash />} />
       <Route path="/momo" element={<Momo />} />

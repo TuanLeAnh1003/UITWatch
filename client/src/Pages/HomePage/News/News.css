@@ -11,6 +11,7 @@
 
 .news-popular {
   display: flex;
+  justify-content: center;
 }
 
 .news-popular-image-wrapper {

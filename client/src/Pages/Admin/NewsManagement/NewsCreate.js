@@ -30,21 +30,21 @@ function NewsCreate() {
     if (image == null) return;
     const imageRef = ref(storage, `news/${image.name + v4()}`);
     uploadBytes(imageRef, image).then(() => {
-      getDownloadURL(imageRef).then(data => {
-        setImageUrl(data)
+      getDownloadURL(imageRef).then(async data => {
+        await setImageUrl(data)
         console.log(imageUrl);
-      })
-    })
 
-    NewsApi.createNews({
-      userId: localStorage.getItem("userid"),
-      title: title,
-      subHeader: subHeader,
-      image: imageUrl,
-      content: content
-    })
-    .then((res) => {  
-      console.log(res);
+        await NewsApi.createNews({
+          userId: localStorage.getItem("userid"),
+          title: title,
+          subHeader: subHeader,
+          image: imageUrl,
+          content: content
+        })
+        .then((res) => {  
+          console.log(res);
+        })
+      })
     })
   }
 

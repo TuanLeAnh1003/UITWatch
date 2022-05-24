@@ -9,6 +9,9 @@ router.route('/')
     .put(NewsController.apiPutNews)
     .delete(NewsController.apiDeleteNews);
 
+router.route('/:newsId')
+    .delete(NewsController.apiDeleteNews)
+
 router.route('/id/:id').get(NewsController.apiGetNewsById);
 
 export default router;
