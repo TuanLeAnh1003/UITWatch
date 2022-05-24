@@ -26,10 +26,12 @@
 }
 
 .liked-product > .liked-product__buttons > button {
-  width: 285px;
-  height: 75px;
+  width: fit-content;
+  height: 50px;
   background-color: #786059;
   color: #fff;
-  font-size: 22px;
+  font-size: 18px;
   border: none;
+  padding: 0 10px;
+  border-radius: 4px;
 }

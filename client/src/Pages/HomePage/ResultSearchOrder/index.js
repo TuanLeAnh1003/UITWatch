@@ -9,22 +9,12 @@ function ResultSearchOrder() {
   const { orderId } = useParams()
   const userId = localStorage.getItem("userId")
 
-  // useEffect(() => {
-  //   OrderApi.getOrderAndUser({
-  //     userId: userId,
-  //     orderId: orderId
-  //   })
-  //   .then((res) => {
-  //     console.log(res)
-  //   })
-  // }, [])
-
-  // useEffect(() => {
-  //   OrderApi.getOrderById({orderId: orderId})
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  // }, [])
+  useEffect(() => {
+    OrderApi.getOrderById({orderId: orderId})
+      .then((res) => {
+        console.log(res);
+      })
+  }, [])
 
   const order = {
     // Order
