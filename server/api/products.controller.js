@@ -66,6 +66,17 @@ export default class ProductsController {
         res.json(productsList);
     }
 
+    static async apiDiscountProducts(req, res, next) {
+        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+
+        const { productsList, totalNumProducts } = await ProductsDAO.getDiscountProducts({
+            page,
+            productsPerPage
+        });
+        res.json(productsList);
+    }
+
     static async apiPostProduct(req, res, next) {
         try {
             const name = req.body.name || null;

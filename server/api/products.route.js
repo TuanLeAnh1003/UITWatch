@@ -14,6 +14,10 @@ router
     .post(ProductsController.apiFilterProduct)
 
 router
+    .route('/discount')
+    .get(ProductsController.apiDiscountProducts);
+
+router
     .route('/:productId')
     .delete(ProductsController.apiRemoveProduct);
     

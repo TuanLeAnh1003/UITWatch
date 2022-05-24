@@ -44,21 +44,11 @@ export default class ProductsDAO {
         }
     }
 
-    static async getProducts({
-        filters = null,
+    static async getDiscountProducts({
         page = 0,
         productsPerPage = 20,
     } = {}) {
-        let query;
-        if (filters) {
-            if ("name" in filters) {
-                query = { $text: { $search: filters['name'] } };
-            }
-            if ("type" in filters) {
-                if(query) Object.assign(query, filters["type"]);
-                else query = filters["type"];
-            }
-        }
+        let query = {"discount":{$ne:null}};
         let cursor;
         try {
             cursor = await products.find(query).limit(productsPerPage).skip(productsPerPage * page);
