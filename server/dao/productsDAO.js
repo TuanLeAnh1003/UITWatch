@@ -44,6 +44,24 @@ export default class ProductsDAO {
         }
     }
 
+    static async getDiscountProducts({
+        page = 0,
+        productsPerPage = 20,
+    } = {}) {
+        let query = {"discount":{$ne:null}};
+        let cursor;
+        try {
+            cursor = await products.find(query).limit(productsPerPage).skip(productsPerPage * page);
+            const productsList = await cursor.toArray();
+            const totalNumProducts = await products.countDocuments(query);
+            return { productsList, totalNumProducts };
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return { productsList: [], totalNumProducts: 0 };
+        }
+    }
+
     static async createProduct(name, image, type, price, company, description, quantity, status, discount) {
         try {
             let date = new Date().getFullYear();

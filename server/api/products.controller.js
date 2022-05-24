@@ -5,7 +5,21 @@ export default class ProductsController {
         const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
-        console.log(req.query);
+        if (req.query.name) {
+            filters.name = req.query.name;
+        }
+
+        const { productsList, totalNumProducts } = await ProductsDAO.getProducts({
+            filters, page,
+            productsPerPage
+        });
+        res.json(productsList);
+    }
+
+    static async apiFilterProduct(req, res, next) {
+        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        let filters = {};
         if (req.query.name) {
             filters.name = req.query.name;
         }
@@ -47,6 +61,17 @@ export default class ProductsController {
 
         const { productsList, totalNumProducts } = await ProductsDAO.getProducts({
             filters, page,
+            productsPerPage
+        });
+        res.json(productsList);
+    }
+
+    static async apiDiscountProducts(req, res, next) {
+        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+
+        const { productsList, totalNumProducts } = await ProductsDAO.getDiscountProducts({
+            page,
             productsPerPage
         });
         res.json(productsList);
