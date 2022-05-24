@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;    
   background-color: rgba(113, 88, 80, 0.95);
+  margin-top:3.5rem;
 }
 
 .footer-first > .footer-first__wrapper {
