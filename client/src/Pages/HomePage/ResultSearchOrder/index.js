@@ -60,8 +60,6 @@ function ResultSearchOrder() {
         payment={order.payment}
       />
 
-      <hr className="result-search-order--line__middle" />
-
       <OrderDetail 
         productArray={order.productArray}
         shipment={order.shipment}
@@ -74,6 +72,8 @@ function ResultSearchOrder() {
         width={690}
       />
 
+      <hr className="result-search-order--line__middle" />
+      
       <button className="result-search-order--export">Xuất hóa đơn</button>
     </div>
   )

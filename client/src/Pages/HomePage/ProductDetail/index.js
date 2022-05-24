@@ -327,6 +327,7 @@ function ProductDetail() {
                   <div className="pro-detail__product-frame">
                     <div className="pro-detail__product">
                       <Product
+                        productId={item._id}
                         ref={product1}
                         img={item.image}
                         name={item.name}
