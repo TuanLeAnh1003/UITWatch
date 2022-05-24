@@ -87,7 +87,7 @@ export default class NewsDAO {
                 {$set: {
                     title: title,
                     sub_header: subHeader,
-                    image: iamge,
+                    image: image,
                     content: content,
                     date: date,
                 }}
