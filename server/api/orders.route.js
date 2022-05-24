@@ -13,4 +13,7 @@ router
 router
     .route('/id/:id').get(OrdersController.apiGetOrderById);
 
+router
+    .route('/findOrder').get(OrdersController.apiFindOrder);
+
 export default router;

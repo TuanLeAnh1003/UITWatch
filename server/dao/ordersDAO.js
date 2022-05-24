@@ -22,35 +22,6 @@ export default class OrdersDAO {
         ordersPerPage = 20,
     } = {}) {
         let query;
-        if (filters) {
-            if ("orderId" in filters) {
-                query = { "_id": ObjectId(filters['orderId']), "user.phoneNumber": filters['phoneNumber'] };
-                let order;
-                try {
-                    order = await orders.aggregate([{
-                        $lookup: {
-                            from: 'users',
-                            localField: 'userId',
-                            foreignField: '_id',
-                            as: 'user'
-                        }
-                    }
-                        , { $match: { "_id": ObjectId(filters['orderId']) } }]).toArray();
-
-                    if (order) {
-                        order = order[0];
-                        order.user = order.user[0];
-                        if (order.user.phoneNumber == filters.phoneNumber)
-                            return order;
-                    }
-                    else return null;
-                }
-                catch (e) {
-                    console.error(`Unable to issue find command, ${e}`);
-                    return null;
-                }
-            }
-        }
 
         let cursor;
         try {
@@ -137,6 +108,33 @@ export default class OrdersDAO {
         try {
             order = await orders.findOne(id);
             return order;
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return null;
+        }
+    }
+
+    static async findOrder(orderId, phoneNumber) {
+        let order;
+        try {
+            order = await orders.aggregate([{
+                $lookup: {
+                    from: 'users',
+                    localField: 'userId',
+                    foreignField: '_id',
+                    as: 'user'
+                }
+            }
+                , { $match: { "_id": ObjectId(filters['orderId']) } }]).toArray();
+
+            if (order) {
+                order = order[0];
+                order.user = order.user[0];
+                if (order.user.phoneNumber == filters.phoneNumber)
+                    return order;
+            }
+            else return null;
         }
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);

@@ -29,6 +29,29 @@ export default class NewsDAO {
     }
 
     static async getNewsById(id) {
+        let Obj;
+        try {
+            Obj = await news.aggregate([{
+                $lookup: {
+                    from: 'users',
+                    localField: 'user_id',
+                    foreignField: '_id',
+                    as: 'user'
+                }
+            }
+                , { $match: { "_id": ObjectId(id) } }]).toArray();
+
+            if (Obj) {
+                Obj = Obj[0];
+                Obj.user = Obj.user[0];
+                return Obj;
+            }
+            else return null;
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return null;
+        }
         try {
             const query = {_id: new ObjectId(id)};
             return await news.findOne(query);

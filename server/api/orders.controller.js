@@ -120,4 +120,14 @@ export default class OrdersController {
             res.status(500).json({ error: e.message });
         }
     }
+
+    static async apiFindOrder(req, res, next) {
+        const orderId = req.body.orderId;
+        const phoneNumber = req.body.phoneNumber;
+        const order = await OrdersDAO.findOrder({
+            orderId,
+            phoneNumber
+        });
+        res.json(order);
+    }
 }
