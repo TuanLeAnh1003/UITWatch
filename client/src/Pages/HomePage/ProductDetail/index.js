@@ -11,7 +11,7 @@ import UserApi from '../../../Apis/UserApi';
 import { useParams, Link } from 'react-router-dom'
 
 function ProductDetail() {
-  const userId = localStorage.getItem("userId")
+  const userId = localStorage.getItem("userid")
   const [product, setProduct] = useState() 
   const [productList, setProductList] = useState() 
 
@@ -76,25 +76,36 @@ function ProductDetail() {
 
   // -----------------------------------
   const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    UserApi.isLiked({
+      userId: userId,
+      productId: productId
+    })
+    .then((res) => {
+      setIsLiked(res.isLiked);
+    })
+  }, [])
+
   const handleLikeButton = () => {
     setIsLiked(!isLiked);
-    // if (isLiked) {
-    //   UserApi.likeProduct({
-    //     userId: userId,
-    //     productId: productId
-    //   })
-    //   .then((res) => {
-    //     console.log(res)
-    //   })
-    // } else {
-    //   UserApi.removeLikeProduct({
-    //     userId: userId,
-    //     productId: productId
-    //   })
-    //   .then((res) => {
-    //     console.log(res)
-    //   })
-    // }
+    if (isLiked) {
+      UserApi.removeLikeProduct({
+        userId: userId,
+        productId: productId
+      })
+      .then((res) => {
+        console.log(res)
+      })
+    } else {
+      UserApi.likeProduct({
+        userId: userId,
+        productId: productId
+      })
+      .then((res) => {
+        console.log(res)
+      })
+    }
   }
 
   const handleAddToCart = () => {
@@ -114,13 +125,11 @@ function ProductDetail() {
   useEffect(() => {
     ProductApi.getAll()
       .then((res) => {
-        console.log(res);
         setProductList(res)
       })
   }, [])
 
   useEffect(() => {
-    console.log(productId);
     ProductApi.getProductById({productId: productId})
       .then(async (res) => {
         console.log(res);

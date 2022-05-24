@@ -38,7 +38,7 @@ export default class LikesController {
                 productId,
                 date
             );
-            res.json({ status: "success" });
+            res.json({ isLiked: true });
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
@@ -52,7 +52,7 @@ export default class LikesController {
                 userId,
                 productId
             );
-            res.json({ status: "success " });
+            res.json({ isLiked: false });
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
