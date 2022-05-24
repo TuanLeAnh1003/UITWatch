@@ -16,17 +16,10 @@ export default class LikesDAO {
     }
     
     static async getLikes(userId) {
-        
-        /*let query;
-        query = {"_id":ObjectId(userId)};*/
         let user;
         try {
             user = await users.aggregate([
-                /*{
-                    "$addFields": {
-                        "likeProduct": { "$ifNull": ["$likeproduct", []] }
-                    }
-                },*/
+                { $match: { "_id": ObjectId(userId) } },
                 {
                     $lookup: {
                         from: 'products',
@@ -34,37 +27,12 @@ export default class LikesDAO {
                         foreignField: '_id',
                         as: 'likeProducts'
                     }
-                },
-                /*{
-                    "$addFields": {
-                        "likeProducts": {
-                            "$map": {
-                                "input": "$likeProducts",
-                                "in": {
-                                    productId: "$$this._id",
-                                    productName:"$$this.name"
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    $unset: [
-                      "likeProduct"
-                    ]
-                },*/
-                { $match: { "_id": ObjectId(userId["userId"]) } }
+                }
             ]).toArray();
-            console.log(user.likeProduct);
-            const totalNumLikes = user.likeProducts.length();
-            const LikesList = user;
+            user=user[0];
+            const totalNumLikes = user.likeProducts.length;
+            const LikesList = user.likeProducts;
             return {LikesList, totalNumLikes};
-            /*if (user) {
-                user = user[0];
-                user.likeProduct = user.likeProduct[0];
-                    return user;
-            }
-            else return null;*/
         }
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);

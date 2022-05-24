@@ -16,24 +16,30 @@ export default class CartsDAO {
         }
     }
 
-    /*static async getCarts({
-        page = 0,
-        cartsPerPage = 20,
-    } = {}) {
-        let query = {'_id':userId};
-
+    static async getCarts(userId) {
+        let user;
         try {
-            const user = await users.findOne(query);
-            const cartsList = user[0].cart;
-            let carts = cartsList.limit(cartsPerPage).skip(cartsPerPage * page);
-            const totalNumCarts = user[0].cart.lenght();
-            return { carts, totalNumCarts };
+            user = await users.aggregate([
+                { $match: { "_id": ObjectId(userId) } },
+                {
+                    $lookup: {
+                        from: 'products',
+                        localField: 'cart.productId',
+                        foreignField: '_id',
+                        as: 'cartProducts'
+                    }
+                }
+            ]).toArray();
+            user=user[0];
+            const totalNumCarts = user.cartProducts.length;
+            const cartsList = user.cartProducts;
+            return {cartsList, totalNumCarts};
         }
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);
             return { cartsList: [], totalNumCarts: 0 };
         }
-    }*/
+    }
 
     static async addToCart(userId, productId, quantity) {
         const cartDoc = {
