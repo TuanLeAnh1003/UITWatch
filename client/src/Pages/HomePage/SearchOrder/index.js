@@ -13,16 +13,12 @@ function SearchOrder() {
     .then(data => setUser({...data}));
   }, [])
 
-  const handleSearchOrder = () => {
-    
-  }
-
   return (
       <form className="search-order">
         <div className="search-order--title">TRA CỨU ĐƠN HÀNG</div>
         <input type="text" className="search-order--input" placeholder="Mã đơn hàng" onChange={(e) => setOrderId(e.target.value)}/><br />
         <input type="text" className="search-order--input" placeholder="Email" value={user.email}/><br />
-        <Link to={`/result-search-order/${orderId}`} className="search-order--submit" onClick={handleSearchOrder}>Tra cứu</Link>
+        <Link to={`/result-search-order/:${orderId}`} className="search-order--submit" >Tra cứu</Link>
       </form>
   )
 }

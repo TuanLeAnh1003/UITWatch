@@ -22,7 +22,7 @@ function AdminHeader() {
       <Link to="/" className="ad-header__logo">
         <img src={watch} alt="watch" />
         <div>
-          <h1>UITWatch</h1>
+          <h3>UITWatch</h3>
           <span>SINCE 2021</span>
         </div>
       </Link>

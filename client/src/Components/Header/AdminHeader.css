@@ -38,7 +38,8 @@
 }
 
 .ad-header > .ad-header__item > img {
-  object-fit: contain;
+  object-fit: cover;
+  height: 40px;
   width: 40px;
   border-radius: 50%;
 }
