@@ -5,7 +5,7 @@ export default class ProductsController {
         const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
-        console.log(req.body);
+        console.log(req.query);
         if (req.query.name) {
             filters.name = req.query.name;
         }

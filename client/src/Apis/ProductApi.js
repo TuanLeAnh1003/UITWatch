@@ -26,7 +26,11 @@ const getProducts = async (data) => {
 
 const filter = async(data) => {
   console.log(data);
-  return await axiosInstance.get('/products/', data)
+  return await axiosInstance.get('/products', data)
+}
+
+const getDiscountProduct = async() => {
+  return await axiosInstance.get('/products/discount')
 }
 
 export default {
@@ -37,4 +41,5 @@ export default {
   removeProduct,
   getProducts,
   filter,
+  getDiscountProduct,
 }

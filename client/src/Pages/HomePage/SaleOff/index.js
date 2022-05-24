@@ -9,7 +9,7 @@ function SaleOff() {
   const [productList, setProductList] = useState()
 
   useEffect(() => {
-    ProductApi.getAll()
+    ProductApi.getDiscountProduct()
       .then((res) => {
         console.log(res);
         setProductList(res)
