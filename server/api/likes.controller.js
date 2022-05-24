@@ -13,6 +13,20 @@ export default class LikesController {
         };
     }
 
+    static async apiIsLiked(req, res, next) {
+        const userId = req.body.userId;
+        const productId = req.body.productId;
+        try {
+            const { isLiked } = await LikesDAO.isLikes(
+                userId,
+                productId
+            );
+            res.json({isLiked});
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        };
+    }
+
     static async apiAddToLike(req, res, next) {
         try {
             const userId = req.body.userId;

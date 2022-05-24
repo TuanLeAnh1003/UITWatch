@@ -25,6 +25,7 @@ router
 router
     .route('/likeProduct')
     .get(LikesController.apiGetLikedProducts)
+    .post(LikesController.apiIsLiked)
     .put(LikesController.apiAddToLike);
 
 router

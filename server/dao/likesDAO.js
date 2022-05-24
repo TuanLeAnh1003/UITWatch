@@ -19,7 +19,6 @@ export default class LikesDAO {
         
         /*let query;
         query = {"_id":ObjectId(userId)};*/
-
         let user;
         try {
             user = await users.aggregate([
@@ -36,7 +35,7 @@ export default class LikesDAO {
                         as: 'likeProducts'
                     }
                 },
-                {
+                /*{
                     "$addFields": {
                         "likeProducts": {
                             "$map": {
@@ -48,16 +47,16 @@ export default class LikesDAO {
                             }
                         }
                     }
-                }
-                , {
+                },
+                {
                     $unset: [
                       "likeProduct"
                     ]
-                  }
-                /*, { $match: { "_id": ObjectId(userId) } }*/
+                },*/
+                { $match: { "_id": ObjectId(userId["userId"]) } }
             ]).toArray();
-            console.log(user);
-            const totalNumLikes = user.likedProducts.lenght();
+            console.log(user.likeProduct);
+            const totalNumLikes = user.likeProducts.length();
             const LikesList = user;
             return {LikesList, totalNumLikes};
             /*if (user) {
@@ -71,27 +70,32 @@ export default class LikesDAO {
             console.error(`Unable to issue find command, ${e}`);
             return null;
         }
+    }
 
-        let cursor;
+    static async isLikes(userId, productId) {
+        let query;
+        query = {
+            $and:[
+                {"_id":ObjectId(userId)},
+                {"likeProduct.productId":ObjectId(productId)}
+            ]
+        }
         try {
-            const user = await users.findOne(query);
-            const likesList = user.likes;
-            const totalNumLikes = likesList.length;
-            return { likesList, totalNumLikes };
+            const likeList = await users.findOne(query);
+            const isLiked = (likeList==null)?false:true;
+            return {isLiked};
         }
         catch (e) {
             console.error(`Unable to issue find command, ${e}`);
-            return { likesList: [], totalNumLikes: 0 };
+            return null;
         }
     }
 
     static async addToLike(userId, productId, date) {
         const likeDoc = {
-            productId,
+            productId:ObjectId(productId),
             date
         }
-        
-        console.log(users);
 
         try {
             const updateResponse = await users.updateOne(
@@ -108,7 +112,7 @@ export default class LikesDAO {
 
     static async unlike(userId, productId) {
         const likeDoc = {
-            productId
+            productId:ObjectId(productId)
         }
         
         try {
