@@ -5,7 +5,7 @@ import OrderApi from '../../../Apis/OrderApi'
 import UserApi from '../../../Apis/UserApi';
 
 function SearchOrder() {
-  const [orderId, setOrderId] = useState();
+  const [orderDate, setOrderDate] = useState();
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -16,9 +16,9 @@ function SearchOrder() {
   return (
       <form className="search-order">
         <div className="search-order--title">TRA CỨU ĐƠN HÀNG</div>
-        <input type="text" className="search-order--input" placeholder="Mã đơn hàng" onChange={(e) => setOrderId(e.target.value)}/><br />
+        <input type="date" className="search-order--input" placeholder="Ngày đơn hàng" onChange={(e) => setOrderDate(e.target.value)}/><br />
         <input type="text" className="search-order--input" placeholder="Email" value={user.email}/><br />
-        <Link to={`/result-search-order/:${orderId}`} className="search-order--submit" >Tra cứu</Link>
+        <Link to={`/result-search-order/${orderDate}`} className="search-order--submit" style={{border: "none"}}>Tra cứu</Link>
       </form>
   )
 }
