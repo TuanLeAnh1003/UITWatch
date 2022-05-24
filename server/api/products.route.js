@@ -10,6 +10,10 @@ router
     .put(ProductsController.apiUpdateProduct)
 
 router
+    .route('/filter')
+    .post(ProductsController.apiFilterProduct)
+
+router
     .route('/:productId')
     .delete(ProductsController.apiRemoveProduct);
     

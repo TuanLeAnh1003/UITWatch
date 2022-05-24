@@ -5,7 +5,21 @@ export default class ProductsController {
         const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
-        console.log(req.body);
+        if (req.query.name) {
+            filters.name = req.query.name;
+        }
+
+        const { productsList, totalNumProducts } = await ProductsDAO.getProducts({
+            filters, page,
+            productsPerPage
+        });
+        res.json(productsList);
+    }
+
+    static async apiFilterProduct(req, res, next) {
+        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        let filters = {};
         if (req.query.name) {
             filters.name = req.query.name;
         }
