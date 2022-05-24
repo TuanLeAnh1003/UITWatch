@@ -5,6 +5,7 @@ export default class ProductsController {
         const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
+        console.log(req.body);
         if (req.query.name) {
             filters.name = req.query.name;
         }
@@ -157,7 +158,7 @@ export default class ProductsController {
 
     static async apiGetProductById(req, res, next) {
         try {
-            const productId = req.params.id;
+            const productId = req.params.productId;
             const ProductResponse = await ProductsDAO.getProductById(
                 productId
             );

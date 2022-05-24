@@ -12,19 +12,15 @@ const login = async (data) => {
 }
 
 const likeProduct = async (data) => {
-  return await axiosInstance.post("/api/v1/users/likeProduct", data)
+  return await axiosInstance.post("/users/likeProduct", data)
 }
 
 const removeLikeProduct = async (data) => {
-  return await axiosInstance.delete("/api/v1/users/likeProduct", data)
+  return await axiosInstance.delete("/users/likeProduct", data)
 }
 
 const addToCart = async (data) => {
-  return await axiosInstance.post("/api/v1/users/addToCart", data)
-}
-
-const filter = async (data) => {
-  return await axiosInstance.get("/api/v1/users/filter", data)
+  return await axiosInstance.post("/users/addToCart", data)
 }
 
 const getMe = async (data) => {
@@ -46,7 +42,6 @@ export default {
   likeProduct,
   removeLikeProduct,
   addToCart,
-  filter,
   getMe,
   updateUser,
   // getAll

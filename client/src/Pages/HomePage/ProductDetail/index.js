@@ -217,7 +217,7 @@ function ProductDetail() {
 
         <div className="pro-detail__info-content">
           <div className="pro-detail__info-first">
-            <p>{product.description}</p>
+            <p>{product?.description}</p>
             <iframe 
               width="100%" 
               height="100%" 

@@ -85,18 +85,18 @@ function Sale() {
   const [hideCate, setHideCate] = useState(false)
 
   const handleFilter = () => {
-    UserApi.filter({
-      brand: {brand},
-      albert: {albert}, 
-      priceRange: {priceRange}, 
-      glass: {glass}, 
-      energyCore: {energyCore}, 
-      interfaceColor: {interfaceColor}, 
-      caseColor: {caseColor}, 
-      shape: {shape}, 
-      size: {size}, 
-      waterRessitance: {waterRessitance}, 
-      feature: {feature}
+    ProductApi.filter({
+      brand: brand,
+      albert: albert, 
+      priceRange: priceRange, 
+      glass: glass, 
+      energyCore: energyCore, 
+      interfaceColor: interfaceColor, 
+      caseColor: caseColor, 
+      shape: shape, 
+      size: size, 
+      waterRessitance: waterRessitance, 
+      feature: feature
     })
     .then((res) => {
       console.log(res)

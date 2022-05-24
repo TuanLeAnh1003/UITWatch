@@ -24,11 +24,17 @@ const getProducts = async (data) => {
   return await axiosInstance.get(`/products?name=${data}`)
 }
 
+const filter = async(data) => {
+  console.log(data);
+  return await axiosInstance.get('/products/', data)
+}
+
 export default {
   getAll,
   getProductById,
   createProduct,
   updateProduct,
   removeProduct,
-  getProducts
+  getProducts,
+  filter,
 }

@@ -14,6 +14,6 @@ router
     .delete(ProductsController.apiRemoveProduct);
     
 router
-    .route('/id/:id').get(ProductsController.apiGetProductById);
+    .route('/id/:productId').get(ProductsController.apiGetProductById);
 
 export default router;
