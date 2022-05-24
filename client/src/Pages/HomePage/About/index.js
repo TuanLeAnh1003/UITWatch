@@ -4,32 +4,38 @@ import "./About.css";
 import medImg from '../../../Assets/Images/Rectangle 15.png';
 import vidImg from '../../../Assets/Images/image 3.png';
 import bgImg from '../../../Assets/Images/Rectangle 387.png';
+import Dan from '../../../Assets/Images/Dan.png';
+import Tuan from '../../../Assets/Images/Tuan.png';
+import Hung from '../../../Assets/Images/Hung.png';
+import Thien from '../../../Assets/Images/Thien.png';
+import Phong from '../../../Assets/Images/Phong.png';
+import { Link } from "react-router-dom";
 
 function About() {
 
     const creators = [{
-        img: "",
+        img: Dan,
         name: "Duy An",
         position: "C.E.O Communication",
         color: "#0474C6",
       }, {
-        img: "",
+        img: Tuan,
         name: "Tuấn Lê",
         position: "Event & Activation",
         color: "#2CA05A",
       }, {
-        img: "",
-        name: "Hưng Phò",
+        img: Hung,
+        name: "Hưng Phó",
         position: "Marketing & Entertainment",
         color: "#E25050",
       }, {
-        img: "",
-        name: "Quốc An",
+        img: Phong,
+        name: "Phong Đặng",
         position: "Studios & Distribution",
         color: "#D1A67C",
       }, {
-        img: "",
-        name: "Mai Anh",
+        img: Thien,
+        name: "Thiện Nguyễn",
         position: "Cinemas & Service",
         color: "#F5859E",
       }];
@@ -117,16 +123,17 @@ function About() {
           <h1 className="foot-head">LIÊN HỆ VỚI CHÚNG TÔI</h1>
           <div>
             <p className="foot-line" style={{width: "70%", textAlign: "center", margin: "0 auto"}}>
-              Nếu có bất kỳ phản hồi gì về cửa hàng GolfMaid. Hãy liên hệ với
+              Nếu có bất kỳ phản hồi gì về cửa hàng UITWatch. Hãy liên hệ với
               chúng tôi để được giải đáp sớm nhất.
             </p>
           </div>
           <div className="button-container-div">
-            <button className="go-to-detail" type="button" style={{border: "none"}}>
-              ĐẾN TRANG CHI TIẾT
-            </button>
+            <Link to="/contact" className="go-to-detail" type="button" style={{border: "none"}}>
+              ĐẾN TRANG LIÊN HỆ
+            </Link>
           </div>
         </div>
+        <div></div>
       </div>
     </div>
   );

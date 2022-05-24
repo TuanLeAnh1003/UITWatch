@@ -1,7 +1,7 @@
 import axiosInstance from "./axiosInstance";
 
-const getOrderById = async (data) => {
-  return await axiosInstance.get(`orders/id/${data.orderId}`)
+const getOrderByDateAndUserId = async (data) => {
+  return await axiosInstance.get("orders/getOrderByDate", data)
 }
 
 const placeOrder = async (data) => {
@@ -13,7 +13,7 @@ const getOrderAndUser = async (data) => {
 }
 
 export default {
-  getOrderById,
+  getOrderByDateAndUserId,
   placeOrder,
   getOrderAndUser,
 }

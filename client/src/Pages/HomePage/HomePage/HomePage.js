@@ -33,7 +33,7 @@ function HomePage() {
       <Route path="/saleoff" element={<SaleOff />} />
       <Route path="/product/:productId" element={<ProductDetail />} />
       <Route path="/search-order" element={<SearchOrder />} />
-      <Route path="/result-search-order/:orderId" element={<ResultSearchOrder />} />
+      <Route path="/result-search-order/:orderDate" element={<ResultSearchOrder />} />
       <Route path="/news" element={<News />} />
       <Route path="/watch-news/:newsId" element={<WatchNews />} />
       <Route path="/contact" element={<Contact />} />

@@ -4,6 +4,7 @@ import RolexImg from './../../../Assets/Images/rolex-img.svg'
 import './Search.css';
 import { actions, useStore } from '../../../Store';
 import ProductApi from '../../../Apis/ProductApi';
+import NewsApi from '../../../Apis/NewsApi';
 
 function Search() {
 
@@ -12,20 +13,37 @@ function Search() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    ProductApi.getProducts(state.searchInput)
-    .then(data => setProductList([...data]))
+    if(!state.searchInput) return; 
+    ProductApi.getAll()
+    .then(data => setProductList(data.filter((item, i) => item.name.includes(state.searchInput))));
   }, [state.searchInput])
+
+  // const [type, setType] = useState();
+
+  // const handleType = (e) => {
+  //   setType(e.target.value);
+  // }
+
+  // useEffect(() => {
+  //   console.log(type)
+  //   if(type === "products") {
+  //     if(!state.searchInput) return; 
+  //     ProductApi.getAll()
+  //     .then(data => setProductList(data.filter((item, i) => item.name.includes(state.searchInput))));
+  //   } else {
+  //     NewsApi.getAll()
+  //     .then(data => setProductList(data.filter((item, i) => item.title.includes(state.searchInput))));
+  //   }
+  // }, [type])
 
   return (
     <div className="search">
-      <div className="search-title">TÌM THẤY {productList.length} KẾT QUẢ CHO "{state.searchInput}"</div>
+      <div className="search-title">{state.searchInput ? `TÌM THẤY ${productList.length} KẾT QUẢ CHO "${state.searchInput}"` : "CHƯA NHẬP TỪ KHÓA!"}</div>
       <div className="search-cate">
-        <div className="search-cate-product">
-          <input className="search-cate-product-input" type="checkbox" id="product"/>
+        <div className="search-cate-product" >
+          <input className="search-cate-product-input" name="type" type="radio" id="product" value="products"/>
           <label className="search-cate-product-label">Sản phẩm</label>
-        </div>
-        <div className="search-cate-post">
-          <input className="search-cate-post-input" type="checkbox" id="post"/>
+          <input className="search-cate-post-input" name="type" type="radio" id="post" value="news"/>
           <label className="search-cate-post-label">Bài viết</label>
         </div>
       </div>
@@ -35,8 +53,8 @@ function Search() {
           productList.map((product, index) => (
             <div className="search-list-item" key={index}>
               <Product 
-                 
-                img={product.img}
+                productId={product._id}
+                img={product.image}
                 name={product.name}
                 type={product.type}
                 price={product.price}

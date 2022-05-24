@@ -6,11 +6,11 @@ import { useParams } from 'react-router-dom'
 import OrderApi from '../../../Apis/OrderApi'
 
 function ResultSearchOrder() {
-  const { orderId } = useParams()
+  const { orderDate } = useParams()
   const userId = localStorage.getItem("userId")
 
   useEffect(() => {
-    OrderApi.getOrderById({orderId: orderId})
+    OrderApi.getOrderByDateAndUserId({params: {orderDate: orderDate, userId: userId}})
       .then((res) => {
         console.log(res);
       })
