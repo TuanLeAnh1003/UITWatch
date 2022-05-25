@@ -5,10 +5,12 @@
 
 .watch-news-img-wrapper {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .watch-news-img {
-  width: 100%;
+  width: 45%;
 
 }
 
@@ -20,7 +22,7 @@
 .watch-news-main-title {
   width: 100%;
   text-align: center;
-  font-size: 78px;
+  font-size: 2.3rem;
   font-weight: bold;
   margin: 10px 0;
   line-height: 150px;
@@ -106,4 +108,9 @@
   text-decoration: none;
   list-style: none;
   margin: 10px auto;
+  margin-bottom: 13rem;
+}
+
+.watch-news-other-wrapper > li {
+  margin-bottom: 10rem;
 }

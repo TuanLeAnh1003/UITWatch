@@ -19,11 +19,13 @@
 }
 
 .news-popular-image {
-  max-width: 1000px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .news-popular-right {
+  width: 125%;
   padding: 20px;
   background-color: #F2F2F2;
 }
