@@ -2,11 +2,11 @@ import LikesDAO from '../dao/likesDAO.js';
 
 export default class LikesController {
     static async apiGetLikedProducts(req, res, next) {
-        const userId = req.body.userId;
+        const userId = req.query.userId;
         try {
-            const { LikesList, totalNumLikes } = await LikesDAO.getLikes({
+            const { LikesList, totalNumLikes } = await LikesDAO.getLikes(
                 userId
-            });
+            );
             res.json(LikesList);
         } catch (e) {
             res.status(500).json({ error: e.message });

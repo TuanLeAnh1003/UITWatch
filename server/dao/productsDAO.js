@@ -21,21 +21,70 @@ export default class ProductsDAO {
         page = 0,
         productsPerPage = 20,
     } = {}) {
-        let query;
-        if (filters) {
-            if ("name" in filters) {
-                query = { $text: { $search: filters['name'] } };
+        let cursor;
+        if ("name" in filters) {
+            try {
+                /*cursor = await products.aggregate(
+                    [
+                        {
+                            '$search': {
+                                'index': 'searchProduct',
+                                'text': {
+                                    'query': filters.name,
+                                    'path': 'name',
+                                    fuzzy: {
+                                        maxEdits: 2,
+                                        prefixLength: 2
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                )*/
+                cursor = await products.aggregate(
+                    [
+                        {
+                            $search: {
+                                'index': 'searchProduct',
+                                "autocomplete": {
+                                    "path": "name",
+                                    "query": filters.name
+                                }
+                            }
+                        }
+                    ]
+                )
+                const productsList = await cursor.skip(productsPerPage * page).limit(productsPerPage).toArray();
+                return { productsList };
             }
-            if ("type" in filters) {
-                if(query) Object.assign(query, filters["type"]);
-                else query = filters["type"];
+            catch (e) {
+                console.error(`Unable to issue find command, ${e}`);
+                return { productsList: []};
             }
         }
+        else {
+        try {
+            cursor = await products.find().limit(productsPerPage).skip(productsPerPage * page);
+            const productsList = await cursor.toArray();
+            const totalNumProducts = await products.countDocuments();
+            return { productsList, totalNumProducts };
+        }
+        catch (e) {
+            console.error(`Unable to issue find command, ${e}`);
+            return { productsList: [], totalNumProducts: 0 };
+        }}
+    }
+
+    static async getFilterProducts({
+        filters = null,
+        page = 0,
+        productsPerPage = 20,
+    } = {}) {
         let cursor;
         try {
-            cursor = await products.find(query).limit(productsPerPage).skip(productsPerPage * page);
+            cursor = await products.find(filters).limit(productsPerPage).skip(productsPerPage * page);
             const productsList = await cursor.toArray();
-            const totalNumProducts = await products.countDocuments(query);
+            const totalNumProducts = await products.countDocuments(filters);
             return { productsList, totalNumProducts };
         }
         catch (e) {
