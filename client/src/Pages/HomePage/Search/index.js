@@ -14,7 +14,7 @@ function Search() {
 
   useEffect(() => {
     if(!state.searchInput) return; 
-    ProductApi.getProducts()
+    ProductApi.getProducts(state.searchInput)
     .then(data => setProductList(data));
   }, [state.searchInput])
 
