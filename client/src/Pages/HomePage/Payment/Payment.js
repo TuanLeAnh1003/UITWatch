@@ -2,26 +2,26 @@ import React, {useState} from 'react';
 import './Payment.css';
 import MoMo from './../../../Assets/Images/image 11.png';
 import OrderApi from '../../../Apis/OrderApi';
+import { useNavigate } from 'react-router-dom';
 
 function Payment() {
 
   const [address, setAddress] = useState("");
   const [note, setNote] = useState("");
+  const [payment, setPayment] = useState();
+
+  const navigate = useNavigate();
 
   const handlePlaceOrder = () => {
-    if(address === "") {
-      alert("Chưa điền địa chỉ!");
-    } else {
-      OrderApi.placeOrder({
-        userId: "",
-        totalPtice: "",
-        address: address,
-        note: note,
-        date: Date.now(),
-      })
-      .then(data => console.log("Đặt hàng thành công!"))
-      .catch(err => console.log("Lỗi hệ thống!"))
+    if(payment === "MoMo") {
+      navigate("/momo")
+    } else if(payment === "ShipCode") {
+      navigate("/cash")
     }
+  }
+
+  const handleChange = (e) => {
+    setPayment(e.target.value)
   }
 
   return (
@@ -138,14 +138,14 @@ function Payment() {
               </div>
                       
               <div className="payment__order-method">
-                <input id="radio-method2" type="radio" name="payment" value="ShipCode" />  
+                <input id="radio-method2" type="radio" name="payment" value="ShipCode" onChange={e => handleChange(e)}/>  
                 <label htmlFor="radio-method2" className="payment__order-text">
                   <b>Thanh toán khi nhận hàng</b>
                 </label>
               </div>
                       
               <div className="payment__order-method">
-                <input id="radio-method3" type="radio" name="payment" value="MoMo" />
+                <input id="radio-method3" type="radio" name="payment" value="MoMo" onChange={e => handleChange(e)}/>
                 <label htmlFor="radio-method3" className="payment__order-text">
                   <b>Quét mã MoMo</b>                
                   <img src={MoMo} alt="Logo_method"/>

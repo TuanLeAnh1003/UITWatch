@@ -177,6 +177,7 @@ function Home() {
                 <div className="home__product-frame">
                   <div className="home__product">
                     <Product 
+                      productId={item._id}
                       ref={product}
                       img={item.image}
                       name={item.name}

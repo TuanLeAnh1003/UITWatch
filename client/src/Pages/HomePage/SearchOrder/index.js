@@ -18,7 +18,7 @@ function SearchOrder() {
         <div className="search-order--title">TRA CỨU ĐƠN HÀNG</div>
         <input type="date" className="search-order--input" placeholder="Ngày đơn hàng" onChange={(e) => setOrderDate(e.target.value)}/><br />
         <input type="text" className="search-order--input" placeholder="Email" value={user.email}/><br />
-        <Link to={`/result-search-order/${orderDate}`} className="search-order--submit" style={{border: "none"}}>Tra cứu</Link>
+        <Link to={localStorage.getItem("role") === "user" ? `/result-search-order/${orderDate}` : ""} className="search-order--submit" style={{border: "none"}}>Tra cứu</Link>
       </form>
   )
 }

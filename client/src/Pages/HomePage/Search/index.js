@@ -39,14 +39,14 @@ function Search() {
   return (
     <div className="search">
       <div className="search-title">{state.searchInput ? `TÌM THẤY ${productList.length} KẾT QUẢ CHO "${state.searchInput}"` : "CHƯA NHẬP TỪ KHÓA!"}</div>
-      <div className="search-cate">
+      {/*<div className="search-cate">
         <div className="search-cate-product" >
           <input className="search-cate-product-input" name="type" type="radio" id="product" value="products"/>
           <label className="search-cate-product-label">Sản phẩm</label>
           <input className="search-cate-post-input" name="type" type="radio" id="post" value="news"/>
           <label className="search-cate-post-label">Bài viết</label>
         </div>
-      </div>
+  </div>*/}
 
       <div className="search-list">
         {

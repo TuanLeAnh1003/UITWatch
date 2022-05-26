@@ -43,15 +43,13 @@ function Account() {
   // const [curentImage, setcurrentImage] = useState();
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (e) => {
-    // console.log(document.querySelector("input[name: 'lastName']"))
-
     e.preventDefault();
-    if (image == null) return;
+    if(!image) return;
     const imageRef = ref(storage, `images/${image.name + v4()}`);
     uploadBytes(imageRef, image).then(() => {
       getDownloadURL(imageRef).then(data => {
@@ -59,18 +57,18 @@ function Account() {
           userId: localStorage.getItem("userid"),
           lastName: lastName,
           firstName: firstName,
-          email: email,
           phoneNumber: phoneNumber,
           birthday: birthday,
-          image: data
+          image: data 
         })
         .then(data => {
           UserApi.getMe({id: localStorage.getItem("userid")})
           .then(data => setUser({...data}));
-          window.location.reload();
+          // window.location.reload();
         })
       });
-    })    
+    })
+
   }
 
   // console.log("image: ", image)
@@ -96,37 +94,36 @@ function Account() {
           <div className="account-info-left">
             <div className="account-info-left-item">
               <label>Họ:</label>
-              <input type="text" placeholder={user.lastName} name="lastName" onChange={e => setLastName(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
+              <input type="text" placeholder={user.lastName} id="lastName" name="lastName" onChange={e => setLastName(e.target.value)}/>
             </div>
             <div className="account-info-left-item">
               <label>Tên:</label>
-              <input type="text" placeholder={user.firstName} name="firstName" onChange={e => setFirstName(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
+              <input type="text" placeholder={user.firstName} id="firstName" name="firstName" onChange={e => setFirstName(e.target.value)}/>
             </div>
-            <div className="account-info-left-item">
+            {/*<div className="account-info-left-item">
               <label>Email:</label>
               <input type="email" placeholder={user.email} name="email" onChange={e => setEmail(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
-            </div>
+  </div>*/}
             <div className="account-info-left-item">
               <label>Số điện thoại:</label>
-              <input type="text" placeholder={user.phoneNumber} name="phoneNumber" onChange={e => setPhoneNumber(e.target.value === "" ? e.target.placeholder : e.target.value)}/>
+              <input type="text" placeholder={user.phoneNumber} id="phoneNumber" name="phoneNumber" onChange={e => setPhoneNumber(e.target.value)}/>
             </div>
-            <div className="account-info-left-item">
+            {/*<div className="account-info-left-item">
               <label>Giới tính:</label>
               <div className="account-info-left-item-gender">
                 <input type="radio" name="gender" value="male"/><label> Nam</label>
                 <input type="radio" name="gender" value="female"/><label> Nữ</label>
                 <input type="radio" name="gender" value="other"/><label> Khác</label>
               </div>
-            </div>
+</div>*/}
             <div className="account-info-left-item">
               <label>Ngày sinh:</label>
               <input 
-                type="text" 
+                id="bỉthday"
+                type="date" 
                 max={Date.now()} 
-                placeholder={user.birthday} 
-                onBlur={e => e.target.type='text'} 
-                onFocus={e => e.target.type='date'}
-                onChange={e => setBirthday(e.target.value === "" ? e.target.placeholder : e.target.value)}
+                value={birthday ? birthday : user.birthday} 
+                onChange={e => setBirthday(e.target.value)}
               />
             </div>
           </div>

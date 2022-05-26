@@ -48,7 +48,6 @@ export default class UsersController {
             const lastName = req.body.lastName;
             const birthday = req.body.birthday;
             const phoneNumber = req.body.phoneNumber;
-            const email = req.body.email;
             const image = req.body.image
 
             const UserResponse = await UsersDAO.updateUser(
@@ -57,7 +56,6 @@ export default class UsersController {
                 lastName,
                 birthday,
                 phoneNumber,
-                email,
                 image
             );
 
