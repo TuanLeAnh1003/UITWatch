@@ -95,4 +95,18 @@ export default class LikesDAO {
             return { error: e };
         }
     }
+
+    static async unlikeAll(userId) {
+        try {
+            const updateResponse = await users.updateOne(
+                {"_id": ObjectId(userId)},
+                {$unset: {'likeProduct': ""}}
+            );
+            return updateResponse;
+        }
+        catch (e) {
+            console.error(`unable to unlike: ${e}`);
+            return { error: e };
+        }
+    }
 }

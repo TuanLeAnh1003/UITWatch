@@ -124,9 +124,11 @@ export default class OrdersController {
     static async apiFindOrder(req, res, next) {
         const orderId = req.body.orderId;
         const phoneNumber = req.body.phoneNumber;
+        const orderDate = req.body.orderDate;
+        const email = req.body.email;
         const order = await OrdersDAO.findOrder({
-            orderId,
-            phoneNumber
+            orderDate,
+            email
         });
         res.json(order);
     }
