@@ -9,6 +9,7 @@ import Product from '../../../Components/Product';
 import ProductApi from '../../../Apis/ProductApi';
 import UserApi from '../../../Apis/UserApi';
 import { useParams, Link } from 'react-router-dom'
+import Swal from "sweetalert2";
 
 function ProductDetail() {
   const userId = localStorage.getItem("userid")
@@ -116,7 +117,13 @@ function ProductDetail() {
     })
     .then((res) => {
       console.log(res);
-      alert('Thêm sản phẩm vào giỏ hàng thành công!!!')
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Thêm vào giỏ hàng thành công',
+        showConfirmButton: false,
+        timer: 2000
+      })
     })
   }
 

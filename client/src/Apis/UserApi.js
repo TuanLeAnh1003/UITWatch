@@ -24,7 +24,15 @@ const isLiked = async (data) => {
 }
 
 const addToCart = async (data) => {
-  return await axiosInstance.post("/users/addToCart", data)
+  return await axiosInstance.put("/users/carts/addToCart", data)
+}
+
+const removeCart = async (data) => {
+  return await axiosInstance.put('/users/carts/removeCart', data)
+}
+
+const removeAllCart = async (data) => {
+  return await axiosInstance.put('/users/carts/removeAllCart', data)
 }
 
 const getMe = async (data) => {
@@ -49,5 +57,7 @@ export default {
   getMe,
   updateUser,
   isLiked,
+  removeCart,
+  removeAllCart,
   // getAll
 }
