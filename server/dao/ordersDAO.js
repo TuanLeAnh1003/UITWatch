@@ -115,7 +115,7 @@ export default class OrdersDAO {
         }
     }
 
-    static async findOrder(orderId, phoneNumber) {
+    static async findOrder(orderDate, email) {
         let order;
         try {
             order = await orders.aggregate([{
@@ -125,14 +125,21 @@ export default class OrdersDAO {
                     foreignField: '_id',
                     as: 'user'
                 }
+            },
+            {
+                $match: { "orderDate": orderDate }
             }
-                , { $match: { "_id": ObjectId(filters['orderId']) } }]).toArray();
+            ]).toArray();
 
             if (order) {
-                order = order[0];
-                order.user = order.user[0];
-                if (order.user.phoneNumber == filters.phoneNumber)
-                    return order;
+                for (let o in order)
+                {
+                    if (order[o].user[0].email===email)
+                        order[o].user = order[o].user[0];
+                    else
+                        delete order[o];
+                }
+                return order;
             }
             else return null;
         }

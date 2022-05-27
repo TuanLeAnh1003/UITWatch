@@ -57,4 +57,16 @@ export default class LikesController {
             res.status(500).json({ error: e.message });
         }
     }
+
+    static async apiUnlikeAll(req, res, next) {
+        try {
+            const userId = req.body.userId;
+            const LikesResponse = await LikesDAO.unlikeAll(
+                userId
+            );
+            res.json({ unlikeAll: true });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
 }

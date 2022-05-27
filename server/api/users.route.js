@@ -33,6 +33,10 @@ router
     .put(LikesController.apiUnlike);
 
 router
+    .route('/unlikeAllProduct')
+    .put(LikesController.apiUnlikeAll);
+
+router
     .route('/carts')
     .get(CartsController.apiGetCart);
 
