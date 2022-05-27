@@ -185,6 +185,10 @@
     margin: 0 auto;
   }
 
+  .sale__category-item-title-wrap div {
+    margin-bottom: 1rem;
+  }
+
   .sale__category-gender-item {
     color: #000;
   }
