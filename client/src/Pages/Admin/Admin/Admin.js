@@ -1,6 +1,6 @@
 import React from 'react';
 import './Admin.css';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 
 import Statistic from '../Statistic/Statistic';
 import SettingOptions from '../SettingOptions/SettingOptions';
@@ -32,6 +32,7 @@ function Admin() {
           <div>
             <Routes>
               <Route path='/' element={<AdminProfile />} />
+              <Route path="/*" element={<Navigate to="/admin" />} />
               <Route path='statistic' element={<Statistic />} />
               <Route path='settings' element={<SettingOptions />} />
               <Route path='admin-profile' element={<AdminProfile />} />

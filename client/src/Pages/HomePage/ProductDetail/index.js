@@ -230,8 +230,8 @@ function ProductDetail() {
 
           <div className="pro-detail__buttons">
             <div className="add-to-cart">
-              <button onClick={() => userId !== null & handleAddToCart}>THÊM VÀO GIỎ HÀNG</button>
-              <button onClick={() => userId !== null & handleLikeButton}>
+              <button onClick={userId !== null && handleAddToCart}>THÊM VÀO GIỎ HÀNG</button>
+              <button onClick={userId !== null && handleLikeButton}>
                 {isLiked ? <FontAwesomeIcon icon={solid('heart')} /> : <FontAwesomeIcon icon={regular('heart')} />}
               </button>
             </div>

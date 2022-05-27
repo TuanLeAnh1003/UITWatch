@@ -22,6 +22,7 @@ import Consult from '../Consult';
 import Sale from '../Sale';
 import Account from '../Account';
 import PrivateRoute from '../../../Routes/PrivateRoute';
+import { Navigate } from 'react-router-dom'
 
 function HomePage() {
   return (
@@ -30,6 +31,7 @@ function HomePage() {
     <div style={{minHeight: '330px'}}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/*" element={<Navigate to="/" />} />
         <Route path="/sale" element={<Sale />} />
         <Route path="/saleoff" element={<SaleOff />} />
         <Route path="/product/:productId" element={<ProductDetail />} />

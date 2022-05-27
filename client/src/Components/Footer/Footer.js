@@ -30,7 +30,7 @@ function Footer() {
             <li>Đồng hồ nữ</li>
             <li>Phụ kiện</li>
             <li>
-              <Link to='/sale-off'>Sale-off</Link>
+              <Link to='/saleoff'>Sale-off</Link>
             </li>
           </ul>
 

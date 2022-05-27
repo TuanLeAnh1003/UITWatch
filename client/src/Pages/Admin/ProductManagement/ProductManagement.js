@@ -85,11 +85,11 @@ function ProductManagement() {
               <td>{product.price}</td>
               <td>{product.quantity}</td>
               <td>{product.status}</td>
-              <td>{product.createdAt}</td>
+              <td>{product.productDate}</td>
               <td>{product.discount}</td>
               <td>
                 <Link to={`product-update/${product._id}`}>
-                  <FontAwesomeIcon icon={solid('pen')} />{"  "}
+                  <FontAwesomeIcon icon={solid('pen')} style={{color: '#785044'}} />{"  "}
                 </Link>
                 <FontAwesomeIcon icon={solid('trash')} style={{cursor: 'pointer'}} onClick={e => {setHideDeletePopup(true); setRemoveProduct(product._id)}} />
               </td>
