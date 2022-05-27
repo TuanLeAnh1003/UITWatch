@@ -16,6 +16,10 @@ function SaleOff() {
       })
   }, [])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="saleoff">
       <img src={banner} alt="banner" />

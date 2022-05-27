@@ -38,6 +38,15 @@
   margin: 5px 0;
 }
 
+.footer-first > .footer-first__wrapper > ul > li > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-first > .footer-first__wrapper > ul > li > a:hover {
+  font-weight: bold;
+}
+
 .footer-first__wrapper > .footer-first__icon > svg {
   color: #D7CECB;
   font-size: 170px;
@@ -73,6 +82,10 @@
   font-size: 35px;
   margin: 0 10px;
   color: #BD9A8F;
+}
+
+.footer-first__help {
+  width: 150px;
 }
 
 @media screen and (max-width: 1024px) {

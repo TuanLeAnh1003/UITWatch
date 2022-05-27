@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import OrderDetail from './../../../Components/Order/OrderDetail'
 import './Cash.css'
 import YourOrder from './../../../Components/Order/YourOrder';
@@ -33,6 +33,10 @@ function Cash() {
       }
     ]
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="cash">

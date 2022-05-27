@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ResponseManagement.css';
 
 function ResponseManagement() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="res-mng">
       <h1>Phản hồi và bình luận</h1>

@@ -31,6 +31,21 @@
   font-size: 22px;
   border: none;
   color: #fff;
+  cursor: pointer;
+}
+
+.cart > .cart__products > .cart__buttons > a {
+  width: 285px;
+  height: 75px;
+  background-color: #786059;
+  font-size: 22px;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .cart > .cart__order {

@@ -11,6 +11,10 @@ const login = async (data) => {
   return await axiosInstance.post("users/login", data)
 }
 
+const getLikedProducts = async (data) => {
+  return await axiosInstance.get(`/users/likeProduct?userId=${data.userId}`)
+}
+
 const likeProduct = async (data) => {
   return await axiosInstance.put("/users/likeProduct", data)
 }
@@ -21,6 +25,10 @@ const removeLikeProduct = async (data) => {
 
 const isLiked = async (data) => {
   return await axiosInstance.post('/users/likeProduct', data)
+}
+
+const getCarts = async (data) => {
+  return await axiosInstance.get(`/users/carts?userId=${data.userId}`)
 }
 
 const addToCart = async (data) => {
@@ -51,8 +59,10 @@ const updateUser = async (data) => {
 export default {
   login,
   register,
+  getLikedProducts,
   likeProduct,
   removeLikeProduct,
+  getCarts,
   addToCart,
   getMe,
   updateUser,

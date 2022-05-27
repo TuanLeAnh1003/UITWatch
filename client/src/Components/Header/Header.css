@@ -182,10 +182,14 @@
 
 .header-mobile__nav a {
   text-decoration: none;
-  margin: 30px;
-  margin-left: 40px;
+  padding: 30px;
+  padding-left: 40px;
   font-size: 1.4em;
   color: #000;
+}
+
+.header-mobile__nav a:hover {
+  background-color: rgb(235, 182, 156)
 }
 
 .header-mobile__nav-icon {

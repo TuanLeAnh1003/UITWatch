@@ -1,18 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import CartProduct from './../../../Components/CartProduct/index';
 import { Link } from 'react-router-dom'
+import UserApi from '../../../Apis/UserApi';
 
 function Cart() {
+  const userId = localStorage.getItem("userid")
+  const [totalPrice, setTotalPrice] = useState()
+
+  const [cartsList, setCartsList] = useState([]) 
+
+  useEffect(() => {
+    UserApi.getCarts({ userId: userId })
+    .then((res) => {
+      setCartsList(res);
+    })
+  }, [])
+
+  useEffect(() => {
+    let total = 0;
+    for (let i = 0; i < cartsList.length; i++) {
+      total += Number(cartsList[0].price)
+    }
+    setTotalPrice(total)
+  }, [cartsList])
+
+  const handleRemoveAllCarts = () => {
+    UserApi.removeAllCart({userId:userId})
+    .then((res) => {
+      console.log(res);
+      window.location.reload()
+    })
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="cart">
       <div className="cart__products">
         <h3>GIỎ HÀNG</h3>
-        <CartProduct isLiked={false}/>
-        <CartProduct isLiked={true}/>
+        {
+          cartsList?.map((item, index) => (
+            <CartProduct
+              index={index}
+              image={item.image}
+              name={item.name}
+              price={item.price}
+              productId={item._id}
+            />
+          ))
+        }
         <div className="cart__buttons">
-          <button>XÓA HẾT</button>
-          <button>TIẾP TỤC MUA HÀNG</button>
+          <button onClick={handleRemoveAllCarts}>XÓA HẾT</button>
+          <Link to='/sale'>TIẾP TỤC MUA HÀNG</Link>
         </div>
       </div>
 
@@ -20,16 +62,20 @@ function Cart() {
         <h3>ĐƠN HÀNG CỦA BẠN</h3>
         <div className="cart__order-line"></div>
 
-        <div className="cart__order-info cart__order-item">
-          <b>Đơn hàng</b>
-          <p>132.000.000đ</p>
-        </div>
+        {
+          cartsList?.map((item, index) => (
+            <div className="cart__order-info cart__order-item">
+              <b>{item.name}</b>
+              <p>{item.price}</p>
+            </div>
+          ))
+        }
 
         <div className="cart__order-line"></div>
 
         <div className="cart__order-temporary cart__order-item">
-          <b>Tạm tính</b>
-          <h4>132.000.000đ</h4>
+          <b>Tổng cộng</b>
+          <h4>{totalPrice}</h4>
         </div>
 
         <div className="cart__order-line"></div>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Statistic.css';
 import { Line } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 
 function Statistic() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const data = {
     labels: ["Th4 1", "Th4 2", "Th4 3", "Th4 4", "Th4 5", "Th4 6", "Th4 7", "Th4 8", "Th4 9", "Th4 10", "Th4 11", "Th4 12"],

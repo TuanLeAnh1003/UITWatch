@@ -24,6 +24,10 @@ function NewsUpdate() {
   const { newsId } = useParams()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     NewsApi.getNewsById({
       newsId: newsId,
     })

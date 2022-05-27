@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Consult.css";
 function Consult() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     return (
         <div lass='consult'>
             <h1 class='head'>TƯ VẤN KHÁCH HÀNG</h1>

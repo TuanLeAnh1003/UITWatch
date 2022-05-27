@@ -22,6 +22,8 @@ function Header() {
   const [hideOverlay, setHideOverlay] = useState(false);
   const [hideNavMobile, setHideNavMobile] = useState(false);
 
+  const userId = localStorage.getItem('userid')
+
   const handleShowSignIn = () => {
     setIsSignInShowed(true);
   };
@@ -80,13 +82,26 @@ function Header() {
 
         <div className='header-first__more'>
           <div className='header-first__more-item header-first__more-order'>
-            <FontAwesomeIcon icon={solid("box")} />
-            <Link to='/search-order'>Tra cứu đơn hàng</Link>
+            {
+              userId !== null && (
+                <>
+                  <FontAwesomeIcon icon={solid("box")} />
+                  <Link to='/search-order'>Tra cứu đơn hàng</Link>
+                </>
+              )
+            }
           </div>
 
           <div className='header-first__more-item header-first__more-like'>
-            <FontAwesomeIcon icon={solid("heart")} />
-            <Link to='/liked-products'>Yêu thích</Link>
+            {
+              userId !== null && 
+              (
+                <>
+                  <FontAwesomeIcon icon={solid("heart")} />
+                  <Link to='/liked-products'>Yêu thích</Link>
+                </>
+              )
+            }
           </div>
 
           {isAuthen() 
@@ -114,7 +129,7 @@ function Header() {
         </Link>
 
         <ul className='header-second__nav'>
-          <Link to=''>GIỚI THIỆU</Link>
+          <Link to='/about'>GIỚI THIỆU</Link>
           <Link to='/sale'>ĐỒNG HỒ</Link>
           <Link to='/saleoff'>SALE OFF</Link>
           <Link to='/news'>TIN TỨC</Link>

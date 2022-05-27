@@ -29,6 +29,10 @@ function NewsManagement() {
     })
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="news-mng">
       <h1>Quản lý bài viết</h1>
@@ -56,17 +60,29 @@ function NewsManagement() {
             <tr key={i}>
               <td>{news?.title}</td>
               {
-                news?.sub_header?.length > 100 ? (
+                news?.sub_header?.length > 50 ? (
                   <td>
                     {
-                      `${news?.sub_header.substring(0, 100)}...`
+                      `${news?.sub_header.substring(0, 50)}...`
                     }
                   </td>
                 ) : (
                   <td>{news?.sub_header}</td>
                 )
               }
-              <td>{news?.user_id}</td>
+              <td>
+              {
+                news?.user_id?.length > 10 ? (
+                  <td>
+                    {
+                      `${news?.user_id.substring(0, 10)}...`
+                    }
+                  </td>
+                ) : (
+                  <td>{news?.user_id}</td>
+                )
+              }
+              </td>
               <td>
                 <img style={{width: '100px'}} src={news?.image} alt="img" />
               </td>

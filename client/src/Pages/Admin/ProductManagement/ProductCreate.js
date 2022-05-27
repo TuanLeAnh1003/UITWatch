@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './ProductCreate.css'
 import { Link } from 'react-router-dom'
 import ProductApi from '../../../Apis/ProductApi'
@@ -23,6 +23,10 @@ function ProductCreate() {
   const [size, setSize] = useState()
   const [waterRessitance, setWaterRessitance] = useState()
   const [feature, setFeature] = useState()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleCreateProduct = () => {
     ProductApi.createProduct({

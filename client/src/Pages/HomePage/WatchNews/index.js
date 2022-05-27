@@ -55,7 +55,7 @@ function WatchNews() {
         <ul className="watch-news-other-wrapper">
           {
             newsList?.map((element, ind) => 
-            ind != newsId && 
+            element._id !== newsId && ind < 4 && 
             (
               <NewsItem 
                 newsId={ind}

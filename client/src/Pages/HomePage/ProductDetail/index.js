@@ -97,6 +97,13 @@ function ProductDetail() {
       })
       .then((res) => {
         console.log(res)
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: 'Bỏ thích sản phẩm thành công',
+          showConfirmButton: false,
+          timer: 2000
+        })
       })
     } else {
       UserApi.likeProduct({
@@ -105,6 +112,13 @@ function ProductDetail() {
       })
       .then((res) => {
         console.log(res)
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: 'Thích sản phẩm thành công',
+          showConfirmButton: false,
+          timer: 2000
+        })
       })
     }
   }
@@ -142,6 +156,10 @@ function ProductDetail() {
         console.log(res);
         await setProduct(res);
       })
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
   }, [])
 
   return (
@@ -212,8 +230,8 @@ function ProductDetail() {
 
           <div className="pro-detail__buttons">
             <div className="add-to-cart">
-              <button onClick={handleAddToCart}>THÊM VÀO GIỎ HÀNG</button>
-              <button onClick={handleLikeButton}>
+              <button onClick={() => userId !== null & handleAddToCart}>THÊM VÀO GIỎ HÀNG</button>
+              <button onClick={() => userId !== null & handleLikeButton}>
                 {isLiked ? <FontAwesomeIcon icon={solid('heart')} /> : <FontAwesomeIcon icon={regular('heart')} />}
               </button>
             </div>

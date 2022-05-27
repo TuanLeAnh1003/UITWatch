@@ -71,6 +71,10 @@ function Account() {
 
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   // console.log("image: ", image)
 
   return (

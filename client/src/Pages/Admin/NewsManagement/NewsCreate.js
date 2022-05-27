@@ -16,6 +16,10 @@ function NewsCreate() {
   const [image, setImage] = useState()
   const [imageUrl, setImageUrl] = useState()
   const [subHeader, setSubHeader] = useState()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   
   useEffect(() => {
     UserApi.getMe({ id: localStorage.getItem("userid") })

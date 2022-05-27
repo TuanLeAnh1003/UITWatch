@@ -27,27 +27,29 @@ function HomePage() {
   return (
     <div>
     <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/sale" element={<Sale />} />
-      <Route path="/saleoff" element={<SaleOff />} />
-      <Route path="/product/:productId" element={<ProductDetail />} />
-      <Route path="/search-order" element={<SearchOrder />} />
-      <Route path="/result-search-order/:orderDate" element={<ResultSearchOrder />} />
-      <Route path="/news" element={<News />} />
-      <Route path="/watch-news/:newsId" element={<WatchNews />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/cash" element={<Cash />} />
-      <Route path="/momo" element={<Momo />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/payment" element={<Payment />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/liked-products" element={<LikedProduct />} />
-      <Route path="/policy" element={<Policy />} />
-      <Route path="/account/:id" element={<PrivateRoute><Account /></PrivateRoute>} />
-      <Route path="/about" element={<About />} />
-      <Route path="/consult" element={<Consult />} />
-    </Routes>
+    <div style={{minHeight: '330px'}}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sale" element={<Sale />} />
+        <Route path="/saleoff" element={<SaleOff />} />
+        <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/search-order" element={<SearchOrder />} />
+        <Route path="/result-search-order/:orderDate" element={<ResultSearchOrder />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/watch-news/:newsId" element={<WatchNews />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cash" element={<Cash />} />
+        <Route path="/momo" element={<Momo />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/liked-products" element={<LikedProduct />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/account/:id" element={<PrivateRoute><Account /></PrivateRoute>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/consult" element={<Consult />} />
+      </Routes>
+    </div>
     <Footer />
     </div>
   )

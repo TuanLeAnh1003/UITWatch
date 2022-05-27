@@ -28,6 +28,10 @@ function ProductUpdate() {
   const [productUpdate, setProductUpdate] = useState()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     ProductApi.getProductById({ productId: productId })
     .then(async (res) => {
       console.log(res)

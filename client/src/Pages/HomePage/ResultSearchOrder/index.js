@@ -46,6 +46,10 @@ function ResultSearchOrder() {
     ],
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="result-search-order">
       <div className="result-search-order--title">KẾT QUẢ TÌM KIẾM ĐƠN HÀNG</div>
@@ -74,7 +78,7 @@ function ResultSearchOrder() {
 
       <hr className="result-search-order--line__middle" />
       
-      <button className="result-search-order--export">Xuất hóa đơn</button>
+      <button className="result-search-order--export" onClick={() => window.print()}>Xuất hóa đơn</button>
     </div>
   )
 }

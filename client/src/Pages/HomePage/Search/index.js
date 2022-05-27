@@ -36,6 +36,10 @@ function Search() {
   //   }
   // }, [type])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="search">
       <div className="search-title">{state.searchInput ? `TÌM THẤY ${productList.length} KẾT QUẢ CHO "${state.searchInput}"` : "CHƯA NHẬP TỪ KHÓA!"}</div>

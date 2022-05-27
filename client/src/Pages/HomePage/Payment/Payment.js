@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Payment.css';
 import MoMo from './../../../Assets/Images/image 11.png';
 import OrderApi from '../../../Apis/OrderApi';
@@ -23,6 +23,10 @@ function Payment() {
   const handleChange = (e) => {
     setPayment(e.target.value)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="payment">

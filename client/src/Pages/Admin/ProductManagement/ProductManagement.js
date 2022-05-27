@@ -11,6 +11,10 @@ function ProductManagement() {
   const [removeProduct, setRemoveProduct] = useState()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     ProductApi.getAll()
     .then(async (res) => {
       console.log(res);

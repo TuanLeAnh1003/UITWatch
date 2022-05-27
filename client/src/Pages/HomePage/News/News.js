@@ -17,6 +17,10 @@ function News() {
   })
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     NewsApi.getAll()
       .then((res) => {
         console.log(res);

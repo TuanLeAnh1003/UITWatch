@@ -13,6 +13,10 @@ function SearchOrder() {
     .then(data => setUser({...data}));
   }, [])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
       <form className="search-order">
         <div className="search-order--title">TRA CỨU ĐƠN HÀNG</div>
