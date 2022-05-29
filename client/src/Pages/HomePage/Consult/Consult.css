@@ -1,5 +1,6 @@
 .head{
     text-align: center;
+    padding: 50px;
 }
 .phone-number{
     text-align: center;
@@ -69,4 +70,5 @@ input::placeholder {
     margin-left: 36vw;
     margin-right: 36vw;
     width: 28vw;
+    padding-bottom:50px;
 }
