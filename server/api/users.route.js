@@ -45,6 +45,10 @@ router
     .put(CartsController.apiAddToCart);
 
 router
+    .route('/carts/updateCart')
+    .put(CartsController.apiUpdateCart);
+
+router
     .route('/carts/removeCart')
     .put(CartsController.apiRemoveCart);
 
