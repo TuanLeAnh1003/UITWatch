@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import './NewsManagement.css'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { Link } from 'react-router-dom'
-import NewsApi from '../../../Apis/NewsApi'
-import UserApi from '../../../Apis/UserApi'
-import parse from 'html-react-parser'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import NewsApi from '../../../Apis/NewsApi';
+import './NewsManagement.css';
+import Swal from "sweetalert2";
 
 function NewsManagement() {
   const [hideDeletePopup, setHideDeletePopup] = useState(false)
@@ -26,6 +25,14 @@ function NewsManagement() {
     })
     .then((res) => {
       console.log(res);
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Xóa bài viết thành công',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      window.location.reload()
     })
   }
 

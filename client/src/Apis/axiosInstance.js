@@ -1,7 +1,12 @@
 import axios from "axios";
+// import dotenv from "dotenv";
 
+// dotenv.config()
+
+// console.log(window.env.API_URL);
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api/v1/",
+  // baseURL: `http://localhost:5000/api/v1/`,
+  baseURL: `https://uitwatch.herokuapp.com/api/v1/`,
 });
 
 // axiosInstance.interceptors.request.use(function (config) {

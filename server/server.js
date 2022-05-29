@@ -42,7 +42,8 @@ app.post('/uploads', MultipartyMiddleware, (req, res) => {
         fs.rename(TempPathFile, targetPathUrl, err => {
           res.status(200).json({
             uploaded: true,
-            url: `http://localhost:5000/${TempFile.originalFilename}`
+            url: `${process.env.API_URL}/${TempFile.originalFilename}`
+            // url: `http://localhost:5000/${TempFile.originalFilename}` || `${process.env.API_URL}/${TempFile.originalFilename}`
           })
     
           if (err) return console.log(err)

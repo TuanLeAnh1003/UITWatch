@@ -8,6 +8,7 @@ import UserApi from '../../../Apis/UserApi'
 import  {storage}  from '../../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from "uuid";
+import env from 'react-dotenv';
 
 function NewsCreate() {
   const [content, setContent] = useState()
@@ -28,28 +29,26 @@ function NewsCreate() {
     })
   }, [])
 
-  console.log(content);
-
   const handleCreateNews = () => {
     if (image == null) return;
     const imageRef = ref(storage, `news/${image.name + v4()}`);
-    uploadBytes(imageRef, image).then(() => {
-      getDownloadURL(imageRef).then(async data => {
-        await setImageUrl(data)
-        console.log(imageUrl);
-
-        await NewsApi.createNews({
-          userId: localStorage.getItem("userid"),
-          title: title,
-          subHeader: subHeader,
-          image: imageUrl,
-          content: content
-        })
-        .then((res) => {  
-          console.log(res);
-        })
+    uploadBytes(imageRef, image).then(async () => {
+      await getDownloadURL(imageRef).then(data => {
+        const FirebaseImage = setImageUrl(data)
       })
     })
+    
+      console.log(imageUrl);
+      NewsApi.createNews({
+        userId: localStorage.getItem("userid"),
+        title: title,
+        subHeader: subHeader,
+        image: imageUrl,
+        content: content
+      })
+      .then((res) => {  
+        console.log(res);
+      })
   }
 
   return (
@@ -81,7 +80,9 @@ function NewsCreate() {
             config = {
               {
                 ckfinder: {
-                  uploadUrl: 'http://localhost:5000/uploads'
+                  // uploadUrl: 'http://localhost:5000/uploads' || `${env.API_URL}/uploads`
+                  // uploadUrl: `${process.env.API_URL}/uploads`
+                  uploadUrl: `https://uitwatch.herokuapp.com/uploads`
                 }
               }
             }
