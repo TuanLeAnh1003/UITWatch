@@ -27,8 +27,15 @@
   width: 100%;
 }
 
-.cart-product__col-1 > .cart-product__info > .cart-product__name > h4 {
+.cart-product__col-1 > .cart-product__info > .cart-product__name > a > h4 {
   font-size: 25px;
+  color: #000;
+}
+
+.cart-product__col-1 > .cart-product__info > .cart-product__name > a:link,
+.cart-product__col-1 > .cart-product__info > .cart-product__name > a:visited,
+.cart-product__col-1 > .cart-product__info > .cart-product__name > a:active {
+  text-decoration: none;
 }
 
 .cart-product__col-1 > .cart-product__info > .cart-product__name > p {

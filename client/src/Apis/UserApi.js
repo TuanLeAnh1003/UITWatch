@@ -23,6 +23,10 @@ const removeLikeProduct = async (data) => {
   return await axiosInstance.put("/users/unlikeProduct", data)
 }
 
+const removeAllLikeProduct = async (data) => {
+  return await axiosInstance.put("/users/unlikeAllProduct", data)
+}
+
 const isLiked = async (data) => {
   return await axiosInstance.post('/users/likeProduct', data)
 }
@@ -62,6 +66,7 @@ export default {
   getLikedProducts,
   likeProduct,
   removeLikeProduct,
+  removeAllLikeProduct,
   getCarts,
   addToCart,
   getMe,

@@ -6,7 +6,9 @@ import UserApi from '../../Apis/UserApi';
 import Swal from "sweetalert2";
 
 
-function CartProduct({index, productId, image, name, price}) {
+function CartProduct({index, productId, image, name, price, isOnLikePage}) {
+  const [productCount, setProductCount] = useState(1)
+
   const [isLiked, setIsLiked] = useState()
   
   const userId = localStorage.getItem('userid')
@@ -56,6 +58,25 @@ function CartProduct({index, productId, image, name, price}) {
     }
   }
 
+  const handleAddToCartButton = () => {
+    UserApi.addToCart({
+      userId: userId,
+      productId: productId,
+      quantity: productCount
+    })
+    .then((res) => {
+      console.log(res);
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Thêm sản phẩm vào giỏ hàng thành công',
+        showConfirmButton: false,
+        timer: 1000
+      })
+      window.location.reload();
+    })
+  }
+
   const handleRemoveCart = () => {
     UserApi.removeCart({
       userId: userId,
@@ -74,22 +95,56 @@ function CartProduct({index, productId, image, name, price}) {
     })
   }
 
+  const handleRemoveLiked = () => {
+    UserApi.removeLikeProduct({
+      userId: userId,
+      productId: productId
+    })
+    .then((res) => {
+      console.log(res);
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Xóa sản phẩm khỏi danh sách yêu thích thành công',
+        showConfirmButton: false,
+        timer: 1000
+      })
+      window.location.reload();
+    })
+  }
+
+  const handleModifyQuantity = (e) => {
+    setProductCount(e.target.value);
+    if (!isOnLikePage) {
+      UserApi.updateCart({
+        userId: userId,
+        productId: productId,
+        quantity: productCount
+      })
+      .then((res) => {
+        console.log(res);
+      })
+    }
+  }
+
   return (
-    <div className="cart-product__wapper" key={index}>
+    <div className="cart-product__wrapper" key={index}>
       <div className="cart-product">
         <div className="cart-product__col-1">
           <img src={image} alt="cart-product" />
 
           <div className="cart-product__info">
             <div className="cart-product__name">
-              <h4>{name}</h4>
+              <a href={`/product/${productId}`}>
+                <h4>{name}</h4>
+              </a>
               <p><b>Giá:</b> {price}đ</p>
             </div>
 
             <div className="cart-product__quantity">
               <p><b>Số lượng</b></p>
               <div className="cart-product__input">
-                <select className="cart-product__list">
+                <select value={productCount} onChange={handleModifyQuantity} className="cart-product__list">
                   {Array(20).fill().map((_, i) => (
                     <option key={i}>{i+1}</option>
                   ))}
@@ -103,8 +158,8 @@ function CartProduct({index, productId, image, name, price}) {
         <div className="cart-product__col-2">
           <h3>{price}đ</h3>
           <p>Còn hàng</p>    
-          <button>{isLiked ? <FontAwesomeIcon icon={solid('cart-shopping')} /> : <FontAwesomeIcon icon={regular('heart')} onClick={handleLikeButton}/>}</button>
-          <button style={{cursor: 'pointer'}} onClick={handleRemoveCart}><FontAwesomeIcon icon={regular('trash-can')} /></button>
+          <button style={{cursor: 'pointer'}} onClick={isOnLikePage ? handleAddToCartButton : handleLikeButton}>{isOnLikePage ? <FontAwesomeIcon icon={solid('cart-shopping')} /> : (isLiked ? <FontAwesomeIcon icon={solid('heart')} />: <FontAwesomeIcon icon={regular('heart')} />)}</button>
+          <button style={{cursor: 'pointer'}} onClick={isOnLikePage ? handleRemoveLiked : handleRemoveCart}><FontAwesomeIcon icon={regular('trash-can')} /></button>
         </div>
       </div>
 

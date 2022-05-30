@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import CartProduct from '../../../Components/CartProduct';
 import './LikedProduct.css';
 import UserApi from '../../../Apis/UserApi';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
 function LikedProduct() {
   const [likedProductList, setLikedProductList] = useState([])
   const userId = localStorage.getItem('userid')
@@ -19,6 +19,21 @@ function LikedProduct() {
     window.scrollTo(0, 0)
   }, [])
 
+  const handleRemoveAllLikeProduct = () => {
+    UserApi.removeAllLikeProduct({userId: userId})
+    .then((res) => {
+      console.log(res);
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Xóa toàn bộ sản phẩm khỏi danh sách yêu thích thành công',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      window.location.reload();
+    })
+  }
+
   return (
     <div className="liked-product">
       <h2>DANH MỤC YÊU THÍCH</h2>
@@ -32,11 +47,12 @@ function LikedProduct() {
             name={item.name}
             price={item.price}
             productId={item._id}
+            isOnLikePage={true}
           />
         ))
       }
       <div className="liked-product__buttons">
-        <button>XÓA HẾT</button>
+        <button style={{cursor: 'pointer'}} onClick={handleRemoveAllLikeProduct}>XÓA HẾT</button>
         <Link to='/sale'>TIẾP TỤC MUA HÀNG</Link>
       </div>
     </div>
