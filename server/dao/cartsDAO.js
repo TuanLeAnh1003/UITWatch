@@ -31,8 +31,12 @@ export default class CartsDAO {
                 }
             ]).toArray();
             user=user[0];
-            const totalNumCarts = user.cartProducts.length;
-            const cartsList = user.cartProducts;
+            for (let p in user.cart)
+            {
+                user.cartProducts[p].cartQuantity = user.cart[p].quantity;
+            }
+            const totalNumCarts = await user.cartProducts.length;
+            const cartsList = await user.cartProducts;
             return {cartsList, totalNumCarts};
         }
         catch (e) {
@@ -41,7 +45,29 @@ export default class CartsDAO {
         }
     }
 
+    static async updateCart(userId, productId, quantity) {
+        const cartDoc = {
+            productId: ObjectId(productId),
+            quantity
+        }
+        console.log();
+        try {
+            const updateResponse = await users.updateOne(
+                {"_id": ObjectId(userId), "cart.productId": ObjectId(productId) },
+                {$set: {"cart.$.quantity": quantity}}
+            );
+            return updateResponse;
+        }
+        catch (e) {
+            console.error(`unable to update cart: ${e}`);
+            return { error: e };
+        }
+    }
+
     static async addToCart(userId, productId, quantity) {
+        const check = await users.findOne({"_id": ObjectId(userId), "cart.productId": ObjectId(productId)});
+        if (check!=null) return null;
+
         const cartDoc = {
             productId: ObjectId(productId),
             quantity
