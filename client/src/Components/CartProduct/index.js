@@ -114,8 +114,16 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
   }
 
   const handleModifyQuantity = (e) => {
-    if (isOnLikePage) {
-      setProductCount(e.target.value);
+    setProductCount(e.target.value);
+    if (!isOnLikePage) {
+      UserApi.updateCart({
+        userId: userId,
+        productId: productId,
+        quantity: productCount
+      })
+      .then((res) => {
+        console.log(res);
+      })
     }
   }
 
