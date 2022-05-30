@@ -90,6 +90,16 @@
 .header-second > .header-second__logo > div {
   text-align: right;
   color: #855446;
+  height: 55px;
+}
+
+.header-second > .header-second__logo > div > h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.header-second > .header-second__logo > div > span {
+  font-size: 0.8em;
 }
 
 .header-second > .header-second__logo {
@@ -100,6 +110,7 @@
   /* width: 50%; */
   font-size: 0.8em;
   list-style-type: none;
+  margin: 0;
 }
 
 .header-second > .header-second__nav > a {
@@ -148,6 +159,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-align: right;
+  margin: 0;
+  color: #fff;
 }
 
 .header-overlay {

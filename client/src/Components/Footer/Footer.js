@@ -3,6 +3,7 @@ import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { Link } from 'react-router-dom'
+import logo from '../../Assets/Images/logo.png'
 
 function Footer() {
   return (
@@ -10,7 +11,8 @@ function Footer() {
       <div className="footer-first">
         <div className="footer-first__wrapper">
           <div className="footer-first__icon">
-            <FontAwesomeIcon icon={solid('sack-dollar')} />
+            {/* <FontAwesomeIcon icon={solid('sack-dollar')} /> */}
+            <img src={logo} alt="logo" />
           </div>
 
           <ul className="footer-first__about-us">

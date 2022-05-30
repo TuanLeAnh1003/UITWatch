@@ -9,6 +9,9 @@ import ProductApi from '../../../Apis/ProductApi';
 import UserApi from '../../../Apis/UserApi';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from 'react-router-dom'
+import { Pagination } from 'react-bootstrap'
+import "bootstrap/dist/css/bootstrap.css";
+
 
 function Sale() {
   const [brand, setBrand] = useState('')
@@ -24,8 +27,6 @@ function Sale() {
   const [feature, setFeature] = useState('')
 
   const [productList, setProductList] = useState()
-
-  console.log();
 
   const cateList = [
     {
@@ -99,15 +100,77 @@ function Sale() {
       feature: feature
     })
     .then((res) => {
-      console.log(res)
       setProductList(res)
       window.scrollTo(0, 0)
     })
   }
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   window.scrollTo(0, 0)
+  // }, [])
+
+  const handleClickPage = (e) => {
+    // console.log(Number(e.target.text) - 1);
+
+    ProductApi.getAll({
+      page: Number(e.target.text) - 1
+    })
+      .then((res) => {
+        document.querySelector('.page-item.active').classList.remove('active')
+        e.target.parentNode.classList.add('active')
+        setProductList(res)
+        window.scrollTo(0, 0)
+      })
+  }
+
+  const handleClickFirst = () => {
+    ProductApi.getAll()
+      .then((res) => {
+        document.querySelector('.page-item.active').classList.remove('active')
+        document.querySelectorAll('.page-item')[2].classList.add('active')
+        setProductList(res)
+        window.scrollTo(0, 0)
+      })
+  }
+
+  const handleClickPrev = () => {
+    const activePage = document.querySelector('.page-item.active')
+    const pageList = document.querySelectorAll('.page-item')
+
+    ProductApi.getAll({
+      page: Number(activePage.childNodes[0].text) - 2
+    })
+      .then((res) => {
+        activePage.classList.remove('active')
+        pageList[Number(activePage.childNodes[0].text)].classList.add('active')
+        setProductList(res)
+        window.scrollTo(0, 0)
+      })
+  }
+
+  const handleClickNext = () => {
+    const activePage = document.querySelector('.page-item.active')
+    const pageList = document.querySelectorAll('.page-item')
+    ProductApi.getAll({
+      page: isNaN(Number(activePage.childNodes[0].text)) ? 1 : Number(activePage.childNodes[0].text)
+    })
+      .then((res) => {
+        pageList[isNaN(Number(activePage.childNodes[0].text)) ? 3 : Number(activePage.childNodes[0].text) + 2].classList.add('active')
+        activePage.classList.remove('active')
+        setProductList(res)
+        window.scrollTo(0, 0)
+      })
+  }
+
+  const handleClickLast = () => {
+    const activePage = document.querySelector('.page-item.active')
+    const pageList = document.querySelectorAll('.page-item')
+
+    activePage.classList.remove('active')
+    pageList[11].classList.add('active')
+
     window.scrollTo(0, 0)
-  }, [])
+  }
  
   return (
     <div className="sale" onClick={() => setHideCate(false)}>
@@ -236,6 +299,24 @@ function Sale() {
               ))
             }
           </div>
+          <Pagination style={{width: '40vw' ,margin: '0 auto'}}>
+            <Pagination.First onClick={handleClickFirst}/>
+            <Pagination.Prev onClick={handleClickPrev}/>
+            <Pagination.Item active onClick={e => handleClickPage(e)}>{1}</Pagination.Item>
+            <Pagination.Item onClick={e => handleClickPage(e)}>{2}</Pagination.Item>
+            <Pagination.Item onClick={e => handleClickPage(e)}>{3}</Pagination.Item>
+            <Pagination.Item onClick={e => handleClickPage(e)}>{4}</Pagination.Item>
+            <Pagination.Ellipsis />
+
+            <Pagination.Item onClick={e => handleClickPage(e)}>{10}</Pagination.Item>
+            <Pagination.Item onClick={e => handleClickPage(e)}>{11}</Pagination.Item>
+            <Pagination.Item onClick={e => handleClickPage(e)}>{12}</Pagination.Item>
+
+            <Pagination.Ellipsis />
+            <Pagination.Item onClick={e => handleClickPage(e)}>{20}</Pagination.Item>
+            <Pagination.Next onClick={handleClickNext}/>
+            <Pagination.Last onClick={handleClickLast}/>
+          </Pagination>
       </div>
     </div>
   )

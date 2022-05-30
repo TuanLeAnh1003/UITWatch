@@ -1,7 +1,9 @@
 import axiosInstance from "./axiosInstance";
 
-const getAll = async () => {
-  return await axiosInstance.get('/products/')
+const getAll = async (data) => {
+  if (data)
+    return await axiosInstance.get(`/products?page=${data.page}`)
+  else return await axiosInstance.get('/products')
 }
 
 const getProductById = async (data) => {

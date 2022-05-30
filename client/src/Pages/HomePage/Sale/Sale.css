@@ -49,11 +49,17 @@
 .sale__category-gender-item:hover {
   opacity: 1;
   font-weight: bold;
+  color: #A35D49;
+
 }
 
 .sale__category-gender-item--active {
   color: #000000;
   font-weight: bold;
+}
+
+.sale__category-gender-item--active:hover {
+  color: #A35D49;
 }
 
 .sale__category-gender-line {
@@ -89,6 +95,7 @@
 
 .sale__category-type-clock:hover {
   opacity: 1;
+  color: #A35D49;
   font-weight: bold;
 }
 
@@ -100,6 +107,7 @@
 
 .sale__category-type-accessory:hover {
   opacity: 1;
+  color: #A35D49;
   font-weight: bold;
 }
 
@@ -142,6 +150,15 @@
 .sale__category-bars {
   position: relative;
   display: none;
+}
+
+.pagination .page-item .page-link {
+  color: #786159;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #786159;
+  border-color: #786159;
 }
 
 /* Tablet and Mobile w<=1023px */
