@@ -230,7 +230,7 @@ function Sale() {
       </div>
 
       <div className="sale__category">
-        <div className="sale__category-gender">
+        {/* <div className="sale__category-gender">
           <Link to="/sale" className="sale__category-gender-item sale__category-gender-item--active">
             TẤT CẢ
           </Link>
@@ -249,7 +249,7 @@ function Sale() {
         <div className="sale__category-type">
           <a href="/" className="sale__category-type-clock">Đồng hồ</a><br />
           <a href="/" className="sale__category-type-accessory">Phụ kiện</a>
-        </div>
+        </div> */}
 
 
         {cateList.map((element, index) => (

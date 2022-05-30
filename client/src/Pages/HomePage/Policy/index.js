@@ -48,7 +48,7 @@ function Policy() {
                 <div className='policy-body-heading'>CHÍNH SÁCH ĐỔI TRẢ
                 </div>
                 <div className='policy-body-content'>
-                <div><b>Trong vòng 7 ngày kể từ ngày mua hàng từ UITWatch</b> Quý khách có thể yêu cầu đổi hàng hoàn toàn miễn phí. Thời hạn 7 ngày được tính theo dấu bưu điện khi Quý khách gửi sản phẩm về cho chúng tôi hoặc thời gian chúng tôi tiếp nhận yêu cầu trực tiếp (tại cửa hàng) của Quý khách. 
+                <div><b>&nbsp;&nbsp;&nbsp;&nbsp;Trong vòng 7 ngày kể từ ngày mua hàng từ UITWatch</b> Quý khách có thể yêu cầu đổi hàng hoàn toàn miễn phí. Thời hạn 7 ngày được tính theo dấu bưu điện khi Quý khách gửi sản phẩm về cho chúng tôi hoặc thời gian chúng tôi tiếp nhận yêu cầu trực tiếp (tại cửa hàng) của Quý khách. 
                     <ul><li >Yêu cầu đổi hàng cần được thực hiện trong vòng 7 ngày kể từ ngày Quý khách nhận được hàng.</li>
                     <li>Sản phẩm không có dấu hiệu đã qua sử dụng (còn đầy đủ keo dán bảo vệ chống trầy xước mặt đồng hồ, nắp đáy, dây..)</li>
                     <li>Sản phẩm không bị dây bẩn, trầy xước, hư hỏng, dính hoá chất hoặc có dấu hiệu cạy mở.</li>
@@ -81,25 +81,25 @@ function Policy() {
                 </div>
                 <div className='policy-body-content'>
                 <p><strong>Chính sách giao nhận hàng:</strong></p>
-                <p>Đối với dịch vụ Ship COD, là hình thức thanh toán khi nhận hàng. Sau khi quý khách hàng cung cấp thông tin và địa chỉ, Nhân viên giao hàng sẽ giao sản phẩm và nhận tiền tận nơi theo yêu cầu của quý khách.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Đối với dịch vụ Ship COD, là hình thức thanh toán khi nhận hàng. Sau khi quý khách hàng cung cấp thông tin và địa chỉ, Nhân viên giao hàng sẽ giao sản phẩm và nhận tiền tận nơi theo yêu cầu của quý khách.</p>
                 <p><strong>Chính sách vận chuyển:</strong></p>
-                <p>Chính sách vận chuyển hàng hóa quy định đối tượng áp dụng, cách thức giao hàng, thời gian giao hàng và trách nhiệm của các bên liên quan đối với hàng hóa vận chuyển.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Chính sách vận chuyển hàng hóa quy định đối tượng áp dụng, cách thức giao hàng, thời gian giao hàng và trách nhiệm của các bên liên quan đối với hàng hóa vận chuyển.</p>
                 <p><strong>1. Phạm vi áp dụng</strong></p>
-                <p>Chính sách vận chuyển áp dụng đối với các khách hàng không mua trực tiếp tại Showroom Casio Việt Nam.
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Chính sách vận chuyển áp dụng đối với các khách hàng không mua trực tiếp tại Showroom Casio Việt Nam.
 Sản phẩm được giao hàng bằng dịch vụ Chuyển phát nhanh và dịch vụ Ship hàng COD (thanh toán khi nhận hàng)  tới địa chỉ theo yêu cầu của khách hàng trên toàn quốc. Quý khách hàng được bóc hàng và kiểm tra hàng thoải mái trước khi quyết định thanh toán.</p>
                 <p><strong>2. Cách thức giao hàng</strong></p>
-                <p>Đối với dịch vụ chuyển phát nhanh: Quý khách thanh toán bằng cách chuyển khoản cho Casio Việt Nam qua một trong các tài khoản ngân hàng hiện có . Chúng tôi sẽ gửi sản phẩm cho quý khách bằng hình thức chuyển phát nhanh của bưu điện cho tất cả các địa chỉ trên toàn quốc một cách nhanh chóng và hoàn toàn miễn phí.
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Đối với dịch vụ chuyển phát nhanh: Quý khách thanh toán bằng cách chuyển khoản cho Casio Việt Nam qua một trong các tài khoản ngân hàng hiện có . Chúng tôi sẽ gửi sản phẩm cho quý khách bằng hình thức chuyển phát nhanh của bưu điện cho tất cả các địa chỉ trên toàn quốc một cách nhanh chóng và hoàn toàn miễn phí.
 Đối với dịch vụ ship COD, là hình thức thanh toán khi nhận hàng. Sau khi quý khách hàng cung cấp thông tin và địa chỉ, Nhân viên giao hàng sẽ giao sản phẩm và nhận tiền tận nơi theo yêu cầu của quý khách.</p>
                 <p><strong>3. Thời gian giao hàng</strong></p>
-                <p>Sản phẩm sẽ được giao trong vòng 24 giờ tại khu vực nội thành Hà Nội, TP Hồ Chí Minh bằng hình thức nhân viên giao hàng trực tiếp.
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm sẽ được giao trong vòng 24 giờ tại khu vực nội thành Hà Nội, TP Hồ Chí Minh bằng hình thức nhân viên giao hàng trực tiếp.
 Đối với khách hàng ở ngoại thành Hà Nội,TP Hồ Chí Minh, các Tỉnh/Thành phố khác chúng tôi sẽ giao hàng trong vòng 24-36 giờ bằng hình thức Chuyển phát nhanh và hình thức ship COD.Thời gian trên không tính các ngày lễ, ngày nghỉ.
 Ngoài các hình thức giao hàng thông thường trên, chúng tôi sẽ áp dụng chính sách giao hàng ngay lập tức theo thỏa thuận hoặc yêu cầu đặc biệt của khách hàng nếu có khả năng.  Ngoại trừ một số trường hợp khách quan, Chúng tôi có thể giao hàng chậm trễ so với thời gian cam kết do những điều kiện bất khả kháng như thời tiết xấu, điều kiện giao thông không thuận lợi, máy bay trễ chuyến, xe hỏng hóc trên đường giao hàng, trục trặc trong quá trình chờ xuất hàng.</p>
                 <p><strong>4. Trách nhiệm đối với hàng hóa vận chuyển</strong></p>
-                <p>Dịch vụ vận chuyển do Casio Việt Nam trực tiếp thực hiện hoặc được ủy quyền chúng tôi sẽ chịu trách nhiệm với hàng hóa và các rủi ro như mất mát hoặc hư hại của hàng hóa trong suốt quá trình vận chuyển hàng.</p>
-                <p>Khách hàng có trách nhiệm kiểm tra hàng hóa khi nhận hàng. Khi phát hiện hàng hóa bị hư hại, trầy xước, bể vỡ, mốp méo, hoặc sai mẫu mã so với hàng đã đặt mua thì ký xác nhận tình trạng hàng hóa với Nhân viên giao nhậnvà thông báo ngay cho chúng tôi để giải quyết.</p>
-                <p>Sau khi khách đã ký nhận hàng mà không ghi chú hoặc có ý kiến về hàng hóa, đồng nghĩa với việc Casio Việt Nam không có trách nhiệm với những yêu cầu đổi trả vì hư hỏng, trầy xước, bể vỡ, mốp méo, sai hàng hóa, vv… sau này.</p>
-                <p>Nếu dịch vụ vận chuyển do khách chỉ định hoặc nhờ người thân, bạn bè chuyển giúp thì khách hàng sẽ chịu trách nhiệm với hàng hóa và các rủi ro như mất mát hoặc hư hại của hàng hóa trong suốt quá trình vận chuyển hàng từ cửa hàng đến khách hàng. Trong trường hợp này khách hàng sẽ chịu trách nhiệm cước phí và các tổn thất liên quan.</p>
-                <p>Trong một số trường hợp nhạy cảm: giá trị đơn hàng quá lớn và thời gian, địa điểm giao hàng có khả năng nguy hiểm. Chúng tôi sẽ chủ động liên lạc với Quý khách để thống nhất lại thời gian giao hàng cụ thể.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Dịch vụ vận chuyển do Casio Việt Nam trực tiếp thực hiện hoặc được ủy quyền chúng tôi sẽ chịu trách nhiệm với hàng hóa và các rủi ro như mất mát hoặc hư hại của hàng hóa trong suốt quá trình vận chuyển hàng.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Khách hàng có trách nhiệm kiểm tra hàng hóa khi nhận hàng. Khi phát hiện hàng hóa bị hư hại, trầy xước, bể vỡ, mốp méo, hoặc sai mẫu mã so với hàng đã đặt mua thì ký xác nhận tình trạng hàng hóa với Nhân viên giao nhậnvà thông báo ngay cho chúng tôi để giải quyết.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Sau khi khách đã ký nhận hàng mà không ghi chú hoặc có ý kiến về hàng hóa, đồng nghĩa với việc Casio Việt Nam không có trách nhiệm với những yêu cầu đổi trả vì hư hỏng, trầy xước, bể vỡ, mốp méo, sai hàng hóa, vv… sau này.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Nếu dịch vụ vận chuyển do khách chỉ định hoặc nhờ người thân, bạn bè chuyển giúp thì khách hàng sẽ chịu trách nhiệm với hàng hóa và các rủi ro như mất mát hoặc hư hại của hàng hóa trong suốt quá trình vận chuyển hàng từ cửa hàng đến khách hàng. Trong trường hợp này khách hàng sẽ chịu trách nhiệm cước phí và các tổn thất liên quan.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Trong một số trường hợp nhạy cảm: giá trị đơn hàng quá lớn và thời gian, địa điểm giao hàng có khả năng nguy hiểm. Chúng tôi sẽ chủ động liên lạc với Quý khách để thống nhất lại thời gian giao hàng cụ thể.</p>
                 </div>
             </div>
         </div>
