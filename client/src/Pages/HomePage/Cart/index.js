@@ -3,6 +3,7 @@ import './Cart.css';
 import CartProduct from './../../../Components/CartProduct/index';
 import { Link } from 'react-router-dom'
 import UserApi from '../../../Apis/UserApi';
+import Swal from "sweetalert2";
 
 function Cart() {
   const userId = localStorage.getItem("userid")
@@ -25,11 +26,18 @@ function Cart() {
     setTotalPrice(total)
   }, [cartsList])
 
-  const handleRemoveAllCarts = () => {
-    UserApi.removeAllCart({userId:userId})
+  const handleRemoveAllCart = () => {
+    UserApi.removeAllCart({userId: userId})
     .then((res) => {
       console.log(res);
-      window.location.reload()
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Xóa toàn bộ sản phẩm khỏi giỏ hàng thành công',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      window.location.reload();
     })
   }
 
@@ -49,11 +57,12 @@ function Cart() {
               name={item.name}
               price={item.price}
               productId={item._id}
+              isOnLikePage={false}
             />
           ))
         }
         <div className="cart__buttons">
-          <button onClick={handleRemoveAllCarts}>XÓA HẾT</button>
+          <button onClick={handleRemoveAllCart}>XÓA HẾT</button>
           <Link to='/sale'>TIẾP TỤC MUA HÀNG</Link>
         </div>
       </div>
