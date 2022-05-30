@@ -127,6 +127,11 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
     }
   }
 
+  const numberFormat = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  });
+
   return (
     <div className="cart-product__wrapper" key={index}>
       <div className="cart-product">
@@ -138,7 +143,7 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
               <a href={`/product/${productId}`}>
                 <h4>{name}</h4>
               </a>
-              <p><b>Giá:</b> {price}đ</p>
+              <p><b>Giá:</b> {numberFormat.format(price)}</p>
             </div>
 
             <div className="cart-product__quantity">
@@ -156,7 +161,7 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
         </div>
 
         <div className="cart-product__col-2">
-          <h3>{price}đ</h3>
+          <h3>{numberFormat.format(price)}</h3>
           <p>Còn hàng</p>    
           <button style={{cursor: 'pointer'}} onClick={isOnLikePage ? handleAddToCartButton : handleLikeButton}>{isOnLikePage ? <FontAwesomeIcon icon={solid('cart-shopping')} /> : (isLiked ? <FontAwesomeIcon icon={solid('heart')} />: <FontAwesomeIcon icon={regular('heart')} />)}</button>
           <button style={{cursor: 'pointer'}} onClick={isOnLikePage ? handleRemoveLiked : handleRemoveCart}><FontAwesomeIcon icon={regular('trash-can')} /></button>

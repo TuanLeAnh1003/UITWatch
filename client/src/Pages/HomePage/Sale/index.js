@@ -230,21 +230,21 @@ function Sale() {
       </div>
 
       <div className="sale__category">
-        {/* <div className="sale__category-gender">
+        <div className="sale__category-gender">
           <Link to="/sale" className="sale__category-gender-item sale__category-gender-item--active">
             TẤT CẢ
           </Link>
-          <div className="sale__category-gender-line"></div>
+          {/* <div className="sale__category-gender-line"></div>
           <Link to="/sale" className="sale__category-gender-item">
             NAM
           </Link>
           <div className="sale__category-gender-line"></div>
           <Link to="/sale" className="sale__category-gender-item">
             NỮ
-          </Link>
+          </Link> */}
         </div>
 
-        <div className="sale__category-line"></div>
+        {/* <div className="sale__category-line"></div>
 
         <div className="sale__category-type">
           <a href="/" className="sale__category-type-clock">Đồng hồ</a><br />
