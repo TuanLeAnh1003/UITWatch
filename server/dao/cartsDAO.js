@@ -33,7 +33,9 @@ export default class CartsDAO {
             user=user[0];
             for (let p in user.cart)
             {
-                user.cartProducts[p].cartQuantity = user.cart[p].quantity;
+                if (typeof user.cart[p].quantity === "string")
+                    user.cartProducts[p].cartQuantity = user.cart[p].quantity.parseInt();
+                else user.cartProducts[p].cartQuantity = user.cart[p].quantity;
             }
             const totalNumCarts = await user.cartProducts.length;
             const cartsList = await user.cartProducts;
