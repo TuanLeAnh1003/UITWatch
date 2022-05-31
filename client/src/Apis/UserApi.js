@@ -39,6 +39,10 @@ const addToCart = async (data) => {
   return await axiosInstance.put("/users/carts/addToCart", data)
 }
 
+const updateCart = async (data) => {
+  return await axiosInstance.put("/users/carts/updateCart", data)
+}
+
 const removeCart = async (data) => {
   return await axiosInstance.put('/users/carts/removeCart', data)
 }
@@ -74,5 +78,6 @@ export default {
   isLiked,
   removeCart,
   removeAllCart,
+  updateCart
   // getAll
 }

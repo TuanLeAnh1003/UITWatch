@@ -127,7 +127,7 @@ function ProductDetail() {
     UserApi.addToCart({
       userId: userId,
       productId: productId,
-      quantity: productCount.toString()
+      quantity: productCount
     })
     .then((res) => {
       console.log(res);

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './CartProduct.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 import UserApi from '../../Apis/UserApi';
 import Swal from "sweetalert2";
 
 
-function CartProduct({index, productId, image, name, price, isOnLikePage}) {
-  const [productCount, setProductCount] = useState(1)
+function CartProduct({index, productId, image, name, price, cartQuantity, onCartQuantityChange, isOnLikePage}) {
+  const [productCount, setProductCount] = useState(cartQuantity)
 
   const [isLiked, setIsLiked] = useState()
   
@@ -62,7 +62,7 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
     UserApi.addToCart({
       userId: userId,
       productId: productId,
-      quantity: productCount
+      quantity: parseInt(productCount)
     })
     .then((res) => {
       console.log(res);
@@ -73,7 +73,6 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
         showConfirmButton: false,
         timer: 1000
       })
-      window.location.reload();
     })
   }
 
@@ -116,12 +115,19 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
   const handleModifyQuantity = (e) => {
     setProductCount(e.target.value);
     if (!isOnLikePage) {
+      console.log({
+        name: name,
+        userId: userId,
+        productId: productId,
+        quantity: parseInt(e.target.value)
+      })
       UserApi.updateCart({
         userId: userId,
         productId: productId,
-        quantity: productCount
+        quantity: parseInt(e.target.value)
       })
       .then((res) => {
+        onCartQuantityChange(e.target.value, productId)
         console.log(res);
       })
     }
@@ -151,7 +157,7 @@ function CartProduct({index, productId, image, name, price, isOnLikePage}) {
               <div className="cart-product__input">
                 <select value={productCount} onChange={handleModifyQuantity} className="cart-product__list">
                   {Array(20).fill().map((_, i) => (
-                    <option key={i}>{i+1}</option>
+                    <option value={i+1} key={i}>{i+1}</option>
                   ))}
                 </select>
               </div>
