@@ -113,6 +113,11 @@
   margin: 0;
 }
 
+.header-second > .header-second__nav > a:hover {
+  font-weight: bold;
+  color: #614F4A;
+}
+
 .header-second > .header-second__nav > a {
   padding: 0 20px;
   border-right: 1px solid rgba(113, 101, 101, 0.48);
@@ -202,7 +207,9 @@
 }
 
 .header-mobile__nav a:hover {
-  background-color: rgb(235, 182, 156)
+  background-color: rgb(235, 182, 156);
+  color: #000;
+  font-weight: bold;
 }
 
 .header-mobile__nav-icon {

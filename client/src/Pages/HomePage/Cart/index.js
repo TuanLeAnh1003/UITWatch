@@ -45,6 +45,11 @@ function Cart() {
     window.scrollTo(0, 0)
   }, [])
 
+  const numberFormat = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  });
+
   return (
     <div className="cart">
       <div className="cart__products">
@@ -75,7 +80,7 @@ function Cart() {
           cartsList?.map((item, index) => (
             <div className="cart__order-info cart__order-item">
               <b>{item.name}</b>
-              <p>{item.price}</p>
+              <p>{numberFormat.format(item.price)}</p>
             </div>
           ))
         }
@@ -84,7 +89,7 @@ function Cart() {
 
         <div className="cart__order-temporary cart__order-item">
           <b>Tổng cộng</b>
-          <h4>{totalPrice}</h4>
+          <h4>{numberFormat.format(totalPrice)}</h4>
         </div>
 
         <div className="cart__order-line"></div>

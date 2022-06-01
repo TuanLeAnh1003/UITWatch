@@ -10,6 +10,9 @@ import multiparty from 'connect-multiparty'
 import path from 'path'
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const MultipartyMiddleware = multiparty({uploadDir: './images'});
 
@@ -40,10 +43,11 @@ app.post('/uploads', MultipartyMiddleware, (req, res) => {
     const targetPathUrl = path.join(__dirname, "./uploads/" + TempFile.name)
     if (path.extname(TempFile.originalFilename).toLowerCase() === ".png" || ".jpg") {
         fs.rename(TempPathFile, targetPathUrl, err => {
+
           res.status(200).json({
             uploaded: true,
-            url: `${process.env.API_URL}/${TempFile.originalFilename}`
-            // url: `http://localhost:5000/${TempFile.originalFilename}` || `${process.env.API_URL}/${TempFile.originalFilename}`
+            url: `${process.env.REACT_APP_API_URL}/${TempFile.originalFilename}`
+            // url: `http://localhost:5000/${TempFile.originalFilename}` // được nè
           })
     
           if (err) return console.log(err)

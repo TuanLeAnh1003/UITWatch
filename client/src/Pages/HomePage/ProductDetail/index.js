@@ -162,6 +162,11 @@ function ProductDetail() {
     window.scrollTo(0, 0)
   }, [])
 
+  const numberFormat = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  });
+
   return (
     
     <div className="pro-detail">
@@ -201,7 +206,7 @@ function ProductDetail() {
             <span>Tình trạng: <b>{product?.status}</b></span>
           </div>
 
-          <h3>{product?.price} VNĐ</h3>
+          <h3>{numberFormat.format(product?.price)}</h3>
 
           <div className="dotted-line"></div>
 

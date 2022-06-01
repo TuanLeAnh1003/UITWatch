@@ -70,7 +70,6 @@ function NewsUpdate() {
   };
 
   const handleChangeImage = (e) => {
-    console.log(e.target.files[0]);
       let imageRef = ref(storage, `news/${e.target.files[0].name + v4()}`);
       uploadBytes(imageRef, e.target.files[0] ).then(() => {
         getDownloadURL(imageRef).then(async data => {
@@ -122,9 +121,9 @@ function NewsUpdate() {
             config = {
               {
                 ckfinder: {
-                  // uploadUrl: 'http://localhost:5000/uploads' || `${env.API_URL}/uploads`
-                  // uploadUrl: `${process.env.API_URL}/uploads`
-                  uploadUrl: `https://uitwatch.herokuapp.com/uploads`
+                  // uploadUrl: 'http://localhost:5000/uploads'
+                  uploadUrl: `${process.env.REACT_APP_API_URL}/uploads`
+                  // uploadUrl: `https://uitwatch.herokuapp.com/uploads`
                 }
               }
             }

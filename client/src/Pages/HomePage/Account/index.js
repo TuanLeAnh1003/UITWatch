@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import  {storage}  from '../../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from "uuid";
+import Swal from "sweetalert2";
 
 function Account() {
   // var user = {
@@ -63,8 +64,17 @@ function Account() {
         })
         .then(data => {
           UserApi.getMe({id: localStorage.getItem("userid")})
-          .then(data => setUser({...data}));
-          // window.location.reload();
+          .then(data => {
+            setUser({...data})
+            Swal.fire({
+              position: 'top',
+              icon: 'success',
+              title: 'Thay đổi thông tin thành công',
+              showConfirmButton: false,
+              timer: 2000
+            })
+            window.location.reload();
+          });
         })
       });
     })
