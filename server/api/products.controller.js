@@ -2,7 +2,7 @@ import ProductsDAO from '../dao/productsDAO.js';
 
 export default class ProductsController {
     static async apiGetProducts(req, res, next) {
-        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
+        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 30;
         const page = req.query.page ? parseInt(req.query.page) : 0;
         let filters = {};
         if (req.query.name) {
@@ -63,7 +63,7 @@ export default class ProductsController {
     }
 
     static async apiDiscountProducts(req, res, next) {
-        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 20;
+        const productsPerPage = req.query.productsPerPage ? parseInt(req.query.productsPerPage) : 30;
         const page = req.query.page ? parseInt(req.query.page) : 0;
 
         const { productsList, totalNumProducts } = await ProductsDAO.getDiscountProducts({
