@@ -31,12 +31,14 @@ export default class CartsDAO {
                 }
             ]).toArray();
             user=user[0];
-            for (let p in user.cart)
-            {
-                if (typeof user.cart[p].quantity === "string")
-                    user.cartProducts[p].cartQuantity = user.cart[p].quantity.parseInt();
-                else user.cartProducts[p].cartQuantity = user.cart[p].quantity;
-            }
+            
+            user.cart.forEach((p) => {
+                user.cartProducts.forEach((q) => {
+                    if(q._id.equals(p.productId))
+                    q.cartQuantity = parseInt(p.quantity);
+                })
+            })
+            
             const totalNumCarts = await user.cartProducts.length;
             const cartsList = await user.cartProducts;
             return {cartsList, totalNumCarts};
