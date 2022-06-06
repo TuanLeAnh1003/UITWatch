@@ -17,7 +17,7 @@ function Product({productId, img, name, type, price, discount}, ref) {
       <p>{type.brand}</p>
       <div className="product__price" style={{display: discount ? "flex" : ""}}>
         <p>{numberFormat.format(price)}</p>
-        <p>{discount}</p>
+        <p>{discount && numberFormat.format(discount)}</p>
       </div>
       
     </Link>

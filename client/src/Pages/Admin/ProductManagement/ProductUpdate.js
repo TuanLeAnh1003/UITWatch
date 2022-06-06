@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './ProductCreate.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import Swal from "sweetalert2";
 import ProductApi from '../../../Apis/ProductApi'
 
 function ProductUpdate() {
@@ -26,6 +27,8 @@ function ProductUpdate() {
 
   const { productId } = useParams()
   const [productUpdate, setProductUpdate] = useState()
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -64,6 +67,14 @@ function ProductUpdate() {
     })
     .then((res) => {
       console.log(res);
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Sửa sản phẩm thành công',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      navigate('/admin/product-management')
     })
   }
 

@@ -21,7 +21,7 @@ function Cart() {
   useEffect(() => {
     let total = 0;
     for (let i = 0; i < cartsList.length; i++) {
-      total += Number(cartsList[0].price)
+      total += Number(cartsList[i].price)
     }
     setTotalPrice(total)
   }, [cartsList])
