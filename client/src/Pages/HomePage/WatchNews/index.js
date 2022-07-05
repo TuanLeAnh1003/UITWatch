@@ -57,7 +57,8 @@ function WatchNews() {
             newsList?.map((element, ind) => 
             element._id !== newsId && ind < 3 && 
             (
-              <NewsItem 
+              <NewsItem
+                key={ind} 
                 newsId={ind}
                 title={element.title}
                 subHeader={element.sub_header}
