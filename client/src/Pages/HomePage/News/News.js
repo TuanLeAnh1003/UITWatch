@@ -53,6 +53,7 @@ function News() {
           index > 0 &&
           (
             <NewsItem 
+              key={index}
               index={index}
               newsId={element._id}
               title={element.title}

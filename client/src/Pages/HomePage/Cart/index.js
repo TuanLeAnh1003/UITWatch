@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Cart.css';
 import CartProduct from './../../../Components/CartProduct/index';
 import { Link } from 'react-router-dom'
@@ -9,19 +9,28 @@ function Cart() {
   const userId = localStorage.getItem("userid")
   const [totalPrice, setTotalPrice] = useState()
 
-  const [cartsList, setCartsList] = useState([]) 
+  const [cartsList, setCartsList] = useState([])
+
+  const [updateQuantity, setUpdateQuantity] = useState()
+
+  const handleCartQuantityChange = useCallback((cartQuantity, productId) => {
+     setUpdateQuantity({
+       cartQuantity: cartQuantity,
+       productId: productId
+     })
+   }, [])
 
   useEffect(() => {
     UserApi.getCarts({ userId: userId })
     .then((res) => {
       setCartsList(res);
     })
-  }, [])
+  }, [updateQuantity])
 
   useEffect(() => {
     let total = 0;
     for (let i = 0; i < cartsList.length; i++) {
-      total += Number(cartsList[0].price)
+      total += Number(cartsList[i].price * cartsList[i].cartQuantity)
     }
     setTotalPrice(total)
   }, [cartsList])
@@ -62,6 +71,8 @@ function Cart() {
               name={item.name}
               price={item.price}
               productId={item._id}
+              cartQuantity={item.cartQuantity}
+              onCartQuantityChange = {handleCartQuantityChange}
               isOnLikePage={false}
             />
           ))
@@ -73,7 +84,7 @@ function Cart() {
       </div>
 
       <div className="cart__order">
-        <h3>ĐƠN HÀNG CỦA BẠN</h3>
+        <h3>GIỎ HÀNG CỦA BẠN</h3>
         <div className="cart__order-line"></div>
 
         {
@@ -81,6 +92,8 @@ function Cart() {
             <div className="cart__order-info cart__order-item">
               <b>{item.name}</b>
               <p>{numberFormat.format(item.price)}</p>
+              <b>{item.cartQuantity} x {item.name}</b>
+              <p>{item.price * item.cartQuantity}</p>
             </div>
           ))
         }

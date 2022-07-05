@@ -105,9 +105,9 @@ function Sale() {
     })
   }
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0)
-  // }, [])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleClickPage = (e) => {
     // console.log(Number(e.target.text) - 1);

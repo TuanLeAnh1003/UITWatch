@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './ProductCreate.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Swal from "sweetalert2";
 import ProductApi from '../../../Apis/ProductApi'
 
 function ProductCreate() {
@@ -23,6 +24,8 @@ function ProductCreate() {
   const [size, setSize] = useState()
   const [waterRessitance, setWaterRessitance] = useState()
   const [feature, setFeature] = useState()
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -52,6 +55,14 @@ function ProductCreate() {
     })
     .then((res) => {
       console.log(res);
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Tạo sản phẩm thành công',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      navigate('/admin/product-management')
     })
   }
 

@@ -92,14 +92,14 @@ function About() {
             <img src={vidImg} alt="" />
         </div>
         <div className="text-block-founder">
-          <h2 className="founder">ĐỘI NGŨ LÃNH ĐẠO GOLFMAID</h2>
+          <h2 className="founder">ĐỘI NGŨ LÃNH ĐẠO UITWatch</h2>
           <div className="founder-line">
             <p>
-              Gặp gỡ nhau từ những ngày đầu tiên, GolfMaid là một trong những
+              Gặp gỡ nhau từ những ngày đầu tiên, UITWatch là một trong những
               chuỗi dữ án đã được hoàn thành bỡi những con người dưới đây. Với
               họ lĩnh vực thương mại điện tử là lĩnh vực mà họ luôn đánh giá cao
               và đâu từ tiền bạc lẫn thời gian, chất xám của mình để đưa
-              GolfMaid phát triển và vươn tầm quốc tế.
+              UITWatch phát triển và vươn tầm quốc tế.
             </p>
           </div>
 
